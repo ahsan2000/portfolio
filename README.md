@@ -1,35 +1,73 @@
-# Ahsan Nawaz — DevOps portfolio
+# Ahsan Nawaz — DevOps Engineer Portfolio
 
-Static portfolio prepared for GitHub Pages. It highlights selected public production platforms Ahsan worked on as an employee and describes only his DevOps contribution.
+A responsive personal portfolio showcasing my DevOps experience, technical capabilities, and selected contributions to production platforms. The site focuses on cloud infrastructure, Kubernetes operations, infrastructure as code, CI/CD automation, observability, and reliable production delivery.
 
-## Publish with GitHub Pages
+## Live Portfolio
 
-1. Create a public GitHub repository named `devops-portfolio`.
-2. Upload `index.html`, `upwork.html`, `styles.css`, and `script.js` to the repository root.
-3. Open **Settings → Pages** in the repository.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Choose the `main` branch and `/ (root)`, then save.
+- [Main portfolio](https://ahsan2000.github.io/portfolio/)
+- [Upwork portfolio](https://ahsan2000.github.io/portfolio/upwork.html)
+- [Upwork profile](https://www.upwork.com/freelancers/~0110eb49d43b69795a)
+- [LinkedIn](https://www.linkedin.com/in/ahsannz/)
 
-The portfolio URL will be:
+## Highlights
 
-`https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/`
+- Responsive layout for desktop, tablet, and mobile devices
+- Animated hero, scrolling technology ticker, and scroll-based interactions
+- Selected production work across banking, AI services, technology, and membership platforms
+- DevOps capabilities covering AWS, Azure, GCP, Kubernetes, Terraform, Ansible, Jenkins, and Bitbucket Pipelines
+- Dedicated Upwork version that keeps client communication on the Upwork platform
+- Accessible navigation with reduced-motion support
+- Lightweight static implementation suitable for GitHub Pages
 
-The main page contains public contact details. Use the separate `upwork.html` URL on Upwork because Upwork portfolio items must not contain off-platform contact details:
+## Selected Production Work
 
-`https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/upwork.html`
+The portfolio presents selected projects I contributed to as an employee, including:
 
-Do not add employer source code, credentials, internal screenshots, or confidential architecture.
+- **Bank AL Habib Digital Banking** — highly available Kubernetes backend operations and production support
+- **Bank AL Habib DigiMate** — Azure AKS infrastructure and automated deployments
+- **TekRevol** — AWS production environment support and CI/CD automation
+- **Rise Up Kings** — AWS deployment operations and automated delivery
 
-Direct case-study links:
+Only public project links and high-level descriptions of my own contributions are included. Employer source code, credentials, internal architecture, and confidential information are not part of this repository.
 
-- `https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/upwork.html#bank-digital`
-- `https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/upwork.html#digimate`
-- `https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/upwork.html#tekrevol`
-- `https://YOUR-GITHUB-USERNAME.github.io/devops-portfolio/upwork.html#rise-up-kings`
+## Technology
 
-## Before publishing
+The site is built with semantic HTML, modern CSS, and vanilla JavaScript. It has no runtime dependencies or build step.
 
-- Confirm that each contribution statement is accurate.
-- Confirm employer policy before adding logos, screenshots, testimonials, source material, or non-public implementation details.
-- Replace `YOUR-GITHUB-USERNAME` above with the real GitHub username.
-- Open every production link and confirm it is still publicly available.
+```text
+portfolio/
+├── index.html       # Main portfolio and contact page
+├── upwork.html      # Upwork-focused portfolio page
+├── styles.css       # Responsive design and animations
+├── script.js        # Navigation and interactive behavior
+├── LICENSE          # Apache License 2.0
+└── README.md
+```
+
+## Run Locally
+
+Clone the repository and start a local static server:
+
+```bash
+git clone https://github.com/ahsan2000/portfolio.git
+cd portfolio
+python3 -m http.server 8000
+```
+
+Open [http://localhost:8000](http://localhost:8000) in a browser.
+
+## Deployment
+
+The portfolio is deployed from the `main` branch with GitHub Pages. Updates pushed to `main` are published automatically.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE).
+
+## Contact
+
+For DevOps consulting, deployment automation, cloud infrastructure, or production support:
+
+- [Upwork](https://www.upwork.com/freelancers/~0110eb49d43b69795a)
+- [LinkedIn](https://www.linkedin.com/in/ahsannz/)
+- [Email](mailto:ahsannawaz2000@gmail.com)
