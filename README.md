@@ -12,7 +12,7 @@ A responsive personal portfolio showcasing my DevOps experience, technical capab
 ## Highlights
 
 - Responsive layout for desktop, tablet, and mobile devices
-- Animated hero, scrolling technology ticker, and scroll-based interactions
+- Animated hero, scrolling technology ticker, scroll-based interactions, and an illustrated DevOps delivery gallery
 - Selected production work across banking, AI services, technology, and membership platforms
 - DevOps capabilities covering AWS, Azure, GCP, Kubernetes, Terraform, Ansible, Jenkins, and Bitbucket Pipelines
 - Dedicated Upwork version that keeps client communication on the Upwork platform
@@ -38,6 +38,7 @@ The site is built with semantic HTML, modern CSS, and vanilla JavaScript. It has
 portfolio/
 ├── index.html       # Main portfolio and contact page
 ├── upwork.html      # Upwork-focused portfolio page
+├── assets/          # Portfolio thumbnail and delivery visuals
 ├── styles.css       # Responsive design and animations
 ├── script.js        # Navigation and interactive behavior
 ├── LICENSE          # Apache License 2.0
