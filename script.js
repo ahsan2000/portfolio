@@ -1,7 +1,7 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reducedMotion && 'IntersectionObserver' in window) {
-  const revealItems = document.querySelectorAll('.section-heading, .project-card, .delivery-card, .capability-grid > div, .approach li, .contact-grid > a, .cta');
+  const revealItems = document.querySelectorAll('.section-heading, .project-card, .delivery-card, .architecture-card, .capability-grid > div, .approach li, .contact-grid > a, .cta');
   revealItems.forEach((item) => item.classList.add('reveal'));
 
   const observer = new IntersectionObserver((entries) => {
