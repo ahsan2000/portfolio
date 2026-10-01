@@ -33,18 +33,53 @@ if (!reducedMotion) {
   }, { passive: true });
   updateScrollMotion();
 
-  document.querySelectorAll('.motion-stage').forEach((stage) => {
-    stage.addEventListener('pointermove', (event) => {
-      const bounds = stage.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-      stage.style.setProperty('--pointer-x', `${x * 7}px`);
-      stage.style.setProperty('--pointer-y', `${y * 7}px`);
-    });
 
-    stage.addEventListener('pointerleave', () => {
-      stage.style.setProperty('--pointer-x', '0px');
-      stage.style.setProperty('--pointer-y', '0px');
+}
+
+const robotStage = document.querySelector('.robot-stage');
+if (robotStage && !reducedMotion) {
+  const eyes = robotStage.querySelectorAll('.robot-pupil');
+  let eyeFrame = 0;
+  let pointer = null;
+
+  const pointEyes = () => {
+    const art = robotStage.querySelector('.robot-art');
+    const rect = art.getBoundingClientRect();
+    const eyeCenterX = rect.left + rect.width * .33;
+    const eyeCenterY = rect.top + rect.height * .235;
+    const dx = pointer ? pointer.x - eyeCenterX : 0;
+    const dy = pointer ? pointer.y - eyeCenterY : 0;
+    const distance = Math.hypot(dx, dy) || 1;
+    const range = Math.min(rect.width * .012, 6);
+    const strength = Math.min(distance / 110, 1);
+    const x = dx / distance * range * strength;
+    const y = dy / distance * range * strength;
+    eyes.forEach((eye) => {
+      eye.style.setProperty('--eye-x', `${x.toFixed(1)}px`);
+      eye.style.setProperty('--eye-y', `${y.toFixed(1)}px`);
     });
+    eyeFrame = 0;
+  };
+
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    pointer = { x: event.clientX, y: event.clientY };
+    if (!eyeFrame) eyeFrame = requestAnimationFrame(pointEyes);
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => {
+    pointer = null;
+    if (!eyeFrame) eyeFrame = requestAnimationFrame(pointEyes);
   });
+}
+
+const backToTop = document.querySelector('.back-to-top');
+if (backToTop) {
+  const updateBackToTop = () => {
+    const visible = window.scrollY > 500;
+    backToTop.classList.toggle('is-visible', visible);
+    backToTop.tabIndex = visible ? 0 : -1;
+    backToTop.setAttribute('aria-hidden', String(!visible));
+  };
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
 }
