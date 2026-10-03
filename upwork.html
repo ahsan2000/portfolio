@@ -4,28 +4,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ahsan Nawaz — production DevOps engineering across Kubernetes, AWS, Azure, GCP, Terraform, and CI/CD.">
-  <meta name="theme-color" content="#07110f">
+  <meta name="theme-color" content="#05070a">
   <meta property="og:title" content="Ahsan Nawaz | DevOps Engineer">
   <meta property="og:description" content="Production DevOps work across Kubernetes, AWS, Azure, GCP, Terraform, and CI/CD.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://ahsan2000.github.io/portfolio/assets/upwork-portfolio-thumbnail.png">
-  <meta property="og:image:alt" content="Ahsan Nawaz DevOps Engineering portfolio">
+  <meta property="og:image" content="https://ahsan2000.github.io/portfolio/assets/devops-portfolio-social.png">
+  <meta property="og:image:alt" content="Ahsan Nawaz — From commit to cloud, DevOps engineering portfolio">
+  <meta property="og:image:width" content="1733">
+  <meta property="og:image:height" content="907">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ahsan2000.github.io/portfolio/assets/devops-portfolio-social.png">
   <title>Ahsan Nawaz | DevOps Portfolio</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%234ee59a'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2307110f'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23e0231c'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2305070a'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="devops-theme.css?v=20261003-ticker7">
+  <script src="vendor/three.min.js" defer></script>
+  <script src="script.js?v=20261003-ticker7" defer></script>
+  <script src="devops-scene.js?v=20261003-ticker7" defer></script>
+  <script src="scroll-story.js?v=20261003-ticker7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#work">Skip to selected work</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
+        <div class="cloud-stage parallax-world">
+        <div class="scene-fallback" aria-hidden="true"><span>☁</span><strong>KUBERNETES</strong><div class="fallback-nodes"><i></i><i></i><i></i></div><small>COMMIT → BUILD → VERIFY → DEPLOY</small></div>
+        <canvas id="cloud-scene" aria-label="Animated three-dimensional Kubernetes cluster connected to an automated delivery pipeline" role="img"></canvas>
+
+      </div>
+  <div class="parallax-scrim" aria-hidden="true"></div>
+  <div class="infra-foreground" aria-hidden="true"><div class="foreground-rack"><i></i><i></i><i></i><i></i><i></i></div><div class="foreground-orbit"></div></div>
+        <div class="scene-controls background-controls"><button id="scene-toggle" type="button" aria-pressed="false">Pause motion</button><span>BACKGROUND MOTION</span></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Ahsan Nawaz portfolio home">
       <span class="brand-mark">AN</span>
       <span>Ahsan Nawaz</span>
     </a>
-    <nav aria-label="Main navigation">
+    <nav class="theme-nav" aria-label="Main navigation">
       <a href="#work">Selected work</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#approach">Approach</a>
@@ -33,36 +48,23 @@
   </header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
+    <div class="story-track parallax-track" id="journey">
+    <section class="hero parallax-story" aria-label="DevOps engineering journey">
+      <div class="story-panels">
+      <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
         <div class="availability-pill"><span aria-hidden="true"></span> Available for new DevOps projects</div>
         <p class="eyebrow">DEVOPS ENGINEER · KARACHI, PAKISTAN</p>
-        <h1 id="hero-title"><span class="hero-line">Production</span> <span class="outline-word">infrastructure</span><span class="hero-line hero-line-final">shipped and operated.</span></h1>
+        <h1 id="hero-title"><span class="hero-line">From commit.</span><span class="outline-word">To cloud.</span><span class="hero-line hero-line-final">Built to keep running.</span></h1>
         <p class="hero-text">I help software teams deploy reliably across Kubernetes, AWS, Azure, and GCP—with automated delivery pipelines, observable systems, and clear operational handover.</p>
         <div class="hero-actions">
           <a class="button primary" href="#work">View production work</a>
           <a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer">Hire me on Upwork</a>
         </div>
       </div>
-      <div class="motion-stage" aria-label="Animated DevOps delivery workflow">
-        <div class="stage-grid" aria-hidden="true"></div>
-        <div class="motion-window window-back" aria-hidden="true">
-          <div class="window-bar"><span></span><span></span><span></span><b>infrastructure.yml</b></div>
-          <div class="infra-lines"><i></i><i></i><i></i><i></i></div>
-          <div class="cloud-row"><span>AWS</span><span>AZURE</span><span>GCP</span></div>
-        </div>
-        <div class="motion-window window-main">
-          <div class="window-bar"><span></span><span></span><span></span><b>release / production</b></div>
-          <div class="release-body">
-            <div class="release-heading"><span>CI/CD PIPELINE</span><strong>Deploying safely</strong></div>
-            <div class="pipeline-row"><span>BUILD</span><span>TEST</span><span>DEPLOY</span></div>
-            <div class="pipeline-track"><i></i></div>
-            <div class="cluster-row"><span>K8S</span><span>AKS</span><span>EKS</span><span>GKE</span></div>
-          </div>
-        </div>
-        <div class="motion-status"><span class="status-dot"></span><div><small>RELEASE STATUS</small><strong>Production ready</strong></div></div>
       </div>
+
     </section>
+    </div>
 
     <section class="proof" aria-label="Experience summary">
       <div><strong>4+ years</strong><span>Production DevOps</span></div>
@@ -72,7 +74,7 @@
     </section>
 
     <div class="scroll-ticker" aria-hidden="true">
-      <div class="ticker-track">KUBERNETES · TERRAFORM · CI/CD · AWS · AZURE · GCP · JENKINS · ANSIBLE · KUBERNETES · TERRAFORM · CI/CD · AWS · AZURE · GCP ·</div>
+      <div class="ticker-track"><span>KUBERNETES · AWS · AZURE · GCP · TERRAFORM · CI/CD · JENKINS · BITBUCKET PIPELINES · ANSIBLE · DOCKER · EKS · AKS · GKE · DOCKER SWARM · GIT · SONARQUBE · AWS CDK · CLOUDFORMATION · GRAFANA · ELK · EFK · LINUX · BASH · POWERSHELL · PYTHON · GO · EC2 · ECS · RDS · LAMBDA · CLOUDFRONT · ROUTE 53 · IAM · AZURE APP SERVICE · MONGODB · REDIS · WINDOWS SERVER · NETWORKING · MICROSERVICES · CONTAINER REGISTRIES · </span><span>KUBERNETES · AWS · AZURE · GCP · TERRAFORM · CI/CD · JENKINS · BITBUCKET PIPELINES · ANSIBLE · DOCKER · EKS · AKS · GKE · DOCKER SWARM · GIT · SONARQUBE · AWS CDK · CLOUDFORMATION · GRAFANA · ELK · EFK · LINUX · BASH · POWERSHELL · PYTHON · GO · EC2 · ECS · RDS · LAMBDA · CLOUDFRONT · ROUTE 53 · IAM · AZURE APP SERVICE · MONGODB · REDIS · WINDOWS SERVER · NETWORKING · MICROSERVICES · CONTAINER REGISTRIES · </span></div>
     </div>
 
     <section class="section" id="work" aria-labelledby="work-title">
@@ -129,34 +131,6 @@
       </div>
     </section>
 
-    <section class="section delivery-showcase" id="delivery" aria-labelledby="delivery-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">DELIVERY IN PRACTICE</p>
-        <h2 id="delivery-title">A reliable path from requirements to production</h2>
-        <p>I turn infrastructure goals into maintainable environments, automated releases, and production systems teams can operate with confidence.</p>
-      </div>
-      <div class="delivery-grid">
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/01-devops-assess-design-deliver.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Three-stage DevOps process covering assessment, infrastructure design, and delivery">
-          </div>
-          <figcaption><strong>Assess, design, deliver</strong><span>Clear scope, infrastructure as code, and a usable handover.</span></figcaption>
-        </figure>
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/02-cicd-automated-delivery.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Automated CI/CD workflow from code commit through production deployment">
-          </div>
-          <figcaption><strong>Automate the release path</strong><span>Repeatable pipelines with quality gates and rollback readiness.</span></figcaption>
-        </figure>
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/03-kubernetes-reliability-observability.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Highly available Kubernetes platform with monitoring and recovery capabilities">
-          </div>
-          <figcaption><strong>Operate with confidence</strong><span>High availability, observability, and fast production recovery.</span></figcaption>
-        </figure>
-      </div>
-    </section>
-
     <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
       <div class="section-heading compact">
         <p class="eyebrow">CAPABILITIES</p>
@@ -177,6 +151,37 @@
         <li><span>02</span><div><strong>Deliver</strong><p>Implement the agreed change with least-privilege access and visible checkpoints.</p></div></li>
         <li><span>03</span><div><strong>Verify</strong><p>Test the outcome, document the setup, and hand over a process the team can operate.</p></div></li>
       </ol>
+    </section>
+
+    <section class="parallax-story engineering-story" id="engineering" aria-label="Cloud and delivery engineering in depth">
+      <div class="hero-copy story-panel" id="story-panel-1" data-phase="1" >
+        <p class="eyebrow">02 / DEVOPS JOURNEY — CLOUD</p>
+        <h2 class="story-title"><span>Infrastructure, as code.</span><span>Repeatable environments. Reliable foundations.</span></h2>
+        <p class="hero-text">AWS, Azure, and GCP infrastructure built around maintainable environments, networking, access boundaries, and recovery.</p>
+        <p class="story-stack">Terraform · Ansible · CloudFormation</p>
+        <a class="button secondary" href="#capabilities">Explore cloud capabilities ↗</a>
+      </div>
+      <div class="hero-copy story-panel" id="story-panel-2" data-phase="2" >
+        <p class="eyebrow">03 / DEVOPS JOURNEY — KUBERNETES</p>
+        <h2 class="story-title"><span>Orchestrated.</span><span>Ready for production.</span></h2>
+        <p class="hero-text">Production Kubernetes operations across banking and AI services, with cluster optimization, highly available workloads, and primary and disaster-recovery environments.</p>
+        <p class="story-stack">Kubernetes · AKS · EKS · GKE</p>
+        <a class="button secondary" href="#work">See production contributions ↗</a>
+      </div>
+      <div class="hero-copy story-panel" id="story-panel-3" data-phase="3" >
+        <p class="eyebrow">04 / DEVOPS JOURNEY — CI/CD</p>
+        <h2 class="story-title"><span>Commit to deploy.</span><span>One continuous pipeline.</span></h2>
+        <p class="hero-text">Automated builds, verification, releases, and deployments that give teams a repeatable route to production with a clear rollback plan.</p>
+        <p class="story-stack">Jenkins · Bitbucket Pipelines · Docker</p>
+        <a class="button secondary" href="#capabilities">Explore delivery automation ↗</a>
+      </div>
+      <div class="hero-copy story-panel" id="story-panel-4" data-phase="4" >
+        <p class="eyebrow">05 / DEVOPS JOURNEY — OBSERVE</p>
+        <h2 class="story-title"><span>Keep it running.</span><span>Measure. Learn. Improve.</span></h2>
+        <p class="hero-text">Logging, metrics, alerts, incident investigation, and operational handover help teams understand their systems and keep releases reliable.</p>
+        <p class="story-stack">Grafana · ELK / EFK · Production support</p>
+        <a class="button secondary" href="#approach">See how I work ↗</a>
+      </div>
     </section>
 
     <section class="cta" aria-labelledby="cta-title">

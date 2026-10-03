@@ -23,7 +23,6 @@ if (!reducedMotion) {
     const maxScroll = Math.max(page.scrollHeight - window.innerHeight, 1);
     const progress = Math.min(window.scrollY / maxScroll, 1);
     page.style.setProperty('--scroll-progress', progress.toFixed(4));
-    page.style.setProperty('--ticker-shift', `${Math.min(window.scrollY * 0.14, 260)}px`);
     page.style.setProperty('--scroll-parallax', `${Math.min(window.scrollY * 0.025, 28)}px`);
     scrollFrame = 0;
   };
@@ -82,4 +81,35 @@ if (backToTop) {
   };
   window.addEventListener('scroll', updateBackToTop, { passive: true });
   updateBackToTop();
+}
+
+// Keep enough identical skill groups ahead of the viewport at every screen width.
+const skillsTicker = document.querySelector('.ticker-track');
+if (skillsTicker) {
+  const originalGroup = skillsTicker.firstElementChild;
+  let tickerResizeFrame = 0;
+  const fillSkillsTicker = () => {
+    tickerResizeFrame = 0;
+    const unitWidth = originalGroup.getBoundingClientRect().width;
+    if (!unitWidth) return;
+    const viewportWidth = skillsTicker.parentElement.getBoundingClientRect().width;
+    const copies = Math.max(3, Math.ceil(viewportWidth / unitWidth) + 2);
+    while (skillsTicker.children.length < copies) skillsTicker.append(originalGroup.cloneNode(true));
+    while (skillsTicker.children.length > copies) skillsTicker.lastElementChild.remove();
+    skillsTicker.style.setProperty('--ticker-distance', `${unitWidth}px`);
+    skillsTicker.style.setProperty('--ticker-duration', `${unitWidth / 45}s`);
+    skillsTicker.classList.add('ticker-measured');
+  };
+  const tickerResize = new ResizeObserver(() => {
+    if (!tickerResizeFrame) tickerResizeFrame = requestAnimationFrame(fillSkillsTicker);
+  });
+  tickerResize.observe(skillsTicker.parentElement);
+  if (document.fonts) document.fonts.ready.then(fillSkillsTicker);
+  fillSkillsTicker();
+  window.addEventListener('pagehide', event => {
+    if (!event.persisted) tickerResize.disconnect();
+    cancelAnimationFrame(tickerResizeFrame);
+    tickerResizeFrame = 0;
+  });
+  window.addEventListener('pageshow', fillSkillsTicker);
 }

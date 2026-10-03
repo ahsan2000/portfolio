@@ -4,79 +4,65 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ahsan Nawaz — DevOps engineer and independent product builder shipping reliable infrastructure and useful software.">
-  <meta name="theme-color" content="#07110f">
+  <meta name="theme-color" content="#05070a">
   <meta property="og:title" content="Ahsan Nawaz | DevOps Engineer">
   <meta property="og:description" content="DevOps engineering and independent product building across cloud infrastructure, delivery automation, and OneView.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://ahsan2000.github.io/portfolio/assets/upwork-portfolio-thumbnail.png">
-  <meta property="og:image:alt" content="Ahsan Nawaz DevOps Engineering portfolio">
+  <meta property="og:image" content="https://ahsan2000.github.io/portfolio/assets/devops-portfolio-social.png">
+  <meta property="og:image:alt" content="Ahsan Nawaz — From commit to cloud, DevOps engineering portfolio">
+  <meta property="og:image:width" content="1733">
+  <meta property="og:image:height" content="907">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ahsan2000.github.io/portfolio/assets/devops-portfolio-social.png">
   <title>Ahsan Nawaz | DevOps Engineer</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%234ee59a'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2307110f'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23e0231c'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2305070a'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="devops-theme.css?v=20261003-ticker7">
+  <script src="vendor/three.min.js" defer></script>
+  <script src="script.js?v=20261003-ticker7" defer></script>
+  <script src="devops-scene.js?v=20261003-ticker7" defer></script>
+  <script src="scroll-story.js?v=20261003-ticker7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#work">Skip to selected work</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+        <div class="cloud-stage parallax-world">
+        <div class="scene-fallback" aria-hidden="true"><span>☁</span><strong>KUBERNETES</strong><div class="fallback-nodes"><i></i><i></i><i></i></div><small>COMMIT → BUILD → VERIFY → DEPLOY</small></div>
+        <canvas id="cloud-scene" aria-label="Animated three-dimensional Kubernetes cluster connected to an automated delivery pipeline" role="img"></canvas>
+
+      </div>
+  <div class="parallax-scrim" aria-hidden="true"></div>
+  <div class="infra-foreground" aria-hidden="true"><div class="foreground-rack"><i></i><i></i><i></i><i></i><i></i></div><div class="foreground-orbit"></div></div>
+        <div class="scene-controls background-controls"><button id="scene-toggle" type="button" aria-pressed="false">Pause motion</button><span>BACKGROUND MOTION</span></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Ahsan Nawaz portfolio home">
       <span class="brand-mark">AN</span>
-      <span>Ahsan Nawaz</span>
+      <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
+    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Selected work</a><a href="#capabilities">Expertise</a><a href="#contact">Contact ↗</a></nav>
   </header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
+    <div class="story-track parallax-track" id="journey">
+    <section class="hero parallax-story" aria-label="DevOps engineering journey">
+      <div class="story-panels">
+      <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
         <div class="availability-pill"><span aria-hidden="true"></span> Available for new DevOps projects</div>
-        <p class="eyebrow">DEVOPS ENGINEER · KARACHI, PAKISTAN</p>
-        <h1 id="hero-title"><span class="hero-line">Production</span> <span class="outline-word">infrastructure</span><span class="hero-line hero-line-final">shipped and operated.</span></h1>
+        <p class="eyebrow">CLOUD / KUBERNETES / DELIVERY AUTOMATION</p>
+        <h1 id="hero-title"><span class="hero-line">From commit.</span><span class="outline-word">To cloud.</span><span class="hero-line hero-line-final">Built to keep running.</span></h1>
         <p class="hero-text">Cloud &amp; DevOps engineer with 4+ years designing, automating, and operating business-critical platforms across Kubernetes, AWS, Azure, and GCP.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#work">View production work</a>
+          <a class="button primary" href="#work">Explore my work ↗</a>
           <a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer">Hire me on Upwork</a>
           <a class="button secondary" href="assets/Ahsan-Nawaz-DevOps-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Ahsan Nawaz's résumé PDF in a new tab">View résumé <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div class="robot-stage" aria-label="Friendly sci-fi robot repairing cloud infrastructure">
-        <div class="robot-art" aria-hidden="true">
-          <img src="assets/devops-repair-robot.webp" width="1312" height="1199" alt="" decoding="sync" fetchpriority="high">
-          <span class="robot-gear-backing"></span>
-          <svg class="robot-gear-wheel" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <defs><radialGradient id="gear-metal"><stop offset="0" stop-color="#718b83"/><stop offset=".65" stop-color="#899d96"/><stop offset="1" stop-color="#3a5550"/></radialGradient></defs>
-            <g class="gear-rotor">
-              <path d="M 100.0 23.0 L 111.9 9.8 L 123.6 12.1 L 129.5 28.9 L 138.5 33.3 L 155.4 27.8 L 164.3 35.7 L 161.1 53.1 L 166.7 61.5 L 184.1 65.2 L 187.9 76.4 L 176.3 89.9 L 177.0 100.0 L 190.2 111.9 L 187.9 123.6 L 171.1 129.5 L 166.7 138.5 L 172.2 155.4 L 164.3 164.3 L 146.9 161.1 L 138.5 166.7 L 134.8 184.1 L 123.6 187.9 L 110.1 176.3 L 100.0 177.0 L 88.1 190.2 L 76.4 187.9 L 70.5 171.1 L 61.5 166.7 L 44.6 172.2 L 35.7 164.3 L 38.9 146.9 L 33.3 138.5 L 15.9 134.8 L 12.1 123.6 L 23.7 110.1 L 23.0 100.0 L 9.8 88.1 L 12.1 76.4 L 28.9 70.5 L 33.3 61.5 L 27.8 44.6 L 35.7 35.7 L 53.1 38.9 L 61.5 33.3 L 65.2 15.9 L 76.4 12.1 L 89.9 23.7 Z" fill="url(#gear-metal)" stroke="#18332e" stroke-width="5" stroke-linejoin="round"/>
-              <circle cx="100" cy="100" r="61" fill="#18312d" stroke="#a5b8af" stroke-width="5"/>
-              <g stroke="#637e73" stroke-width="14" stroke-linecap="round"><path d="M 100 100 L 161.0 100.0" /><path d="M 100 100 L 130.5 152.8" /><path d="M 100 100 L 69.5 152.8" /><path d="M 100 100 L 39.0 100.0" /><path d="M 100 100 L 69.5 47.2" /><path d="M 100 100 L 130.5 47.2" /></g>
-              <circle cx="100" cy="100" r="46" fill="#112a25" stroke="#46685a" stroke-width="5"/>
-              <path d="M 100 68 L 100 39" stroke="#65f0ad" stroke-width="8" stroke-linecap="round"/>
-              <g fill="#5ceca7"><circle cx="168.0" cy="100.0" r="4" /><circle cx="121.0" cy="164.7" r="4" /><circle cx="45.0" cy="140.0" r="4" /><circle cx="45.0" cy="60.0" r="4" /><circle cx="121.0" cy="35.3" r="4" /></g>
-            </g>
-            <circle cx="100" cy="100" r="28" fill="#0d2521" stroke="#5ee9a6" stroke-width="7"/>
-            <circle cx="100" cy="100" r="14" fill="#193a30" stroke="#173e31" stroke-width="3"/>
-          </svg>
-          <img class="robot-part robot-antenna-center" src="assets/devops-robot-antenna-center.png" width="1312" height="1199" alt="">
-          <img class="robot-part robot-antenna-left" src="assets/devops-robot-antenna-left.png" width="1312" height="1199" alt="">
-          <img class="robot-part robot-antenna-right" src="assets/devops-robot-antenna-right.png" width="1312" height="1199" alt="">
-          <img class="robot-wrench" src="assets/devops-robot-wrench.png" width="1312" height="1199" alt="">
-          <span class="robot-repair-spark"></span>
-          <span class="robot-pupil pupil-left"></span>
-          <span class="robot-pupil pupil-right"></span>
-        </div>
-        <nav class="bubble-nav" aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#architecture">DevOps cycle</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#approach">Approach</a>
-          <a href="assets/Ahsan-Nawaz-DevOps-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Ahsan Nawaz's résumé PDF in a new tab">Résumé</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </div>
+
     </section>
+    </div>
 
     <section class="proof" aria-label="Experience summary">
       <div><strong>4+ years</strong><span>Production DevOps</span></div>
@@ -86,7 +72,7 @@
     </section>
 
     <div class="scroll-ticker" aria-hidden="true">
-      <div class="ticker-track">KUBERNETES · TERRAFORM · CI/CD · AWS · AZURE · GCP · JENKINS · ANSIBLE · KUBERNETES · TERRAFORM · CI/CD · AWS · AZURE · GCP ·</div>
+      <div class="ticker-track"><span>KUBERNETES · AWS · AZURE · GCP · TERRAFORM · CI/CD · JENKINS · BITBUCKET PIPELINES · ANSIBLE · DOCKER · EKS · AKS · GKE · DOCKER SWARM · GIT · SONARQUBE · AWS CDK · CLOUDFORMATION · GRAFANA · ELK · EFK · LINUX · BASH · POWERSHELL · PYTHON · GO · EC2 · ECS · RDS · LAMBDA · CLOUDFRONT · ROUTE 53 · IAM · AZURE APP SERVICE · MONGODB · REDIS · WINDOWS SERVER · NETWORKING · MICROSERVICES · CONTAINER REGISTRIES · </span><span>KUBERNETES · AWS · AZURE · GCP · TERRAFORM · CI/CD · JENKINS · BITBUCKET PIPELINES · ANSIBLE · DOCKER · EKS · AKS · GKE · DOCKER SWARM · GIT · SONARQUBE · AWS CDK · CLOUDFORMATION · GRAFANA · ELK · EFK · LINUX · BASH · POWERSHELL · PYTHON · GO · EC2 · ECS · RDS · LAMBDA · CLOUDFRONT · ROUTE 53 · IAM · AZURE APP SERVICE · MONGODB · REDIS · WINDOWS SERVER · NETWORKING · MICROSERVICES · CONTAINER REGISTRIES · </span></div>
     </div>
 
     <section class="section" id="work" aria-labelledby="work-title">
@@ -127,9 +113,40 @@
           </div>
         </article>
 
+
+
+        <article class="project-card" id="tekrevol">
+          <div class="project-number">03</div>
+          <div class="project-content">
+            <p class="project-type">Employment contribution · Technology Services · AWS</p>
+            <h3>TekRevol</h3>
+            <p>Replaced manual delivery with end-to-end automation across mobile, web, and backend workloads, making releases faster, repeatable, and safer.</p>
+            <ul>
+              <li>IAM roles, least-privilege policies, and controlled access</li>
+              <li>Automated build, quality, and deployment stages with Jenkins and Bitbucket</li>
+              <li>Docker, Ansible, and SonarQube quality gates</li>
+            </ul>
+            <a href="https://www.tekrevol.com/" target="_blank" rel="noopener noreferrer" aria-label="View TekRevol public platform in a new tab">View public platform <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card" id="rise-up-kings">
+          <div class="project-number">04</div>
+          <div class="project-content">
+            <p class="project-type">Employment contribution · Membership Platform · AWS</p>
+            <h3>Rise Up Kings</h3>
+            <p>Fully automated production delivery through Bitbucket CI/CD so changes and hotfixes could be released quickly without observed customer-facing downtime.</p>
+            <ul>
+              <li>Automated production deployment on AWS</li>
+              <li>Bitbucket CI/CD for application changes and urgent hotfixes</li>
+              <li>Repeatable releases without observed service interruption</li>
+            </ul>
+            <a href="https://www.riseupkings.com/" target="_blank" rel="noopener noreferrer" aria-label="View Rise Up Kings public platform in a new tab">View public platform <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
         <article class="project-card product-feature" id="oneview">
           <div class="product-story">
-            <div class="project-number">03 · INDEPENDENT PRODUCT</div>
+            <div class="project-number">05 · INDEPENDENT PRODUCT</div>
             <div class="project-content">
               <p class="project-type">Independent product · Android · Personal finance</p>
               <h3>OneView</h3>
@@ -163,37 +180,32 @@
             <div class="product-badge">BUILT &amp; SHIPPED<br><strong>BY AHSAN</strong></div>
           </div>
         </article>
-
-        <article class="project-card" id="tekrevol">
-          <div class="project-number">04</div>
-          <div class="project-content">
-            <p class="project-type">Employment contribution · Technology Services · AWS</p>
-            <h3>TekRevol</h3>
-            <p>Replaced manual delivery with end-to-end automation across mobile, web, and backend workloads, making releases faster, repeatable, and safer.</p>
-            <ul>
-              <li>IAM roles, least-privilege policies, and controlled access</li>
-              <li>Automated build, quality, and deployment stages with Jenkins and Bitbucket</li>
-              <li>Docker, Ansible, and SonarQube quality gates</li>
-            </ul>
-            <a href="https://www.tekrevol.com/" target="_blank" rel="noopener noreferrer" aria-label="View TekRevol public platform in a new tab">View public platform <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <article class="project-card" id="rise-up-kings">
-          <div class="project-number">05</div>
-          <div class="project-content">
-            <p class="project-type">Employment contribution · Membership Platform · AWS</p>
-            <h3>Rise Up Kings</h3>
-            <p>Fully automated production delivery through Bitbucket CI/CD so changes and hotfixes could be released quickly without observed customer-facing downtime.</p>
-            <ul>
-              <li>Automated production deployment on AWS</li>
-              <li>Bitbucket CI/CD for application changes and urgent hotfixes</li>
-              <li>Repeatable releases without observed service interruption</li>
-            </ul>
-            <a href="https://www.riseupkings.com/" target="_blank" rel="noopener noreferrer" aria-label="View Rise Up Kings public platform in a new tab">View public platform <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
       </div>
+    </section>
+
+    <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">CAPABILITIES</p>
+        <h2 id="capabilities-title">From infrastructure to reliable releases</h2>
+      </div>
+      <div class="capability-grid">
+        <div><span>01</span><h3>Cloud & Kubernetes</h3><p>AWS, Azure, GCP, Kubernetes, AKS, EKS, GKE, Docker, Linux, networking, and production troubleshooting.</p></div>
+        <div><span>02</span><h3>Delivery automation</h3><p>Jenkins and Bitbucket pipelines for repeatable application builds, tests, deployments, and rollback-aware releases.</p></div>
+        <div><span>03</span><h3>Infrastructure as code</h3><p>Terraform, Ansible, CloudFormation, and AWS CDK for consistent environments and maintainable operations.</p></div>
+        <div><span>04</span><h3>Observability</h3><p>Grafana and ELK/EFK logging, metrics, alerting, incident investigation, and operational handover.</p></div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div>
+        <p class="eyebrow">HOW I WORK</p>
+        <h2 id="approach-title">Clear scope. Tested changes. Usable handover.</h2>
+      </div>
+      <ol>
+        <li><span>01</span><div><strong>Understand</strong><p>Review the stack, current failure or goal, access boundaries, and target date.</p></div></li>
+        <li><span>02</span><div><strong>Deliver</strong><p>Implement the agreed change with least-privilege access and visible checkpoints.</p></div></li>
+        <li><span>03</span><div><strong>Verify</strong><p>Test the outcome, document the setup, and hand over a process the team can operate.</p></div></li>
+      </ol>
     </section>
 
     <section class="section experience" id="experience" aria-labelledby="experience-title">
@@ -210,31 +222,34 @@
       </ol>
     </section>
 
-    <section class="section delivery-showcase" id="delivery" aria-labelledby="delivery-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">DELIVERY IN PRACTICE</p>
-        <h2 id="delivery-title">A reliable path from requirements to production</h2>
-        <p>I turn infrastructure goals into maintainable environments, automated releases, and production systems teams can operate with confidence.</p>
+    <section class="parallax-story engineering-story" id="engineering" aria-label="Cloud and delivery engineering in depth">
+      <div class="hero-copy story-panel" id="story-panel-1" data-phase="1" >
+        <p class="eyebrow">02 / DEVOPS JOURNEY — CLOUD</p>
+        <h2 class="story-title"><span>Infrastructure, as code.</span><span>Repeatable environments. Reliable foundations.</span></h2>
+        <p class="hero-text">AWS, Azure, and GCP infrastructure built around maintainable environments, networking, access boundaries, and recovery.</p>
+        <p class="story-stack">Terraform · Ansible · CloudFormation</p>
+        <a class="button secondary" href="#capabilities">Explore cloud capabilities ↗</a>
       </div>
-      <div class="delivery-grid">
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/01-devops-assess-design-deliver.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Three-stage DevOps process covering assessment, infrastructure design, and delivery">
-          </div>
-          <figcaption><strong>Assess, design, deliver</strong><span>Clear scope, infrastructure as code, and a usable handover.</span></figcaption>
-        </figure>
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/02-cicd-automated-delivery.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Automated CI/CD workflow from code commit through production deployment">
-          </div>
-          <figcaption><strong>Automate the release path</strong><span>Repeatable pipelines with quality gates and rollback readiness.</span></figcaption>
-        </figure>
-        <figure class="delivery-card">
-          <div class="delivery-image-wrap">
-            <img src="assets/03-kubernetes-reliability-observability.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Highly available Kubernetes platform with monitoring and recovery capabilities">
-          </div>
-          <figcaption><strong>Operate with confidence</strong><span>High availability, observability, and fast production recovery.</span></figcaption>
-        </figure>
+      <div class="hero-copy story-panel" id="story-panel-2" data-phase="2" >
+        <p class="eyebrow">03 / DEVOPS JOURNEY — KUBERNETES</p>
+        <h2 class="story-title"><span>Orchestrated.</span><span>Ready for production.</span></h2>
+        <p class="hero-text">Production Kubernetes operations across banking and AI services, with cluster optimization, highly available workloads, and primary and disaster-recovery environments.</p>
+        <p class="story-stack">Kubernetes · AKS · EKS · GKE</p>
+        <a class="button secondary" href="#work">See production contributions ↗</a>
+      </div>
+      <div class="hero-copy story-panel" id="story-panel-3" data-phase="3" >
+        <p class="eyebrow">04 / DEVOPS JOURNEY — CI/CD</p>
+        <h2 class="story-title"><span>Commit to deploy.</span><span>One continuous pipeline.</span></h2>
+        <p class="hero-text">Automated builds, verification, releases, and deployments that give teams a repeatable route to production with a clear rollback plan.</p>
+        <p class="story-stack">Jenkins · Bitbucket Pipelines · Docker</p>
+        <a class="button secondary" href="#capabilities">Explore delivery automation ↗</a>
+      </div>
+      <div class="hero-copy story-panel" id="story-panel-4" data-phase="4" >
+        <p class="eyebrow">05 / DEVOPS JOURNEY — OBSERVE</p>
+        <h2 class="story-title"><span>Keep it running.</span><span>Measure. Learn. Improve.</span></h2>
+        <p class="hero-text">Logging, metrics, alerts, incident investigation, and operational handover help teams understand their systems and keep releases reliable.</p>
+        <p class="story-stack">Grafana · ELK / EFK · Production support</p>
+        <a class="button secondary" href="#approach">See how I work ↗</a>
       </div>
     </section>
 
@@ -265,31 +280,6 @@
         <div class="feedback-loop"><span>↺</span><div><b>Measure, learn, improve</b><small>Production feedback informs the next plan, code change, and reliability improvement.</small></div></div>
         <div class="architecture-foundation"><span>Terraform / Ansible</span><span>CI/CD automation</span><span>Least privilege</span><span>High availability</span><span>Documentation &amp; handover</span></div>
       </div>
-    </section>
-
-    <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">CAPABILITIES</p>
-        <h2 id="capabilities-title">From infrastructure to reliable releases</h2>
-      </div>
-      <div class="capability-grid">
-        <div><span>01</span><h3>Cloud & Kubernetes</h3><p>AWS, Azure, GCP, Kubernetes, AKS, EKS, GKE, Docker, Linux, networking, and production troubleshooting.</p></div>
-        <div><span>02</span><h3>Delivery automation</h3><p>Jenkins and Bitbucket pipelines for repeatable application builds, tests, deployments, and rollback-aware releases.</p></div>
-        <div><span>03</span><h3>Infrastructure as code</h3><p>Terraform, Ansible, CloudFormation, and AWS CDK for consistent environments and maintainable operations.</p></div>
-        <div><span>04</span><h3>Observability</h3><p>Grafana and ELK/EFK logging, metrics, alerting, incident investigation, and operational handover.</p></div>
-      </div>
-    </section>
-
-    <section class="section approach" id="approach" aria-labelledby="approach-title">
-      <div>
-        <p class="eyebrow">HOW I WORK</p>
-        <h2 id="approach-title">Clear scope. Tested changes. Usable handover.</h2>
-      </div>
-      <ol>
-        <li><span>01</span><div><strong>Understand</strong><p>Review the stack, current failure or goal, access boundaries, and target date.</p></div></li>
-        <li><span>02</span><div><strong>Deliver</strong><p>Implement the agreed change with least-privilege access and visible checkpoints.</p></div></li>
-        <li><span>03</span><div><strong>Verify</strong><p>Test the outcome, document the setup, and hand over a process the team can operate.</p></div></li>
-      </ol>
     </section>
 
     <section class="section contact" id="contact" aria-labelledby="contact-title">

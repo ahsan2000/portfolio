@@ -12,7 +12,7 @@ A responsive personal portfolio showcasing my DevOps experience, technical capab
 ## Highlights
 
 - Responsive layout for desktop, tablet, and mobile devices
-- Animated hero, scrolling technology ticker, scroll-based interactions, and an illustrated DevOps delivery gallery
+- Persistent DevOps scene, layered parallax scrolling, and scrolling technology ticker
 - Selected production work across banking, AI services, technology, and membership platforms
 - DevOps capabilities covering AWS, Azure, GCP, Kubernetes, Terraform, Ansible, Jenkins, and Bitbucket Pipelines
 - Dedicated Upwork version that keeps client communication on the Upwork platform
@@ -32,7 +32,7 @@ Only public project links and high-level descriptions of my own contributions ar
 
 ## Technology
 
-The site is built with semantic HTML, modern CSS, and vanilla JavaScript. It has no runtime dependencies or build step.
+The site is built with semantic HTML, modern CSS, and vanilla JavaScript. It uses a locally bundled Three.js runtime and has no build step.
 
 ```text
 portfolio/
@@ -72,3 +72,28 @@ For DevOps consulting, deployment automation, cloud infrastructure, or productio
 - [Upwork](https://www.upwork.com/freelancers/~0110eb49d43b69795a)
 - [LinkedIn](https://www.linkedin.com/in/ahsannz/)
 - [Email](mailto:ahsannawaz2000@gmail.com)
+
+## DevOps visual theme
+
+The main and Upwork pages use a dark vermilion theme adapted from the supplied Kage source. A custom Three.js scene depicts a Kubernetes cluster, cloud infrastructure, and commit/build/verify/deploy delivery stages. It supports pointer movement, pausing, reduced motion, offscreen suspension, and GPU resource cleanup.
+
+- `devops-theme.css`: responsive visual theme
+- `devops-scene.js`: DevOps scene geometry and interactions
+- `vendor/three.min.js`: runtime copied from the supplied source
+- `reference/threeui/`: complete extracted source for reference; the original temple renderer is not the active portfolio scene
+
+The original Kage source includes remotely hosted scene images and fonts. The adapted portfolio does not load these temple assets.
+
+## Parallax scroll
+
+Both pages use a persistent DevOps world behind naturally scrolling content. Cloud infrastructure and Kubernetes geometry move slowly with the scroll position; foreground server details move faster to create depth. The introduction, cloud, Kubernetes, CI/CD, and observability chapters remain in normal document flow, followed by full project details. Reduced-motion mode disables parallax. The illustrated delivery gallery has been removed.
+
+## Client-focused layout and brand assets
+
+The opening view brings project, hiring, and résumé actions above the fold. Production projects follow the experience summary and continuously animated skills ticker. Capabilities and the working approach come before the deeper engineering story. The camera eases through approach, orbit, and retreat as visitors scroll.
+
+Matching assets generated with the built-in image generation tool:
+
+- `assets/ahsan-nawaz-linkedin-cover-devops.png`: wide LinkedIn cover; position the center when cropping in LinkedIn.
+- `assets/devops-portfolio-social.png`: website sharing thumbnail, referenced by Open Graph and Twitter metadata on both pages.
+- `assets/brand-image-prompts.md`: exact prompts for regenerating both images.
