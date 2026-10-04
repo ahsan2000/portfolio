@@ -49,7 +49,6 @@ html,body{overflow-x:clip}body{background:#05070a;isolation:isolate}main{overflo
 .parallax-world{inset:0;width:100vw;height:100svh;transform:none;opacity:1}
 .parallax-scrim{background:linear-gradient(90deg,#05070aeb 0%,#05070abb 30%,#05070a30 65%,#05070a15),linear-gradient(0deg,#05070ab0,transparent 25%,transparent 80%,#05070a65)}
 .parallax-track{perspective:1100px;perspective-origin:35% 35%}
-#story-panel-0{transform:translateZ(var(--hero-depth,0px));filter:blur(var(--hero-blur,0px));opacity:var(--hero-opacity,1);will-change:transform,filter,opacity}
 #hero-title{transform:perspective(900px) rotateX(var(--title-y,0deg)) rotateY(var(--title-x,0deg));transform-style:preserve-3d;transition:transform .18s ease-out;text-shadow:1px 1px #64706a,2px 2px #333d38,3px 3px #252d29,4px 4px #19201c,8px 14px 25px #0009}
 #hero-title .outline-word{text-shadow:1px 1px #ac221c,2px 2px #811b17,3px 3px #5b1512,4px 4px #35100d,8px 14px 25px #0009}
 .project-grid,.capability-grid,.contact-grid{perspective:1400px}

@@ -1,19 +1,13 @@
-/* Scroll through the infrastructure; foreground typography recedes into depth. */
+/* Scroll through the infrastructure while the hero stays in normal document flow. */
 (() => {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const root = document.documentElement;
-  const hero = document.querySelector('#story-panel-0');
   const title = document.querySelector('#hero-title');
   let frame = 0;
   function update() {
     frame = 0;
     const distance = Math.max(root.scrollHeight - innerHeight, 1);
     const progress = Math.max(0, Math.min(scrollY / distance, 1));
-    const exit = motion.matches ? 0 : Math.min(scrollY / (innerHeight * .8), 1);
-    root.style.setProperty('--hero-depth', `${-exit * 340}px`);
-    root.style.setProperty('--hero-blur', `${exit * 7}px`);
-    root.style.setProperty('--hero-opacity', `${1 - exit * .93}`);
-    if (hero) hero.inert = exit > .95;
     root.style.setProperty('--foreground-drift', `${motion.matches ? 0 : -Math.min(scrollY * .09, innerHeight * .5)}px`);
     const chapter = progress < .31 ? 0 : progress < .59 ? 1 : progress < .87 ? 2 : 3;
     window.dispatchEvent(new CustomEvent('devops-story-progress',{detail:{progress:motion.matches?0:progress,index:chapter}}));
