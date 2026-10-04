@@ -109,3 +109,20 @@ html[data-loader-expired] #portfolio-loader{display:none}
 :is(.capability-grid>div,.contact-grid>a)>*{position:relative;z-index:1;transition:translate .7s cubic-bezier(.22,1,.36,1)}
 .capability-grid>div:hover>*,.contact-grid>a:hover>*{translate:7px -3px}
 @media(prefers-reduced-motion:reduce){:is(.capability-grid>div,.contact-grid>a)>*{translate:none!important}}
+
+/* Keep the handset silhouette visible against OneView's dark cloth. */
+#oneview .phone-shell {
+  border:10px solid #171c22;
+  border-radius:2.5rem;
+  outline:2px solid #8a939d;
+  box-shadow:0 0 0 4px #303943,0 28px 55px #0008,inset 0 0 0 1px #cbd5cd;
+}
+#oneview .phone-shell::after {
+  content:"";position:absolute;bottom:10px;left:50%;translate:-50% 0;
+  width:76px;height:4px;border-radius:4px;background:#171c22;
+}
+#oneview .phone-speaker {
+  top:11px;width:58px;height:6px;background:#171c22;
+}
+#oneview .product-visual {min-height:520px}
+#oneview .product-orbit {color:#929d9955}
