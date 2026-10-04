@@ -45,3 +45,67 @@ html,body{overflow-x:clip}body{background:#05070a;isolation:isolate}main{overflo
 /* Repeat one measured group rather than waiting for the entire track to end. */
 .scroll-ticker{mask-image:none;-webkit-mask-image:none}.ticker-track>span{min-width:0}.ticker-track.ticker-measured{animation:skills-continuous var(--ticker-duration,90s) linear infinite}@keyframes skills-continuous{to{transform:translateX(calc(-1 * var(--ticker-distance)))}}
 @media(prefers-reduced-motion:reduce){.ticker-track.ticker-measured{animation:none}}
+/* Connected server rooms, with a foreground that stands apart from the world. */
+.parallax-world{inset:0;width:100vw;height:100svh;transform:none;opacity:1}
+.parallax-scrim{background:linear-gradient(90deg,#05070aeb 0%,#05070abb 30%,#05070a30 65%,#05070a15),linear-gradient(0deg,#05070ab0,transparent 25%,transparent 80%,#05070a65)}
+.parallax-track{perspective:1100px;perspective-origin:35% 35%}
+#story-panel-0{transform:translateZ(var(--hero-depth,0px));filter:blur(var(--hero-blur,0px));opacity:var(--hero-opacity,1);will-change:transform,filter,opacity}
+#hero-title{transform:perspective(900px) rotateX(var(--title-y,0deg)) rotateY(var(--title-x,0deg));transform-style:preserve-3d;transition:transform .18s ease-out;text-shadow:1px 1px #64706a,2px 2px #333d38,3px 3px #252d29,4px 4px #19201c,8px 14px 25px #0009}
+#hero-title .outline-word{text-shadow:1px 1px #ac221c,2px 2px #811b17,3px 3px #5b1512,4px 4px #35100d,8px 14px 25px #0009}
+.project-grid,.capability-grid,.contact-grid{perspective:1400px}
+.project-card,.project-card.featured,.capability-grid>div,.contact-grid>a{transform-origin:50% 0;transform:rotateX(var(--sway-x,0deg)) rotateY(var(--sway-y,0deg)) rotateZ(var(--sway-z,0deg)) skewX(var(--cloth-skew,0deg));transition:border-color .3s,box-shadow .3s,opacity .6s;backface-visibility:hidden}
+.project-card:hover,.capability-grid>div:hover,.contact-grid>a:hover{transform:rotateX(var(--sway-x,0deg)) rotateY(var(--sway-y,0deg)) rotateZ(var(--sway-z,0deg)) skewX(var(--cloth-skew,0deg));box-shadow:0 28px 65px #0009;border-color:#e0231c88}
+.project-card.reveal:not(.is-visible),.capability-grid>div.reveal:not(.is-visible),.contact-grid>a.reveal:not(.is-visible){transform:translateY(24px)}
+.journey-cue{font:10px monospace;letter-spacing:.18em;color:#a9b8ae;margin-top:2rem}
+@media(max-width:900px){.parallax-scrim{background:linear-gradient(90deg,#05070ad9,#05070a77 65%,#05070a30),linear-gradient(0deg,#05070ac0,transparent 30%)}}
+@media(prefers-reduced-motion:reduce){#story-panel-0,#hero-title,.project-card,.capability-grid>div,.contact-grid>a{transform:none!important;filter:none!important;opacity:1!important}.journey-cue{display:none}}
+
+/* Keep the hanging motion after reveal; reveal selectors otherwise win specificity. */
+html.js :is(.project-card, .capability-grid > div, .contact-grid > a).reveal.is-visible {
+  transform-origin: 50% 0;
+  transform: perspective(1400px) rotateX(var(--sway-x, 0deg)) rotateY(var(--sway-y, 0deg)) rotateZ(var(--sway-z, 0deg)) skewX(var(--cloth-skew, 0deg));
+  transition: border-color .3s, box-shadow .3s, opacity .6s;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js :is(.project-card, .capability-grid > div, .contact-grid > a).reveal.is-visible {
+    transform: none !important;
+  }
+}
+/* The actual cloth surface carries its own folding edge and light. */
+.fabric-tile{position:relative;isolation:isolate;overflow:visible!important}
+html.js :is(.project-card,.capability-grid>div,.contact-grid>a).fabric-tile,
+html.js :is(.project-card,.capability-grid>div,.contact-grid>a).fabric-tile.reveal.is-visible,
+html.js :is(.project-card,.capability-grid>div,.contact-grid>a).fabric-tile:hover{background:transparent;border-color:transparent;backdrop-filter:none;box-shadow:none;transform:none}
+.tile-fabric{position:absolute;z-index:-1;pointer-events:none;display:block}
+.fabric-tile>:not(.tile-fabric){position:relative;z-index:1}
+#portfolio-loader{position:fixed;inset:0;z-index:1000;background:#05070a;display:none;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s}
+.js #portfolio-loader{display:flex;animation:loader-failsafe 0s 6s forwards}
+#portfolio-loader.is-complete{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{width:min(420px,74vw);text-align:center}
+.loader-mark{display:block;position:relative;width:56px;height:56px;margin:0 auto 30px;font:20px/56px monospace;color:#dfe7e0}
+.loader-mark>span{position:absolute;inset:0;border:1px solid #e0231c55;border-top-color:#e0231c;animation:loader-orbit 2.4s linear infinite}
+.loader-inner>p{font:10px monospace;letter-spacing:.3em;color:#929d99;margin-bottom:24px}
+.loader-track{height:1px;background:#dfe7e024;overflow:hidden}
+.loader-track i{height:100%;display:block;background:#dfe7e0;transform:scaleX(0);transform-origin:left}
+.loader-meta{display:flex;justify-content:space-between;margin-top:14px;color:#929d99;font:9px monospace;letter-spacing:.12em;text-transform:uppercase}
+.loader-meta b{font-weight:400;font-variant-numeric:tabular-nums;color:#dfe7e0}
+@keyframes loader-orbit{to{transform:rotate(360deg)}}
+@keyframes loader-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+.tool-drift{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.drifting-tool{position:absolute;left:var(--tool-left);top:-80px;width:var(--tool-size);height:var(--tool-size);opacity:0;animation:tool-fall var(--tool-duration) var(--tool-delay) linear infinite}
+.drifting-tool img{display:block;width:100%;height:100%;opacity:.42;animation:tool-tumble 9s ease-in-out infinite alternate;filter:drop-shadow(0 3px 8px #05070a)}
+.tool-drift.is-paused *, .tool-drift.is-hidden *{animation-play-state:paused}
+@keyframes tool-fall{0%{opacity:0;transform:translate3d(0,-5vh,0)}10%,85%{opacity:1}50%{transform:translate3d(var(--tool-swing),55vh,0)}100%{opacity:0;transform:translate3d(0,calc(100svh + 160px),0)}}
+@keyframes tool-tumble{0%{transform:perspective(400px) rotateZ(-16deg) rotateY(-30deg)}50%{transform:perspective(400px) rotateZ(12deg) rotateY(35deg)}100%{transform:perspective(400px) rotateZ(-8deg) rotateY(-15deg)}}
+@media(max-width:650px){.drifting-tool:nth-child(even){display:none}.drifting-tool img{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.tool-drift{display:none}#portfolio-loader{transition:none}.loader-mark>span{animation:none}}
+
+html[data-loader-expired] #portfolio-loader{display:none}
+
+/* Other tiles: a warm glow and a gentle gathering of the copy. */
+:is(.capability-grid>div,.contact-grid>a){position:relative;isolation:isolate;overflow:hidden}
+:is(.capability-grid>div,.contact-grid>a)::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,#e0231c30 0%,#e0231c18 45%,transparent 100%);opacity:0;transform:translateX(-100%);transition:transform .75s cubic-bezier(.22,1,.36,1),opacity .65s ease}
+:is(.capability-grid>div,.contact-grid>a):hover::before{opacity:1;transform:translateX(0)}
+:is(.capability-grid>div,.contact-grid>a)>*{position:relative;z-index:1;transition:translate .7s cubic-bezier(.22,1,.36,1)}
+.capability-grid>div:hover>*,.contact-grid>a:hover>*{translate:7px -3px}
+@media(prefers-reduced-motion:reduce){:is(.capability-grid>div,.contact-grid>a)>*{translate:none!important}}

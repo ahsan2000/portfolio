@@ -97,3 +97,9 @@ Matching assets generated with the built-in image generation tool:
 - `assets/ahsan-nawaz-linkedin-cover-devops.png`: wide LinkedIn cover; position the center when cropping in LinkedIn.
 - `assets/devops-portfolio-social.png`: website sharing thumbnail, referenced by Open Graph and Twitter metadata on both pages.
 - `assets/brand-image-prompts.md`: exact prompts for regenerating both images.
+
+## Immersive infrastructure journey
+
+The background is a continuous 3D aisle through a cloud gateway, networked Kubernetes server racks, Jenkins delivery gates, and an automation control room. Page scroll moves the camera forward through the actual geometry. The hero retreats and blurs during its exit; pointer movement adds heading depth and spring-driven hanging-card sway. Reduced-motion preferences disable these effects.
+
+The card surfaces now use the cloth shaders and top-pinned wave simulation from the supplied Kage reference (`tile-cloth.js`), while text and links remain accessible HTML. All five project cards, including OneView, have a light continuous breeze and a gentle pointer response; expertise and contact tiles use a red gradient sweeping from left to right with slight inward copy movement. reduced motion and unavailable WebGL retain readable cards. `portfolio-atmosphere.js` adds a bounded opening loader and drifting local DevOps SVG marks from Simple Icons, synchronized with the scene pause control.

@@ -1,22 +1,33 @@
-/* Foreground scrolls naturally; the persistent world follows at a slower pace. */
+/* Scroll through the infrastructure; foreground typography recedes into depth. */
 (() => {
-  const panels = [...document.querySelectorAll('.story-panel')];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const root = document.documentElement;
+  const hero = document.querySelector('#story-panel-0');
+  const title = document.querySelector('#hero-title');
   let frame = 0;
-  panels.forEach(panel => {panel.removeAttribute('aria-hidden');panel.inert=false;});
   function update() {
     frame = 0;
     const distance = Math.max(root.scrollHeight - innerHeight, 1);
     const progress = Math.max(0, Math.min(scrollY / distance, 1));
-    const drift = motion.matches ? 0 : -Math.min(scrollY * .018, innerHeight * .12);
-    const foreground = motion.matches ? 0 : -Math.min(scrollY * .09, innerHeight * .5);
-    root.style.setProperty('--world-drift', `${drift.toFixed(2)}px`);
-    root.style.setProperty('--foreground-drift', `${foreground.toFixed(2)}px`);
-    const index = Math.max(0,panels.findLastIndex(panel => panel.getBoundingClientRect().top < innerHeight*.55));
-    window.dispatchEvent(new CustomEvent('devops-story-progress',{detail:{progress:motion.matches?0:progress,index}}));
+    const exit = motion.matches ? 0 : Math.min(scrollY / (innerHeight * .8), 1);
+    root.style.setProperty('--hero-depth', `${-exit * 340}px`);
+    root.style.setProperty('--hero-blur', `${exit * 7}px`);
+    root.style.setProperty('--hero-opacity', `${1 - exit * .93}`);
+    if (hero) hero.inert = exit > .95;
+    root.style.setProperty('--foreground-drift', `${motion.matches ? 0 : -Math.min(scrollY * .09, innerHeight * .5)}px`);
+    const chapter = progress < .31 ? 0 : progress < .59 ? 1 : progress < .87 ? 2 : 3;
+    window.dispatchEvent(new CustomEvent('devops-story-progress',{detail:{progress:motion.matches?0:progress,index:chapter}}));
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(update);}
+  if(title){
+    title.addEventListener('pointermove',event=>{
+      if(motion.matches || event.pointerType==='touch')return;
+      const r=title.getBoundingClientRect();
+      title.style.setProperty('--title-x', `${(event.clientX-r.left)/r.width*8-4}deg`);
+      title.style.setProperty('--title-y', `${4-(event.clientY-r.top)/r.height*8}deg`);
+    });
+    title.addEventListener('pointerleave',()=>{title.style.setProperty('--title-x','0deg');title.style.setProperty('--title-y','0deg');});
+  }
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   window.addEventListener('pageshow',schedule);

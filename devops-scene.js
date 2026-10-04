@@ -30,60 +30,87 @@
     const ctx=c.getContext('2d');ctx.font='26px monospace';ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,256,55);
     const texture=new T.CanvasTexture(c);const sprite=new T.Sprite(new T.SpriteMaterial({map:texture,transparent:true,depthWrite:false}));sprite.position.set(x,y,z);sprite.scale.set(3*size,.56*size,1);world.add(sprite);
   }
-  const grid=new T.GridHelper(16,32,0x632521,0x20272d);grid.position.y=-1.45;world.add(grid);
-  mesh(new T.CylinderGeometry(2.1,2.1,.15,6),metal,0,-1.1,0);
-  const ring=new T.Mesh(new T.TorusGeometry(2.45,.018,8,96),accent);ring.rotation.x=Math.PI/2;ring.position.y=-1;world.add(ring);
-  // Seven spokes reference the Kubernetes wheel; six worker nodes surround the hub.
-  const nodes=[];
-  for(let i=0;i<6;i++){
-    const a=i*Math.PI/3;const x=Math.cos(a)*1.65,z=Math.sin(a)*1.65;
-    const node=new T.Group();node.position.set(x,0,z);world.add(node);nodes.push(node);
-    for(let j=0;j<3;j++){
-      const slab=new T.Mesh(box,metal);slab.scale.set(.73,.28,.73);slab.position.y=j*.35;node.add(slab);
-      const edges=new T.LineSegments(new T.EdgesGeometry(box),lines);edges.scale.copy(slab.scale);edges.position.copy(slab.position);node.add(edges);
-      const led=new T.Mesh(box,accent);led.scale.set(.15,.035,.02);led.position.set(.16,j*.35,.377);node.add(led);
+  scene.fog = new T.FogExp2(0x05070a, .022);
+  const cyan = new T.MeshStandardMaterial({color:0x55cbd4,emissive:0x287d88,emissiveIntensity:.8,metalness:.5,roughness:.3});
+  const grid=new T.GridHelper(120,120,0x632521,0x20272d);grid.position.set(0,-1.45,-40);world.add(grid);
+  const nodes=[], packets=[], routes=[];
+  function wire(points, color=0xe0231c){const route=points.map(p=>new T.Vector3(...p));world.add(new T.Line(new T.BufferGeometry().setFromPoints(route),new T.LineBasicMaterial({color,transparent:true,opacity:.65})));return route;}
+  function rack(x,z,height=4){
+    mesh(box,metal,x,height/2-1.4,z,1.35,height,1.1);
+    for(let j=0;j<8;j++){
+      mesh(box,pale,x,j*height/9-1.1,z+.57,1.12,.035,.035);
+      mesh(box,accent,x+.42,j*height/9-1,z+.6,.11,.04,.04);
+      mesh(box,metal,x,j*height/9-.97,z+.6,.72,.21,.05);
     }
-    const line=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,-.8,0),new T.Vector3(x,-.8,z)]),pathMaterial);world.add(line);
   }
-  mesh(new T.CylinderGeometry(.42,.42,.8,7),pale,0,.05,0);
-  label('KUBERNETES',0,1.65,0,1.1,'#dfe7e0');
-  const stages=['COMMIT','BUILD','VERIFY','DEPLOY'];
-  const points=[];
-  stages.forEach((name,i)=>{let x=-3.6+i*2.4;mesh(box,i===3?accent:metal,x,-1,-3.5,.8,.3,.8);label(name,x,-.45,-3.5,.65);points.push(new T.Vector3(x,-.78,-3.5));});
-  const pipeline=new T.Line(new T.BufferGeometry().setFromPoints(points),pathMaterial);world.add(pipeline);
-  const delivery=new T.Line(new T.BufferGeometry().setFromPoints([points[3],new T.Vector3(3.6,-.78,0),new T.Vector3(1.65,-.78,0)]),pathMaterial);world.add(delivery);
-  label('AWS / AZURE / GCP',0,-1.15,3.5,.85);
-  const packets=[];
-  for(let i=0;i<7;i++){const p=mesh(new T.SphereGeometry(.045,8,8),accent,0,0,0);packets.push(p);}
+  function gate(z,name,material=accent){
+    [-4.5,4.5].forEach(x=>mesh(box,metal,x,2,z,.55,7,.65));
+    mesh(box,metal,0,5.3,z,9.6,.6,.7);
+    mesh(box,material,0,4.93,z+.38,8.8,.065,.055);
+    label(name,0,5.9,z,1.65,'#dfe7e0');
+  }
+  // Four rooms share one continuous aisle. The camera actually passes through them.
+  gate(0,'INFRASTRUCTURE / ENTER');
+  for(let i=0;i<5;i++){rack(-5,-i*4);rack(5,-i*4);}
+  label('CLOUD GATEWAY',3,1.8,-3,1.1);
+  gate(-22,'KUBERNETES / CLUSTER',cyan);
+  for(let i=0;i<6;i++){
+    const z=-25-Math.floor(i/2)*5,x=i%2?4:-4;
+    rack(x,z,3);nodes.push(mesh(box,cyan,x,2.5,z,.65,.65,.65));
+    routes.push(wire([[x,-.9,z],[x/2,-.9,z],[x/2,-.9,-36],[0,-.9,-36]],0x55cbd4));
+  }
+  mesh(new T.CylinderGeometry(.8,.8,.7,7),pale,0,-.9,-36);
+  label('SERVICE MESH / NETWORK',0,3.9,-32,1.5,'#83dce3');
+  gate(-43,'CI/CD / DELIVERY');
+  ['COMMIT','BUILD','TEST','DEPLOY'].forEach((name,i)=>{
+    const z=-46-i*5;gate(z,name,i===3?cyan:accent);
+    mesh(box,i===3?cyan:accent,3,.3,z,1.3,1.3,1.3);
+    rack(-5.5,z,3);
+  });
+  label('JENKINS / BITBUCKET',0,3.4,-53,1.5,'#83dce3');
+  routes.push(wire([[3,.3,-46],[3,.3,-61],[0,.3,-64]],0xe0231c));
+  gate(-69,'AUTOMATION / CONTROL',cyan);
+  [-5,5].forEach(x=>{for(let i=0;i<3;i++){
+    const z=-73-i*5;mesh(box,metal,x,1,z,2.5,3,.3);
+    for(let j=0;j<4;j++)mesh(box,cyan,x-.65+j*.42,.5+j*.3,z+.2,.18,.5+j*.4,.04);
+  }});
+  label('TERRAFORM / ANSIBLE',0,4,-75,1.7,'#83dce3');
+  label('OBSERVE / RECOVER / REPEAT',0,3,-85,1.6);
+  const ring=new T.Mesh(new T.TorusGeometry(2.8,.025,8,96),cyan);ring.position.set(0,1,-86);world.add(ring);
+  for(let i=0;i<18;i++)packets.push(mesh(new T.SphereGeometry(.07,8,8),i%2?cyan:accent,0,0,0));
   const dustGeo=new T.BufferGeometry(),dust=[];
-  for(let i=0;i<160;i++)dust.push((Math.random()-.5)*15,Math.random()*7-1.5,(Math.random()-.5)*12);
-  dustGeo.setAttribute('position',new T.Float32BufferAttribute(dust,3));const particles=new T.Points(dustGeo,new T.PointsMaterial({color:0xc9a24a,size:.025,transparent:true,opacity:.45}));world.add(particles);
+  for(let i=0;i<260;i++)dust.push((Math.random()-.5)*18,Math.random()*9-1.5,-Math.random()*100);
+  dustGeo.setAttribute('position',new T.Float32BufferAttribute(dust,3));const particles=new T.Points(dustGeo,new T.PointsMaterial({color:0xc9a24a,size:.035,transparent:true,opacity:.45}));world.add(particles);
   let frame=0,paused=motion.matches,visible=true,lost=false,time=0,last=0,targetX=0,targetY=0,storyProgress=0,sceneProgress=0;
   function render(){renderer.render(scene,camera);}
-  function tick(now){frame=0;if(paused||!visible||document.hidden||lost)return;const dt=Math.min((now-last)/1000,.05);last=now;time+=dt;
+  function tick(now){frame=0;if(paused||!visible||document.hidden||lost)return;const dt=Math.max(0,Math.min((now-last)/1000,.05));last=now;time+=dt;
     sceneProgress += (storyProgress-sceneProgress)*(1-Math.exp(-dt*3));
     updateCamera(sceneProgress);
-    world.rotation.y+=(targetX+sceneProgress*.65-world.rotation.y)*.04;world.rotation.x+=(targetY-world.rotation.x)*.04;
-    nodes.forEach((n,i)=>n.position.y=Math.sin(time*.7+i)*.055);
-    ring.rotation.z=time*.08;particles.rotation.y=time*.018;
-    packets.forEach((p,i)=>{const progress=(time*.18+i/7)%1;p.position.set(-3.6+progress*7.2,-.77,-3.5);});
+
+    nodes.forEach((n,i)=>{n.position.y=2.5+Math.sin(time*.7+i)*.12;n.rotation.y=time*.2;});
+    ring.rotation.z=time*.08;
+    packets.forEach((packet,i)=>{
+      const route=routes[i%routes.length];
+      const phase=time*.22+i/packets.length;
+      const u=phase-Math.floor(phase);
+      const segment=u*(route.length-1);
+      const j=Math.min(Math.floor(segment),route.length-2);
+      packet.position.lerpVectors(route[j],route[j+1],segment-j);
+    });
     render();frame=requestAnimationFrame(tick);
   }
   function updateCamera(progress){
-    // A slow approach, orbit and retreat creates depth without moving the text.
-    const sweep=Math.sin(progress*Math.PI*2);
-    const zoom=Math.sin(progress*Math.PI*3);
-    const angle=.63+progress*.6+sweep*.12;
-    const radius=13.6-zoom*2.25;
-    camera.position.set(Math.sin(angle)*radius,7-progress*1.1+Math.sin(progress*Math.PI*2)*1.1,Math.cos(angle)*radius);
-    camera.lookAt(0,Math.sin(progress*Math.PI)*.4,-progress*.8);
-    camera.fov=38+Math.sin(progress*Math.PI*2)*2;
+    const z=13-progress*94;
+    camera.position.set(1.8+Math.sin(progress*Math.PI*3)*1.1+targetX*2,2.5+Math.sin(progress*Math.PI*2)*.35+targetY,z);
+    camera.lookAt(.3+targetX,2,-9+z);
+    camera.fov=innerWidth<650?55:44;
     camera.updateProjectionMatrix();
   }
+
   function onStory(event){
     storyProgress=event.detail.progress;
     if(motion.matches){sceneProgress=0;updateCamera(0);render();}
-    else if(paused){sceneProgress=storyProgress;updateCamera(sceneProgress);world.rotation.y=sceneProgress*.65;render();}
+    else if(paused){sceneProgress=storyProgress;updateCamera(sceneProgress);render();}
   }
   window.addEventListener('devops-story-progress',onStory);
   function start(){if(!frame&&!paused&&visible&&!document.hidden&&!lost){last=performance.now();frame=requestAnimationFrame(tick);}}
@@ -91,11 +118,11 @@
   toggle.addEventListener('click',()=>{paused=!paused;syncButton();if(paused){cancelAnimationFrame(frame);frame=0;}else start();});syncButton();
   const resize=new ResizeObserver(()=>{const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();render();});resize.observe(canvas);
   const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else{cancelAnimationFrame(frame);frame=0;} });observer.observe(canvas);
-  canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||motion.matches)return;const r=canvas.getBoundingClientRect();targetX=((e.clientX-r.left)/r.width-.5)*.35;targetY=((e.clientY-r.top)/r.height-.5)*.12;if(paused){world.rotation.set(targetY,targetX,0);render();}});
-  canvas.addEventListener('pointerleave',()=>{targetX=targetY=0;});
+  window.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||motion.matches)return;const r=canvas.getBoundingClientRect();targetX=((e.clientX-r.left)/r.width-.5)*.35;targetY=((e.clientY-r.top)/r.height-.5)*.12;if(paused){updateCamera(sceneProgress);render();}});
+  document.addEventListener('pointerleave',()=>{targetX=targetY=0;});
   const onVisibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else start();};document.addEventListener('visibilitychange',onVisibility);
   const onMotion=()=>{paused=motion.matches;syncButton();if(paused){cancelAnimationFrame(frame);frame=0;render();}else start();};motion.addEventListener('change',onMotion);
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;cancelAnimationFrame(frame);frame=0;});canvas.addEventListener('webglcontextrestored',()=>{lost=false;render();start();});
   window.addEventListener('pagehide',e=>{cancelAnimationFrame(frame);frame=0;if(e.persisted)return;resize.disconnect();observer.disconnect();window.removeEventListener('devops-story-progress',onStory);document.removeEventListener('visibilitychange',onVisibility);motion.removeEventListener('change',onMotion);const geos=new Set(),mats=new Set();scene.traverse(o=>{if(o.geometry)geos.add(o.geometry);if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>mats.add(m));});geos.forEach(g=>g.dispose());mats.forEach(m=>{if(m.map)m.map.dispose();m.dispose();});renderer.dispose();});window.addEventListener('pageshow',start);
-  render();start();
+  updateCamera(0);render();start();
 })();
