@@ -94,8 +94,8 @@ The opening view brings project, hiring, and résumé actions above the fold. Pr
 
 Matching assets generated with the built-in image generation tool:
 
-- `assets/ahsan-nawaz-linkedin-cover-devops.png`: wide LinkedIn cover; position the center when cropping in LinkedIn.
-- `assets/devops-portfolio-social.png`: website sharing thumbnail, referenced by Open Graph and Twitter metadata on both pages.
+- `assets/ahsan-nawaz-linkedin-cover-remote.png`: LinkedIn cover exported at 1584 × 396, with profile-photo clearance and worldwide remote project availability. Upload this file with minimum zoom.
+- `assets/devops-portfolio-social-services.jpg`: 1200 × 630 sharing thumbnail, referenced by static Open Graph and Twitter metadata on both pages. A new filename avoids the old image cache. Changes must be published before external sharing previews can fetch them; previously shared links may keep cached previews.
 - `assets/brand-image-prompts.md`: exact prompts for regenerating both images.
 
 ## Immersive infrastructure journey
