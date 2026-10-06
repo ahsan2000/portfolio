@@ -14,11 +14,11 @@
   const scene = new T.Scene();
   const camera = new T.PerspectiveCamera(38, 1, .1, 100);
   camera.position.set(8,7,11); camera.lookAt(0,0,0);
-  scene.add(new T.AmbientLight(0x9baebf, .8));
+  scene.add(new T.AmbientLight(0xc8d9ea, 1.25));
   const key = new T.DirectionalLight(0xffe3cd, 1.9); key.position.set(4,8,6); scene.add(key);
   const red = new T.PointLight(0xe0231c, 3, 25); red.position.set(-4,2,3); scene.add(red);
   const world = new T.Group(); scene.add(world);
-  const metal = new T.MeshStandardMaterial({color:0x1c252d,roughness:.4,metalness:.75});
+  const metal = new T.MeshStandardMaterial({color:0x40566b,roughness:.4,metalness:.75});
   const pale = new T.MeshStandardMaterial({color:0xaab4ad,roughness:.35,metalness:.55});
   const accent = new T.MeshStandardMaterial({color:0xe0231c,emissive:0xe0231c,emissiveIntensity:.7,roughness:.4});
   const lines = new T.LineBasicMaterial({color:0x75807c,transparent:true,opacity:.45});
@@ -30,7 +30,7 @@
     const ctx=c.getContext('2d');ctx.font='26px monospace';ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,256,55);
     const texture=new T.CanvasTexture(c);const sprite=new T.Sprite(new T.SpriteMaterial({map:texture,transparent:true,depthWrite:false}));sprite.position.set(x,y,z);sprite.scale.set(3*size,.56*size,1);world.add(sprite);
   }
-  scene.fog = new T.FogExp2(0x05070a, .022);
+  scene.fog = new T.FogExp2(0x182330, .018);
   const cyan = new T.MeshStandardMaterial({color:0x55cbd4,emissive:0x287d88,emissiveIntensity:.8,metalness:.5,roughness:.3});
   const grid=new T.GridHelper(120,120,0x632521,0x20272d);grid.position.set(0,-1.45,-40);world.add(grid);
   const nodes=[], packets=[], routes=[];

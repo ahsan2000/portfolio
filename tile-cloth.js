@@ -459,7 +459,7 @@ function createCloth(output, plate, options) {
       pw=w;ph=h;plate=document.createElement('canvas');plate.width=w;plate.height=h;
       const ctx=plate.getContext('2d');
       const gradient=ctx.createLinearGradient(0,0,w,h);
-      gradient.addColorStop(0,card.classList.contains('featured')?'#1e1718':'#151c23');gradient.addColorStop(1,'#090d12');
+      gradient.addColorStop(0,card.classList.contains('featured')?'#483640':'#304354');gradient.addColorStop(1,'#253444');
       ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);
       // Fine woven threads catch the light across the moving folds.
       ctx.strokeStyle='rgba(223,231,224,.018)';ctx.lineWidth=.5;
