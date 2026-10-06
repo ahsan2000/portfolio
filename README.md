@@ -103,3 +103,11 @@ Matching assets generated with the built-in image generation tool:
 The background is a continuous 3D aisle through a cloud gateway, networked Kubernetes server racks, Jenkins delivery gates, and an automation control room. Page scroll moves the camera forward through the actual geometry. The hero scrolls naturally without blur or retreat; pointer movement adds heading depth and spring-driven hanging-card sway. Reduced-motion preferences disable these effects.
 
 The card surfaces now use the cloth shaders and top-pinned wave simulation from the supplied Kage reference (`tile-cloth.js`), while text and links remain accessible HTML. All five project cards, including OneView, have a light continuous breeze and a gentle pointer response; expertise and contact tiles use a red gradient sweeping from left to right with slight inward copy movement. reduced motion and unavailable WebGL retain readable cards. `portfolio-atmosphere.js` adds a bounded opening loader and drifting local DevOps SVG marks from Simple Icons, synchronized with the scene pause control.
+
+### Project enquiries and live delivery diagram
+
+The main portfolio has Upwork and LinkedIn buttons and a project enquiry form that posts to FormSubmit for `productsbyahsan@gmail.com`. The visitor's email is included for replies. FormSubmit keeps its default CAPTCHA, and the form also includes a honeypot. After submission, visitors return to `thank-you.html` on the GitHub Pages site.
+
+**Activation:** Submit the deployed form once and confirm the activation link sent to `productsbyahsan@gmail.com`. Inbox delivery requires this one-time confirmation. Update the form's `_next` URL if moving to a different domain. No Gmail password or secret is stored in the site.
+
+`delivery-flow.js` draws SVG connections between HTML lifecycle cards using their actual positions. The flow includes a production feedback loop, animated connectors, a pause control, a single-column mobile layout, and reduced-motion support. This is an illustrative architecture assembled from the listed tool stack, rather than a live production status display.

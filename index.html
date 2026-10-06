@@ -25,10 +25,11 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23e0231c'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2305070a'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js');setTimeout(()=>document.documentElement.setAttribute('data-loader-expired',''),6000)</script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="devops-theme.css?v=20261006-final-spacing">
+  <link rel="stylesheet" href="devops-theme.css?v=20261006-live-flow">
   <script src="portfolio-atmosphere.js?v=20261004-original-palette" defer></script>
   <script src="tile-cloth.js?v=20261006-brighter-slate" defer></script>
   <script src="vendor/three.min.js" defer></script>
+  <script src="delivery-flow.js?v=20261006" defer></script>
   <script src="script.js?v=20261004-original-palette" defer></script>
   <script src="devops-scene.js?v=20261006-brighter-slate" defer></script>
   <script src="scroll-story.js?v=20261004-calm-hero" defer></script>
@@ -260,28 +261,26 @@
       <div class="section-heading compact">
         <p class="eyebrow">SANITIZED REFERENCE ARCHITECTURE</p>
         <h2 id="architecture-title">One continuous path from idea to production.</h2>
-        <p>A vendor-neutral view of the delivery lifecycle I design and operate. It demonstrates the process without exposing any employer systems, credentials, or private topology.</p>
+        <p>Follow a connected delivery flow through the tools I work with, from the first idea to production and back through feedback.</p>
       </div>
-      <div class="architecture-card">
-        <div class="architecture-flow" aria-label="DevOps lifecycle: plan, code, build, verify, release, deploy, operate, observe, and improve">
-          <article><span>01</span><b>Plan</b><small>Scope · backlog<br>architecture</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>02</span><b>Code</b><small>Git · review<br>IaC</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>03</span><b>Build</b><small>CI · containers<br>artifacts</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>04</span><b>Verify</b><small>Tests · scans<br>quality gates</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>05</span><b>Release</b><small>Approval · registry<br>rollback plan</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>06</span><b>Deploy</b><small>Cloud · Kubernetes<br>automation</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>07</span><b>Operate</b><small>Scale · recover<br>secure</small></article>
-          <i aria-hidden="true">→</i>
-          <article><span>08</span><b>Observe</b><small>Metrics · logs<br>alerts</small></article>
+      <div class="architecture-card live-architecture">
+        <div class="diagram-toolbar"><span><i></i> CONTINUOUS DELIVERY / REFERENCE FLOW</span><button type="button" class="diagram-toggle" aria-pressed="false">Pause flow</button></div>
+        <div class="delivery-map">
+          <svg class="delivery-connections" aria-hidden="true"><defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ff8c80"/></marker></defs><g class="flow-lines"></g></svg>
+          <ol class="delivery-nodes">
+            <li class="delivery-node" style="--stage:0"><span class="node-top"><span class="node-icon" aria-hidden="true">◇</span><span>01</span></span><h3>Idea &amp; scope</h3><p>Requirements · architecture</p><small>Define the goal, release boundaries, and a practical delivery plan.</small></li>
+            <li class="delivery-node" style="--stage:1"><span class="node-top"><span class="node-icon" aria-hidden="true">⑂</span><span>02</span></span><h3>Source control</h3><p>Git · Bitbucket · GitLab</p><small>Review application code and infrastructure changes before merging.</small></li>
+            <li class="delivery-node" style="--stage:2"><span class="node-top"><span class="node-icon" aria-hidden="true">✓</span><span>03</span></span><h3>Build &amp; test</h3><p>Jenkins · GitHub Actions · SonarQube</p><small>Run automated builds, tests, and quality gates on each change.</small></li>
+            <li class="delivery-node" style="--stage:3"><span class="node-top"><span class="node-icon" aria-hidden="true">▣</span><span>04</span></span><h3>Package &amp; publish</h3><p>Docker · Harbor</p><small>Build versioned container images and publish release artifacts.</small></li>
+            <li class="delivery-node" style="--stage:4"><span class="node-top"><span class="node-icon" aria-hidden="true">⌘</span><span>05</span></span><h3>Provision</h3><p>Terraform · Ansible · AWS CDK</p><small>Create repeatable cloud environments with infrastructure as code.</small></li>
+            <li class="delivery-node" style="--stage:5"><span class="node-top"><span class="node-icon" aria-hidden="true">⬡</span><span>06</span></span><h3>Deploy</h3><p>Argo CD · Helm · Kubernetes</p><small>Roll out workloads to AKS, EKS, GKE, or RKE2 with a rollback plan.</small></li>
+            <li class="delivery-node" style="--stage:6"><span class="node-top"><span class="node-icon" aria-hidden="true">☁</span><span>07</span></span><h3>Production</h3><p>AWS · Azure · GCP · Nginx</p><small>Serve traffic with resilient infrastructure, storage, and application services.</small></li>
+            <li class="delivery-node" style="--stage:7"><span class="node-top"><span class="node-icon" aria-hidden="true">↺</span><span>08</span></span><h3>Observe &amp; improve</h3><p>Prometheus · Grafana · EFK · Sentry</p><small>Use metrics, logs, and alerts to guide the next improvement.</small></li>
+          </ol>
+          <div class="diagram-feedback">Production feedback → the next idea, improvement, and release</div>
         </div>
-        <div class="feedback-loop"><span>↺</span><div><b>Measure, learn, improve</b><small>Production feedback informs the next plan, code change, and reliability improvement.</small></div></div>
-        <div class="architecture-foundation"><span>Terraform / Ansible</span><span>CI/CD automation</span><span>Least privilege</span><span>High availability</span><span>Documentation &amp; handover</span></div>
+        <div class="runtime-services"><div><span>DATA &amp; MESSAGING</span><p>PostgreSQL · MongoDB · MySQL · Redis · KeyDB · Kafka · RabbitMQ</p></div><div><span>INFRASTRUCTURE FOUNDATION</span><p>Linux · Windows Server · CloudFormation · Longhorn · Docker Swarm</p></div></div>
+        <p class="diagram-caption">An illustrative delivery flow using my stack. Tools are selected to fit each project.</p>
       </div>
     </section>
 
@@ -289,24 +288,24 @@
       <div class="section-heading compact">
         <p class="eyebrow">CONTACT</p>
         <h2 id="contact-title">Let’s make your next release reliable.</h2>
-        <p>Choose the platform that works best for you.</p>
+        <p>Connect on Upwork or LinkedIn, or send your project brief directly here.</p>
       </div>
-      <div class="contact-grid">
-        <a href="https://www.linkedin.com/in/ahsannz/" target="_blank" rel="noopener noreferrer">
-          <span class="contact-label">LinkedIn</span>
-          <strong>Connect professionally</strong>
-          <span class="contact-value">linkedin.com/in/ahsannz/ ↗</span>
-        </a>
-        <a href="mailto:ahsannawaz2000@gmail.com">
-          <span class="contact-label">Email</span>
-          <strong>Send a project brief</strong>
-          <span class="contact-value">ahsannawaz2000@gmail.com ↗</span>
-        </a>
-        <a href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer">
-          <span class="contact-label">Upwork</span>
-          <strong>Discuss your project</strong>
-          <span class="contact-value">View my Upwork profile ↗</span>
-        </a>
+      <div class="contact-layout">
+        <div class="contact-platforms">
+          <p class="eyebrow">LET’S CONNECT</p><p>Have an idea, a deployment challenge, or infrastructure that needs attention? Tell me what you’re building.</p>
+          <a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer">Discuss on Upwork ↗</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/ahsannz/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+        </div>
+        <form class="project-contact-form" action="https://formsubmit.co/productsbyahsan@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New project enquiry — Ahsan Nawaz portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://ahsan2000.github.io/portfolio/thank-you.html">
+          <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Alex Morgan" maxlength="100" required></label><label>Your email<input type="email" name="email" autocomplete="email" placeholder="alex@company.com" maxlength="254" required></label></div>
+          <label>What do you need help with?<select name="service" required><option value="">Select an option</option><option>Cloud infrastructure &amp; Kubernetes</option><option>CI/CD &amp; deployment automation</option><option>Infrastructure as code</option><option>Monitoring &amp; production support</option><option>End-to-end project delivery</option><option>Other</option></select></label>
+          <label>Tell me about your project<textarea name="message" rows="5" minlength="20" maxlength="5000" placeholder="Your goal, current stack, and timeline…" required></textarea></label>
+          <div class="form-submit-row"><button class="button primary" type="submit">Send project brief ↗</button><small>Delivered by FormSubmit. I’ll reply to your email.</small></div>
+        </form>
       </div>
     </section>
 
