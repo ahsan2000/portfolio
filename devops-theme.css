@@ -463,7 +463,7 @@ body::after{opacity:.015}
 .full-stack summary,.diagram-toggle,.terminal-new-message{min-height:44px;box-sizing:border-box}
 .fox-dismiss,.fox-message-close{width:44px;height:44px}
 .fox-dismiss{top:-30px;right:-8px}
-.fox-message{padding-right:44px;max-height:min(360px,70svh);overflow-y:auto}
+.fox-message{padding-right:44px;max-height:none;overflow:visible}
 .fox-message-close{top:0;right:0}
 @media(min-width:761px) and (max-width:1100px){
  .site-header{flex-direction:column;align-items:flex-start;gap:16px}
@@ -495,3 +495,51 @@ body::after{opacity:.015}
  .proof div{padding-inline:10px}
 }
 @supports not (height:100svh){.hero.parallax-story{min-height:calc(100vh - var(--opening-header-height,90px) - var(--opening-proof-height,90px))}}
+
+/* Native range interaction supports mouse, touch, and keyboard on all layouts. */
+.send-check{--send-progress:0%;background:#192735;border:1px solid #94b6ce66;border-radius:8px;padding:1rem;min-width:0}
+.send-check-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:.75rem}
+.send-check-heading>span,.send-check>small{font-size:12px;color:var(--muted);line-height:1.6}
+.send-check>small{display:block;margin-top:.75rem}
+.send-slider-track{height:52px;position:relative;border:1px solid #617382;border-radius:7px;background:#101c29;overflow:hidden}
+.send-slider-fill{position:absolute;inset:0 auto 0 0;width:var(--send-progress);background:#ff8c8033;pointer-events:none}
+.send-slider-caption{position:absolute;inset:0;display:grid;place-items:center;padding-left:36px;font-size:14px;color:var(--text);pointer-events:none}
+.project-contact-form .send-slider-track input{position:absolute;inset:0;width:100%;height:52px;padding:0;margin:0;border:0;border-radius:0;background:transparent;appearance:none;-webkit-appearance:none;cursor:ew-resize;touch-action:pan-y}
+.send-slider-track input::-webkit-slider-runnable-track{height:52px;background:transparent}
+.send-slider-track input::-moz-range-track{height:52px;background:transparent}
+.send-slider-track input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:52px;height:52px;border:0;border-radius:6px;background:#ff8c80 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23101c29' stroke-width='2.5'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/24px no-repeat}
+.send-slider-track input::-moz-range-thumb{width:52px;height:52px;border:0;border-radius:6px;background:#ff8c80 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23101c29' stroke-width='2.5'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center/24px no-repeat}
+.project-contact-form .send-slider-track input:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.send-check.confirmed{border-color:#8ce3ae}.send-check.confirmed .send-slider-fill{background:#8ce3ae33}
+.send-check.confirmed .send-check-heading>span{color:#8ce3ae}
+.contact-fox-dock{position:relative;min-height:155px;min-width:0}
+.contact-fox-dock[hidden]{display:none}
+.contact-fox-dock .fox-companion.at-contact{position:absolute;top:25px;right:0;bottom:auto;width:100px;transition:none}
+.at-contact .fox-hint{display:none}
+.at-contact .fox-message{right:calc(100% + 8px);top:-25px;bottom:auto;width:clamp(160px,calc(100vw - 230px),290px);padding:14px 36px 14px 14px;max-height:none;overflow:visible}
+.at-contact .fox-message::after{top:42px;right:-7px;bottom:auto;transform:rotate(-45deg)}
+.at-contact .fox-message-text{font-size:14px;line-height:1.5;margin-bottom:0}
+.at-contact .fox-message-contact{display:none}
+@media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}}
+@media(max-width:480px){.contact-fox-dock{min-height:195px}.at-contact .fox-message{width:calc(100vw - 162px);min-width:0}.send-check-heading{align-items:flex-start}.send-check-heading>span{text-align:right}.send-check{padding:.85rem}}
+/* Size the helper bubble from the actual form width, not the viewport. */
+.contact-fox-dock .fox-companion.at-contact{width:100%}
+.at-contact .fox-boop{margin-left:auto}
+.at-contact .fox-dismiss{right:-8px}
+.at-contact .fox-restore{float:right}
+.at-contact .fox-message{right:108px;width:calc(100% - 116px);max-width:290px}
+@media(max-width:999px){.at-contact .fox-message{right:72px;width:calc(100% - 80px)}}
+.contact-fox-dock .fox-companion.at-contact{bottom:auto!important}
+
+/* The fox sits above the form, centered in its own space. */
+.contact-form-wrap{min-width:0}
+.contact-fox-dock{min-height:240px}
+.contact-fox-dock .fox-companion.at-contact{top:auto;bottom:12px!important;left:50%;right:auto;width:100px;transform:translateX(-50%)}
+.at-contact .fox-boop{margin:0}
+.at-contact .fox-message{top:auto;bottom:calc(100% + 16px);right:50%;width:min(290px,calc(100vw - 64px));max-width:none;transform:translateX(50%);padding:14px 40px 14px 16px}
+.at-contact .fox-message::after{top:auto;bottom:-7px;right:calc(50% - 6px);transform:rotate(45deg)}
+.at-contact .fox-message-contact{display:inline-block;margin-top:10px;font-size:13px}
+.fox-hint{border-radius:12px;background:#f4e5ce;border:1px solid #ffe6c6;box-shadow:0 4px 16px #0003;bottom:calc(100% + 20px);min-height:44px}
+.fox-hint::before,.fox-hint::after{display:none}
+.at-contact .fox-hint:not([hidden]){display:block;right:50%;transform:translateX(50%);bottom:calc(100% + 20px);width:170px}
+@media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}.at-contact .fox-message{right:50%;width:min(260px,calc(100vw - 64px))}}
