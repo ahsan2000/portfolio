@@ -461,3 +461,22 @@ body::after{opacity:.015}
 @keyframes message-deploy-progress{from{transform:translateX(-100%)}to{transform:translateX(390%)}}
 @media(prefers-reduced-motion:reduce){.submission-terminal[data-state="sending"] .submission-progress>span{animation:none;width:100%;opacity:.6}}
 @media(max-width:480px){.deploy-check-heading{align-items:flex-start}.deploy-check-heading>span{max-width:115px}.terminal-title{font-size:10px}}
+
+/* Give the main contact action a clear, accessible place in navigation. */
+.theme-nav .nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;box-sizing:border-box;border:1px solid #ffad9f;border-radius:7px;background:#ff8c80;color:#142230;font-size:15px;font-weight:750;line-height:1.2;white-space:nowrap;box-shadow:0 0 18px #ff8c8026;text-shadow:none;transition:background .2s,box-shadow .2s}
+.theme-nav .nav-contact::after{display:none}
+.theme-nav .nav-contact:is(:hover,:focus-visible){background:#ffb1a8;color:#142230;text-shadow:none;box-shadow:0 0 22px #ff8c8040}
+.theme-nav .nav-contact:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media(max-width:650px){.theme-nav .nav-contact{font-size:14px;padding:10px 14px}}
+@media(prefers-reduced-motion:reduce){.theme-nav .nav-contact{transition:none}}
+
+/* Center text links beside the taller Contact button. */
+.theme-nav{align-items:center}
+.theme-nav a{align-items:center;line-height:1.2}
+.theme-nav a:not(.nav-contact){min-height:44px;padding-block:10px;box-sizing:border-box;align-content:center;white-space:nowrap}
+
+/* Keep all four navigation destinations visible on narrow screens. */
+.theme-nav a:first-child{display:block}
+@media(max-width:760px){.site-header{flex-wrap:wrap;gap:16px}.theme-nav{width:100%;justify-content:space-between;gap:12px}.theme-nav a{font-size:14px}}
+@media(max-width:480px){.theme-nav{gap:6px}.theme-nav a{font-size:12px;letter-spacing:0}.theme-nav .nav-contact{font-size:12px;padding-inline:10px}}
+@media(max-width:350px){.theme-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}.theme-nav a{text-align:center}}

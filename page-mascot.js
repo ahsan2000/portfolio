@@ -6,6 +6,19 @@
   const button = companion.querySelector('.fox-boop');
   const direction = companion.querySelector('.fox-directions');
   const reaction = companion.querySelector('.fox-reactions');
+  // The reaction sheet starts hidden, so browsers may defer loading it.
+  // Warm it up and retain the normal fox underneath as a permanent fallback.
+  let reactionReady = false;
+  const reactionImage = new Image();
+  reactionImage.onload = async () => {
+    try {
+      if (reactionImage.decode) await reactionImage.decode();
+      reactionReady = true;
+    } catch {
+      // Keep the normal fox visible if the reaction cannot be decoded.
+    }
+  };
+  reactionImage.src = new URL('assets/fox-riso-reactions.webp', document.baseURI).href;
   const restore = companion.querySelector('.fox-restore');
   const bubble = companion.querySelector('.fox-message');
   const message = companion.querySelector('.fox-message-text');
@@ -95,8 +108,8 @@
       hideMessage();
     }, 8000);
     clearTimeout(timer);
-    direction.hidden = true;
-    reaction.hidden = false;
+    direction.hidden = false;
+    reaction.hidden = !reactionReady;
     // Top-middle cell is the heart; bottom-right is the delighted face.
     frame(reaction, 1);
     if (!reduced.matches) companion.querySelector('.fox-sprite').animate([
