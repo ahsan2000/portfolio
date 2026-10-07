@@ -25,14 +25,14 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23e0231c'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2305070a'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js');setTimeout(()=>document.documentElement.setAttribute('data-loader-expired',''),6000)</script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="devops-theme.css?v=20261007-nav-stack">
+  <link rel="stylesheet" href="devops-theme.css?v=20261007-responsive-final">
   <script src="portfolio-atmosphere.js?v=20261004-original-palette" defer></script>
   <script src="tile-cloth.js?v=20261006-brighter-slate" defer></script>
   <script src="vendor/three.min.js" defer></script>
   <script src="delivery-flow.js?v=20261006" defer></script>
   <script src="script.js?v=20261007-measured-opening" defer></script>
-  <script src="contact-form.js?v=20261007-network-feedback" defer></script>
-  <script src="devops-scene.js?v=20261006-brighter-slate" defer></script>
+  <script src="contact-form.js?v=20261007-bfcache" defer></script>
+  <script src="devops-scene.js?v=20261007-mobile-performance" defer></script>
   <script src="scroll-story.js?v=20261004-calm-hero" defer></script>
   <script src="page-mascot.js?v=20261007-pet-visible" defer></script>
 </head>
@@ -306,20 +306,8 @@
           <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Alex Morgan" maxlength="100" required></label><label>Your email<input type="email" name="email" autocomplete="email" placeholder="alex@company.com" maxlength="254" required></label></div>
           <label>Your project or consultation request<textarea name="message" rows="5" minlength="20" maxlength="5000" placeholder="What needs deploying, automating, or fixing? Share your stack and timeline, or ask for an introductory call." required></textarea></label>
-          <div class="deploy-check" id="deploy-check">
-            <div class="deploy-check-heading"><label for="deploy-slider">Slide to deploy</label><span id="deploy-check-state">awaiting confirmation</span></div>
-            <div class="deploy-slider-track"><span class="deploy-slider-fill" aria-hidden="true"></span><span class="deploy-slider-caption" aria-hidden="true">Slide to deploy →</span><input type="range" id="deploy-slider" min="0" max="100" step="1" value="0" aria-label="Slide to deploy: move to 100 to enable sending" aria-describedby="deploy-check-help"></div>
-            <small id="deploy-check-help">Drag all the way right, or use the arrow keys or End key.</small>
-          </div>
-          <div class="form-submit-row"><button class="button primary" id="deploy-submit" type="submit" disabled>Deploy message ↗</button><small>I’ll reply to your email to discuss the next step.</small></div>
-          <div class="submission-terminal" id="submission-terminal" hidden>
-            <div class="terminal-title" aria-hidden="true"><span>● ● ●</span><span>ahsan@portfolio: ~/contact</span></div>
-            <p class="terminal-command">$ deploy --target inbox --message enquiry</p>
-            <p id="submission-status" role="status" aria-live="polite" aria-atomic="true"></p>
-            <div class="submission-progress" aria-hidden="true"><span></span></div>
-            <a class="terminal-email-fallback" id="deploy-email-fallback" href="mailto:productsbyahsan@gmail.com" hidden>Send through your email app instead ↗</a>
-            <button class="terminal-new-message" id="deploy-another" type="button" hidden>Send another message ↗</button>
-          </div>
+          <div class="form-submit-row"><button class="button primary" id="contact-submit" type="submit" disabled>Send enquiry ↗</button><small>I’ll reply to your email to discuss the next step.</small></div>
+          <p id="contact-status" class="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <noscript><p>Please enable JavaScript to use this form, or contact me through Upwork or LinkedIn.</p></noscript>
         </form>
       </div>

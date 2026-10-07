@@ -6,11 +6,12 @@
   const T = window.THREE;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const toggle = document.querySelector('#scene-toggle');
+  const mobileGraphics = matchMedia('(max-width: 760px), (pointer: coarse)').matches;
   let renderer;
-  try { renderer = new T.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference:'low-power'}); }
+  try { renderer = new T.WebGLRenderer({canvas, alpha:true, antialias:!mobileGraphics, powerPreference:'low-power'}); }
   catch { canvas.hidden = true; toggle.hidden = true; return; }
   canvas.parentElement.classList.add('has-webgl');
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mobileGraphics ? 1.25 : 2));
   const scene = new T.Scene();
   const camera = new T.PerspectiveCamera(38, 1, .1, 100);
   camera.position.set(8,7,11); camera.lookAt(0,0,0);

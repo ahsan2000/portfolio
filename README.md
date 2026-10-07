@@ -106,7 +106,7 @@ The card surfaces now use the cloth shaders and top-pinned wave simulation from 
 
 ### Project enquiries and live delivery diagram
 
-The main portfolio has Upwork and LinkedIn buttons and a project enquiry form that submits through FormSubmit's AJAX endpoint for `productsbyahsan@gmail.com`. `contact-form.js` keeps visitors on the page and shows Linux-style pending, success, and error feedback. A keyboard-accessible Slide to deploy control unlocks submission; it is a lightweight client-side interaction check, not a server-verified CAPTCHA. FormSubmit reCAPTCHA is disabled for this flow, and the honeypot remains. Failed requests preserve the draft, while pending requests block duplicate submissions. Success is shown only after the API confirms acceptance; it does not claim confirmed inbox delivery.
+The main portfolio has Upwork and LinkedIn buttons and a project enquiry form that submits through FormSubmit's AJAX endpoint for `productsbyahsan@gmail.com`. `contact-form.js` submits in the background without a slider, terminal animation, or client-imposed timeout. The visitor stays on the portfolio while sending and opens the local `thank-you.html` page only after the API confirms acceptance. Failed submissions preserve the draft and display a simple retry message. FormSubmit reCAPTCHA is disabled for this flow; the honeypot remains. API acceptance does not guarantee inbox delivery.
 
 **Activation:** Submit the deployed form once and confirm the activation link sent to `productsbyahsan@gmail.com`. Inbox delivery requires this one-time confirmation. The AJAX flow does not use a redirect or `_next` URL. No Gmail password or secret is stored in the site.
 
