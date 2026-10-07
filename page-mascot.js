@@ -10,6 +10,7 @@
   const bubble = companion.querySelector('.fox-message');
   const message = companion.querySelector('.fox-message-text');
   const hint = companion.querySelector('.fox-hint');
+  const hintLabel = hint.querySelector('.fox-hint-label') || hint;
   let hintTimer;
   let hasBeenPetted = false;
   let invitationShown = false;
@@ -24,7 +25,7 @@
     if (reminder ? reminderShown : invitationShown) return;
     hintTimer = setTimeout(() => {
       if (button.hidden || document.hidden) return;
-      hint.textContent = reminder ? 'One more head pat? 🥺' : 'A little head pat? 🥺';
+      hintLabel.textContent = reminder ? 'One more head pat? 🥺' : 'A little head pat? 🥺';
       hint.hidden = false;
       if (reminder) reminderShown = true;
       else invitationShown = true;
