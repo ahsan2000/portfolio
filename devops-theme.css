@@ -570,3 +570,57 @@ footer>span:first-child{flex-shrink:0}
  .fox-boop{width:64px;height:64px}
  .back-to-top{bottom:16px!important;right:16px}
 }
+
+/* Eight-layer platform explorer. */
+.stack-anchor{position:absolute;top:0;scroll-margin-top:32px}
+.tool-stack .section-heading{max-width:800px}
+.stack-explorer{--stack-progress:12.5%;position:relative;border:1px solid #91abc24d;border-radius:18px;background:linear-gradient(130deg,#263544fa,#1b2937fa);box-shadow:0 24px 65px #07111b30;overflow:hidden}
+.stack-tabs{position:relative;display:flex;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#ff8c8070 transparent;border-bottom:1px solid #91abc238;background:#14212d70;scroll-padding:20px}
+.stack-tab{position:relative;flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:9px;min-height:68px;padding:16px 19px;border:0;border-bottom:3px solid transparent;background:transparent;color:#c5d1dd;font:500 12px/1.4 monospace;white-space:nowrap;cursor:pointer;transition:background .2s,color .2s}
+.stack-tab>span{font-size:10px;opacity:.65}
+.stack-tab:hover{color:#fff;background:#ffffff08}
+.stack-tab[aria-selected="true"]{border-bottom-color:var(--accent);color:#fff;background:#ff8c800d}
+.stack-tab[aria-selected="true"]>span{color:var(--accent);opacity:1}
+.stack-panel{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(0,1.5fr);gap:clamp(28px,5vw,72px);padding:clamp(24px,3.5vw,48px);min-height:420px;align-items:start}
+.stack-panel[hidden]{display:none}
+.stack-number{display:flex;align-items:baseline;gap:12px;color:var(--accent);font:500 clamp(46px,5vw,64px)/1 monospace;letter-spacing:-.06em;margin-bottom:18px}
+.stack-number>span{color:#aebfd0;font-size:13px;letter-spacing:0}
+.stack-layer h3{font-size:clamp(23px,2.4vw,32px);font-weight:600;line-height:1.15;letter-spacing:-.035em;margin:0 0 12px}
+.stack-layer>p{color:var(--muted);font-size:16px;line-height:1.65;margin:0 0 24px;max-width:32ch}
+.stack-evidence{padding:20px;border:1px solid #ff8c8026;border-radius:12px;background:#ff8c8008}
+.stack-evidence>span{font:11px monospace;letter-spacing:.14em;color:var(--accent)}
+.stack-evidence p{font-size:14px;line-height:1.75;color:#d3dce6;margin:10px 0 14px}
+.stack-evidence a{display:inline-flex;gap:12px;align-items:center;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;min-height:28px}
+.stack-evidence a:hover{text-decoration:underline;text-underline-offset:4px}
+.stack-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;list-style:none;margin:6px 0 0;padding:0}
+.stack-tools li{display:flex;align-items:center;gap:15px;min-height:98px;padding:18px;border:1px solid #91abc23d;border-radius:12px;background:#15233075;transition:border-color .2s,background .2s}
+.stack-tools li:hover{border-color:#ff8c8070;background:#2e3f50}
+.stack-icon{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:12px;font:600 12px monospace;letter-spacing:.02em;background:#ff8c801c;color:#ffb4ac;border:1px solid #ff8c803b}
+.stack-icon.tone-1{background:#7ec9cf18;color:#a3e2e7;border-color:#7ec9cf36}
+.stack-icon.tone-2{background:#e1bd7718;color:#f0d29a;border-color:#e1bd7736}
+.stack-tools li>div{min-width:0}
+.stack-tools strong{display:block;color:#f5f8fc;font-size:16px;font-weight:600;line-height:1.4}
+.stack-tools li>div>span{display:block;margin-top:4px;color:#b9cad9;font:12px/1.6 monospace;overflow-wrap:anywhere}
+.stack-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:80px;padding:16px 28px;border-top:1px solid #91abc238;background:#14212d40}
+.stack-arrow{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border:1px solid #91abc250;border-radius:50%;background:transparent;color:var(--text);font:22px/1 system-ui;cursor:pointer;transition:background .2s,border-color .2s}
+.stack-arrow:hover{border-color:var(--accent);background:#ff8c8012}
+.stack-position{display:flex;align-items:center;gap:12px;color:#9eb3c6;font:11px monospace}
+.stack-current{color:var(--accent)}
+.stack-progress{width:clamp(50px,10vw,140px);height:3px;background:#91abc230;border-radius:4px;overflow:hidden}
+.stack-progress i{display:block;width:var(--stack-progress);height:100%;background:var(--accent);transition:width .3s}
+.stack-control-end{display:flex;align-items:center;gap:20px}
+.stack-play{min-height:44px;padding:0 4px;border:0;background:none;color:#c5d1dd;text-decoration:underline;text-underline-offset:4px;font:12px monospace;cursor:pointer}
+@media(max-width:900px){.stack-tab{min-height:60px;padding:14px 16px}.stack-panel{gap:28px;grid-template-columns:minmax(220px,.85fr) minmax(0,1.2fr)}.stack-tools{grid-template-columns:1fr}.stack-tools li{min-height:80px;padding:14px}.stack-panel{min-height:560px}}
+@media(max-width:600px){.stack-explorer{border-radius:14px}.stack-panel{grid-template-columns:1fr;gap:24px;padding:24px 20px;min-height:0}.stack-layer>p{max-width:none;margin-bottom:18px}.stack-number{font-size:46px;margin-bottom:14px}.stack-evidence{padding:16px}.stack-tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0}.stack-tools li{flex-direction:column;align-items:flex-start;gap:12px;padding:15px;min-height:152px}.stack-tools strong{font-size:14px}.stack-tools li>div>span{font-size:11px}.stack-controls{padding:14px 16px;gap:10px}.stack-control-end{gap:12px}.stack-position{gap:8px}.stack-progress{width:40px}.stack-play{font-size:11px}}
+
+/* Local brand marks and staggered tool reveals for every layer. */
+.stack-icon.has-logo{background:#f3f7fc;border-color:#ffffff4d;box-shadow:0 3px 12px #0002}
+.stack-icon img{display:block;width:30px;height:30px;object-fit:contain}
+.stack-icon.has-logo.brand-amazonwebservices img{width:36px}
+.stack-panel.stack-enter .stack-layer{animation:stack-layer-in .45s cubic-bezier(.2,.7,.2,1) both}
+.stack-panel.stack-enter .stack-tools li{animation:stack-tool-in .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(65ms * var(--tool-order,0) + 70ms)}
+@keyframes stack-layer-in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+@keyframes stack-tool-in{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.stack-panel.stack-enter .stack-layer,.stack-panel.stack-enter .stack-tools li{animation:none}.stack-progress i{transition:none}}
+.stack-icon.brand-longhorn img{width:34px;height:30px}
+.stack-icon.brand-ollama img{width:28px;height:33px}
