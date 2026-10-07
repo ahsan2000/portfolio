@@ -106,9 +106,9 @@ The card surfaces now use the cloth shaders and top-pinned wave simulation from 
 
 ### Project enquiries and live delivery diagram
 
-The main portfolio has Upwork and LinkedIn buttons and a project enquiry form that posts to FormSubmit for `productsbyahsan@gmail.com`. The visitor's email is included for replies. FormSubmit keeps its default CAPTCHA, and the form also includes a honeypot. After submission, visitors return to `thank-you.html` on the GitHub Pages site.
+The main portfolio has Upwork and LinkedIn buttons and a project enquiry form that submits through FormSubmit's AJAX endpoint for `productsbyahsan@gmail.com`. `contact-form.js` keeps visitors on the page and shows Linux-style pending, success, and error feedback. A keyboard-accessible Slide to deploy control unlocks submission; it is a lightweight client-side interaction check, not a server-verified CAPTCHA. FormSubmit reCAPTCHA is disabled for this flow, and the honeypot remains. Failed requests preserve the draft, while pending requests block duplicate submissions. Success is shown only after the API confirms acceptance; it does not claim confirmed inbox delivery.
 
-**Activation:** Submit the deployed form once and confirm the activation link sent to `productsbyahsan@gmail.com`. Inbox delivery requires this one-time confirmation. Update the form's `_next` URL if moving to a different domain. No Gmail password or secret is stored in the site.
+**Activation:** Submit the deployed form once and confirm the activation link sent to `productsbyahsan@gmail.com`. Inbox delivery requires this one-time confirmation. The AJAX flow does not use a redirect or `_next` URL. No Gmail password or secret is stored in the site.
 
 `delivery-flow.js` draws SVG connections between HTML lifecycle cards using their actual positions. The flow includes a production feedback loop, animated connectors, a pause control, a single-column mobile layout, and reduced-motion support. This is an illustrative architecture assembled from the listed tool stack, rather than a live production status display.
 
