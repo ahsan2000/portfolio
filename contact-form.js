@@ -10,6 +10,7 @@
   const terminal = document.getElementById('submission-terminal');
   const status = document.getElementById('submission-status');
   const another = document.getElementById('deploy-another');
+  const emailFallback = document.getElementById('deploy-email-fallback');
   let confirmed = false;
   let sending = false;
   let sent = false;
@@ -52,7 +53,15 @@
     const data = new FormData(form);
     if (String(data.get('_honey') || '').trim()) return;
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 25000);
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    emailFallback.href = `mailto:productsbyahsan@gmail.com?${new URLSearchParams({
+      subject: 'Portfolio enquiry',
+      body: `Name: ${data.get('name') || ''}\nReply to: ${data.get('email') || ''}\n\n${data.get('message') || ''}`
+    }).toString().replace(/\+/g, '%20')}`;
+    emailFallback.hidden = true;
+    const slowNotice = setTimeout(() => {
+      status.textContent = '[ WAIT ] The message service is responding slowly. Your draft is safe; waiting for confirmation…';
+    }, 6000);
     sending = true;
     submit.disabled = true;
     submit.textContent = 'Deploying…';
@@ -83,13 +92,16 @@
     } catch (error) {
       terminal.dataset.state = 'error';
       status.textContent = error.name === 'AbortError'
-        ? '[ WARN ] The connection timed out; delivery could not be confirmed. You can retry or contact me on Upwork or LinkedIn.'
-        : '[ ERROR ] Submission could not be confirmed. Your message is still here. Please retry, or contact me on Upwork or LinkedIn.';
+        ? '[ WARN ] The message service took too long to respond. Delivery is unconfirmed. Your draft is saved here; retry or use your email app.'
+        : '[ ERROR ] The message service could not confirm submission. Your draft is still here; retry or use your email app.';
       fields.forEach(field => { field.disabled = false; });
-      resetCheck();
+      slider.disabled = true;
+      submit.disabled = false;
+      emailFallback.hidden = false;
       submit.textContent = 'Retry deployment ↗';
     } finally {
       clearTimeout(timeout);
+      clearTimeout(slowNotice);
       sending = false;
       form.removeAttribute('aria-busy');
     }
@@ -101,6 +113,7 @@
     form.querySelectorAll('input, textarea').forEach(field => { field.disabled = false; });
     resetCheck();
     terminal.hidden = true;
+    emailFallback.hidden = true;
     another.hidden = true;
     submit.textContent = 'Deploy message ↗';
     form.elements.namedItem('name').focus();
