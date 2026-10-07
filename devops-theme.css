@@ -239,8 +239,8 @@ body::after{opacity:.015}
 .fox-dismiss{position:absolute;top:-8px;right:0;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;background:var(--bg);color:var(--text);font:20px/1 system-ui;cursor:pointer}
 .fox-restore{border:1px solid var(--line);border-radius:20px;padding:8px 12px;background:var(--surface);color:var(--text);font:13px system-ui;cursor:pointer}
 .fox-companion [hidden]{display:none}
-@media(min-width:1000px){body{padding-right:124px}}
-@media(max-width:999px){body{padding-bottom:88px}.fox-companion{bottom:12px;right:12px;width:64px}.fox-boop{width:64px;height:64px}.fox-dismiss{top:-6px;right:-2px;width:24px;height:24px}.fox-restore{font-size:12px}}
+@media(min-width:1200px) and (hover:hover) and (pointer:fine){body{padding-right:124px}}
+@media(max-width:999px){body{padding-bottom:0}.fox-companion{bottom:12px;right:12px;width:64px}.fox-boop{width:64px;height:64px}.fox-dismiss{top:-6px;right:-2px;width:24px;height:24px}.fox-restore{font-size:12px}}
 @media(max-width:650px){.theme-nav{gap:.8rem}.theme-nav a{font-size:13px}.brand{font-size:15px}.brand-role{font-size:10px}.hero-actions{flex-wrap:wrap}.hero-actions .button,.hero-actions .button:last-child{font-size:14px;padding:11px 14px}.story-panel .hero-text{font-size:18px}.command-ticker .ticker-track{font-size:13px}.scene-label{font-size:11px}.background-controls button{font-size:11px}.proof span{font-size:12px}footer>span:last-child{font-size:14px}}
 
 /* Small close glyph sits outside the fox; the button retains a usable hit area. */
@@ -483,7 +483,7 @@ body::after{opacity:.015}
  .fox-companion{right:max(12px,env(safe-area-inset-right));bottom:calc(12px + env(safe-area-inset-bottom))}
  body:has(.back-to-top.is-visible) .fox-companion{bottom:calc(80px + env(safe-area-inset-bottom))}
  .back-to-top{bottom:calc(16px + env(safe-area-inset-bottom))!important}
- body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+ body{padding-bottom:0}
 }
 @media(max-width:380px){
  .theme-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
@@ -543,3 +543,30 @@ body::after{opacity:.015}
 .fox-hint::before,.fox-hint::after{display:none}
 .at-contact .fox-hint:not([hidden]){display:block;right:50%;transform:translateX(50%);bottom:calc(100% + 20px);width:170px}
 @media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}.at-contact .fox-message{right:50%;width:min(260px,calc(100vw - 64px))}}
+
+/* Compact footer; reserve space beside the text for the mobile return arrow. */
+footer{max-width:none;width:100%;align-items:center;gap:24px;border-top:1px solid var(--line);padding:28px max(24px,calc((100% - var(--max)) / 2));line-height:1.7}
+footer>span:first-child{flex-shrink:0}
+.footer-note{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0 6px;min-width:0}
+.footer-availability{white-space:nowrap}
+@media(min-width:1200px) and (hover:hover) and (pointer:fine){
+ footer{width:calc(100% + 124px);margin-right:-124px;padding-right:calc(124px + max(24px,calc((100% - var(--max)) / 2)))}
+}
+@media(max-width:760px){
+ footer{flex-direction:column;align-items:flex-start;gap:6px;padding:16px max(76px,calc(76px + env(safe-area-inset-right))) calc(20px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));text-align:left;line-height:1.5}
+ footer>span:first-child{font-size:13px}
+ footer>.footer-note{display:flex;flex-direction:column;align-items:flex-start;gap:2px;max-width:34rem;font-size:12px;text-align:left;text-wrap:wrap}
+ .footer-availability{color:var(--muted);font-size:12px;letter-spacing:.03em}
+}
+
+/* Tablets use a content-sized introduction in portrait and landscape. */
+@media(min-width:761px) and (max-width:1199px), (min-width:761px) and (max-width:1600px) and (pointer:coarse){
+ .hero.parallax-story{min-height:0;padding:36px 32px 32px}
+ .hero .story-panels{flex:0 0 auto}
+ .hero .story-panel:first-child{flex:0 1 760px;max-width:760px;justify-content:flex-start;gap:18px}
+ .hero .availability-pill,.hero .eyebrow,.hero h1,.hero .story-panel .hero-text,.hero .journey-cue{margin-block:0}
+ .hero .hero-actions{width:100%}
+ .fox-companion{width:64px;bottom:80px;right:12px}
+ .fox-boop{width:64px;height:64px}
+ .back-to-top{bottom:16px!important;right:16px}
+}

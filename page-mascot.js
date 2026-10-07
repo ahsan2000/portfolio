@@ -77,7 +77,10 @@
   let timer;
   let messageTimer;
   let nextAutoMessage = performance.now();
-  const messageBreak = () => 3000 + Math.random() * 1000;
+  const mobileScreen = matchMedia('(max-width: 760px)');
+  const messageBreak = () => mobileScreen.matches
+    ? 8000 + Math.random() * 2000
+    : 3750 + Math.random() * 1000;
   const hideMessage = () => {
     clearTimeout(messageTimer);
     bubble.hidden = true;

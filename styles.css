@@ -319,7 +319,7 @@ footer { color: var(--muted); display: flex; font-size: .85rem; justify-content:
   .window-main { bottom: 14%; right: 3%; width: 90%; }
   .motion-status { bottom: 4%; left: 2%; }
   .section { padding-bottom: 5rem; padding-top: 5rem; }
-  .proof { margin-inline: 1rem; }
+  .proof { margin-inline: 0; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .proof div { padding: 1.1rem; }
   .project-card { grid-template-columns: 1fr; min-height: auto; padding: 1.35rem; }
   .product-feature { padding: 0; }
