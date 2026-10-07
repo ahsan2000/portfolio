@@ -363,3 +363,23 @@ body::after{opacity:.015}
 /* Use a stronger headline on tall desktop screens without enlarging body copy. */
 @media(min-width:1000px) and (min-height:850px){.hero h1{font-size:clamp(3.5rem,5vw,5rem)}}
 @media(max-width:650px){.hero .story-panel:first-child{justify-content:flex-start;gap:0}}
+
+/* Keep the mobile primary action readable and its arrow centered with the label. */
+.hero .hero-actions .button>span[aria-hidden="true"]{flex-shrink:0}
+@media(max-width:650px){
+  .hero .hero-actions:has(> :nth-child(3)){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero .hero-actions .button.primary{grid-column:1 / -1;gap:8px}
+}
+
+/* The return-to-top control ends at 118px; leave room below the fox. */
+@media(max-width:999px){.fox-companion{bottom:134px}}
+
+/* Center the scaled handset before floating it, with room for the full frame. */
+@media(max-width:820px){
+  #oneview .product-visual{min-height:420px;min-width:0}
+  #oneview .phone-shell{top:calc(50% - 20px);translate:-50% -50%;transform:rotate(5deg);animation-name:oneview-mobile-float}
+}
+@keyframes oneview-mobile-float{
+  0%,100%{transform:rotate(5deg)}
+  50%{transform:translateY(-8px) rotate(2deg)}
+}
