@@ -111,3 +111,15 @@ The main portfolio has Upwork and LinkedIn buttons and a project enquiry form th
 **Activation:** Submit the deployed form once and confirm the activation link sent to `productsbyahsan@gmail.com`. Inbox delivery requires this one-time confirmation. Update the form's `_next` URL if moving to a different domain. No Gmail password or secret is stored in the site.
 
 `delivery-flow.js` draws SVG connections between HTML lifecycle cards using their actual positions. The flow includes a production feedback loop, animated connectors, a pause control, a single-column mobile layout, and reduced-motion support. This is an illustrative architecture assembled from the listed tool stack, rather than a live production status display.
+
+### Riso fox companion and readable typography
+
+Both portfolio pages use larger body copy, stronger headings, brighter secondary text, and larger navigation and action labels. A fixed fox companion stays in a reserved right rail on desktop and a small bottom corner on mobile. It follows the cursor, reacts to clicks or keyboard activation, and can be hidden or restored. Reduced motion and the existing scene pause control stop cursor tracking.
+
+The fox-riso sheets are from [Koboyo page-mascot](https://koboyo.com/page-mascot), by Kamran Ahmed, under the MIT license preserved in `assets/page-mascot-LICENSE.txt`. `page-mascot.js` integrates the sprite sheets locally without adding React or remote runtime requests.
+
+Clicking the fox also opens a random friendly hiring message, without immediately repeating the previous line. The bubble disappears after eight seconds, or when clicking outside it, using its close button, pressing Escape, or hiding the companion. Clicking the fox again restarts the timer. It links to the contact form on the main page and Upwork on the Upwork page. Message changes are announced politely for screen readers.
+
+A small “A little head pat? 🥺” thought bubble waits 15 seconds after the opening loader before appearing, and only appears if the fox has not been clicked. It stays for eight seconds and disappears immediately when the fox is clicked or hidden. After a click, one “One more head pat? 🥺” reminder can appear following 90 seconds without another click. Further clicks reset that wait; only one reminder is shown per page visit. The cream thought bubble has a trail of small dots and sits above the close control without covering it. Clicking the invitation also pets the fox. The invitation waits for the opening loader to clear and does not depend on a saved visit flag.
+
+The repeated hero services summary has been removed. The dedicated “What I can offer” section describes four services and their deliverables, with a project discussion link. The fox stays at its original fixed corner position and size: 100px on desktop and 64px on smaller screens, with no resizing or movement on scroll.

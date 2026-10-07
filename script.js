@@ -113,3 +113,22 @@ if (skillsTicker) {
   });
   window.addEventListener('pageshow', fillSkillsTicker);
 }
+// Size the opening hero around the actual header and experience strip.
+// The ticker then starts below the first viewport without fixed positioning.
+(() => {
+  const header = document.querySelector('.site-header');
+  const proof = document.querySelector('.proof');
+  if (!header || !proof) return;
+  const measureOpening = () => {
+    document.documentElement.style.setProperty('--opening-header-height', `${header.offsetHeight}px`);
+    document.documentElement.style.setProperty('--opening-proof-height', `${proof.offsetHeight}px`);
+  };
+  const openingResize = new ResizeObserver(measureOpening);
+  openingResize.observe(header);
+  openingResize.observe(proof);
+  document.fonts?.ready.then(measureOpening);
+  measureOpening();
+  window.addEventListener('pagehide', event => {
+    if (!event.persisted) openingResize.disconnect();
+  });
+})();
