@@ -21,7 +21,7 @@ Open http://localhost:8000. No build step is required.
 - `styles.css` and `devops-theme.css`: responsive layout, technical typography, and visual styling.
 - `script.js`: reveal behavior, navigation, ticker measurement, and opening layout.
 - `portfolio-atmosphere.js`: brief terminal loading screen and drifting tool marks.
-- `visual-effects.js`: deferred desktop graphics loading; mobile, reduced-motion, and data-saving visitors retain the static background.
+- `visual-effects.js`: deferred automatic desktop graphics loading; mobile, reduced-motion, and data-saving visitors retain the static background.
 - `devops-scene.js` and `vendor/three.min.js`: desktop infrastructure scene, limited to 30 FPS.
 - `tile-cloth.js`: desktop card surface effects.
 - `scroll-story.js`: scroll-driven scene positioning.
@@ -32,7 +32,7 @@ Open http://localhost:8000. No build step is required.
 - `contact-form.js`: AJAX enquiry submission and confirmation navigation.
 - `assets/`: active project previews, tool icons, optimized fox sprites, sharing thumbnail, résumé, and attribution notices.
 
-The main page defers optional graphics until the page has loaded. The Upwork page loads its scene directly. Both pages share styling and optimized fox assets.
+Both pages automatically start the desktop 3D scene after the content loads. Mobile, reduced-motion, and data-saving visitors retain the static background. The motion button pauses or resumes the desktop scene. Both pages share styling and optimized fox assets.
 
 ## Contact form
 
