@@ -1,5 +1,5 @@
 /* DevOps scene adaptation. Uses the exact Three.js runtime supplied with Kage.
-   Original Kage source is retained in reference/threeui; this world replaces temple geometry. */
+   This world replaces the original temple geometry. */
 (() => {
   const canvas = document.querySelector('#cloud-scene');
   if (!canvas || !window.THREE) return;
@@ -11,7 +11,7 @@
   try { renderer = new T.WebGLRenderer({canvas, alpha:true, antialias:!mobileGraphics, powerPreference:'low-power'}); }
   catch { canvas.hidden = true; toggle.hidden = true; return; }
   canvas.parentElement.classList.add('has-webgl');
-  renderer.setPixelRatio(Math.min(devicePixelRatio, mobileGraphics ? 1.25 : 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mobileGraphics ? 1 : 1.5));
   const scene = new T.Scene();
   const camera = new T.PerspectiveCamera(38, 1, .1, 100);
   camera.position.set(8,7,11); camera.lookAt(0,0,0);
@@ -84,7 +84,9 @@
   dustGeo.setAttribute('position',new T.Float32BufferAttribute(dust,3));const particles=new T.Points(dustGeo,new T.PointsMaterial({color:0xc9a24a,size:.035,transparent:true,opacity:.45}));world.add(particles);
   let frame=0,paused=motion.matches,visible=true,lost=false,time=0,last=0,targetX=0,targetY=0,storyProgress=0,sceneProgress=0;
   function render(){renderer.render(scene,camera);}
-  function tick(now){frame=0;if(paused||!visible||document.hidden||lost)return;const dt=Math.max(0,Math.min((now-last)/1000,.05));last=now;time+=dt;
+  function tick(now){frame=0;if(paused||!visible||document.hidden||lost)return;
+    if(now-last < 1000/30){frame=requestAnimationFrame(tick);return;}
+    const dt=Math.max(0,Math.min((now-last)/1000,.05));last=now;time+=dt;
     sceneProgress += (storyProgress-sceneProgress)*(1-Math.exp(-dt*3));
     updateCamera(sceneProgress);
 

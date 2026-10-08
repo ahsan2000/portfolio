@@ -132,3 +132,47 @@ if (skillsTicker) {
     if (!event.persisted) openingResize.disconnect();
   });
 })();
+
+// Shrink the header after scrolling; restore it near the top.
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  let compact = false, frame = 0;
+  const update = () => {
+    frame = 0;
+    const next = compact ? window.scrollY > 32 : window.scrollY > 100;
+    if (next !== compact) {
+      compact = next;
+      header.classList.toggle('is-compact', compact);
+    }
+  };
+  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('pageshow', schedule);
+  update();
+})();
+
+// Draw each section accent once, when its heading reaches the viewport.
+(() => {
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  if (motion.matches || !('IntersectionObserver' in window)) return;
+  const headings = document.querySelectorAll('.section h2');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('underline-pending');
+      entry.target.classList.add('underline-drawn');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.25 });
+  headings.forEach(heading => {
+    heading.classList.add('underline-pending');
+    observer.observe(heading);
+  });
+  motion.addEventListener('change', event => {
+    if (!event.matches) return;
+    observer.disconnect();
+    headings.forEach(heading => heading.classList.remove('underline-pending'));
+  });
+  window.addEventListener('pagehide', event => { if (!event.persisted) observer.disconnect(); });
+})();

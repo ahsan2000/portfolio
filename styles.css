@@ -411,9 +411,9 @@ footer { color: var(--muted); display: flex; font-size: .85rem; justify-content:
 }
 
 @keyframes orbit-drift {
-  0% { margin-left: -18px; }
-  50% { margin-left: 18px; }
-  100% { margin-left: -18px; }
+  0% { translate: -18px 0; }
+  50% { translate: 18px 0; }
+  100% { translate: -18px 0; }
 }
 
 /* Interactive DevOps repair robot */
@@ -472,9 +472,7 @@ footer { color: var(--muted); display: flex; font-size: .85rem; justify-content:
 @keyframes wheel-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .gear-rotor { animation: none; } }
 /* Cloud-shaped floating navigation. */
-.bubble-nav a { background: url("assets/nav-cloud.svg") center / 100% 100% no-repeat; backdrop-filter: none; border: 0; border-radius: 0; box-shadow: none; filter: drop-shadow(0 8px 16px rgba(0,0,0,.3)); height: 76px; padding: 1.2rem .7rem 0; width: 112px; }
 .bubble-nav a::before, .bubble-nav a::after { display: none; }
-.bubble-nav a:hover, .bubble-nav a:focus-visible { background: url("assets/nav-cloud.svg") center / 100% 100% no-repeat; box-shadow: none; filter: brightness(1.25) drop-shadow(0 9px 20px rgba(78,229,154,.28)); }
 @media (max-width: 520px) { .bubble-nav a { height: 58px; padding: .9rem .4rem 0; width: 84px; } }
 @media (min-width: 521px) {
   .bubble-nav a:nth-child(1) { left: 7%; top: 39%; }

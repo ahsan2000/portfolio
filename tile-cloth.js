@@ -1,7 +1,7 @@
 /* Cloth shaders and simulation adapted from the supplied ThreeUI Kage reference. */
 (() => {
  const motion=matchMedia("(prefers-reduced-motion: reduce)");
- if(matchMedia("(hover: none)").matches)return;
+ if(motion.matches || matchMedia("(hover: none)").matches)return;
 const CLOTH_VERT = `#version 300 es
 precision highp float;
 layout(location = 0) in vec2 aGrid;

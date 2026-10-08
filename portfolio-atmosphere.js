@@ -1,23 +1,35 @@
 /* Opening transition and a quiet drift of DevOps marks through the world. */
 (() => {
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  const loader=document.querySelector('#portfolio-loader');
-  if(loader){
-    const bar=loader.querySelector('i'),count=loader.querySelector('b');
-    const started=performance.now();let loaded=document.readyState==='complete',finished=false,raf=0;
-    function finish(){if(finished)return;finished=true;cancelAnimationFrame(raf);bar.style.transform='scaleX(1)';count.textContent='100%';loader.classList.add('is-complete');setTimeout(()=>loader.remove(),motion.matches?0:800);}
-    function tick(now){
-      const elapsed=now-started;
-      const progress=loaded?Math.min(100,elapsed/(motion.matches?1:950)*100):Math.min(92,elapsed/18);
-      count.textContent=`${Math.floor(progress)}%`;bar.style.transform=`scaleX(${progress/100})`;
-      if(progress>=100){finish();return;}raf=requestAnimationFrame(tick);
+  const loader = document.querySelector('#portfolio-loader');
+  if (loader) {
+    const bar = loader.querySelector('i'), count = loader.querySelector('b');
+    const started = performance.now();
+    const duration = motion.matches ? 0 : 650;
+    let finished = false, frame = 0;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      cancelAnimationFrame(frame);
+      bar.style.transform = 'scaleX(1)';
+      count.textContent = '100%';
+      loader.classList.add('is-complete');
+      setTimeout(() => loader.remove(), motion.matches ? 0 : 250);
     }
-    window.addEventListener('load',()=>{loaded=true;},{once:true});
-    window.addEventListener('pageshow',e=>{if(e.persisted)finish();});
-    setTimeout(finish,4500);raf=requestAnimationFrame(tick);
+    function tick(now) {
+      const progress = duration ? Math.min(1, (now - started) / duration) : 1;
+      count.textContent = `${Math.floor(progress * 100)}%`;
+      bar.style.transform = `scaleX(${progress})`;
+      if (progress >= 1) finish();
+      else frame = requestAnimationFrame(tick);
+    }
+    // This intro never waits for images or optional graphics to download.
+    frame = requestAnimationFrame(tick);
+    setTimeout(finish, 1000);
+    window.addEventListener('pageshow', event => { if (event.persisted) finish(); });
   }
   const field=document.querySelector('.tool-drift');
-  if(!field)return;
+  if(!field || motion.matches || matchMedia('(max-width: 760px), (pointer: coarse)').matches || navigator.connection?.saveData)return;
   const tools=['kubernetes','docker','terraform','ansible','grafana','githubactions'];
   tools.forEach((tool,i)=>{
     for(let n=0;n<2;n++){

@@ -6,8 +6,7 @@
   const button = companion.querySelector('.fox-boop');
   const direction = companion.querySelector('.fox-directions');
   const reaction = companion.querySelector('.fox-reactions');
-  // The reaction sheet starts hidden, so browsers may defer loading it.
-  // Warm it up and retain the normal fox underneath as a permanent fallback.
+  // Fetch the reaction sheet when the visitor interacts with the fox.
   let reactionReady = false;
   const reactionImage = new Image();
   reactionImage.onload = async () => {
@@ -18,7 +17,12 @@
       // Keep the normal fox visible if the reaction cannot be decoded.
     }
   };
-  reactionImage.src = new URL('assets/fox-riso-reactions.webp', document.baseURI).href;
+  const warmReaction = () => {
+    if (!reactionImage.src) reactionImage.src = new URL('assets/fox-riso-reactions-optimized.webp', document.baseURI).href;
+  };
+  button.addEventListener('pointerenter', warmReaction, { once: true });
+  button.addEventListener('focus', warmReaction, { once: true });
+  button.addEventListener('pointerdown', warmReaction, { once: true });
   const restore = companion.querySelector('.fox-restore');
   const bubble = companion.querySelector('.fox-message');
   const message = companion.querySelector('.fox-message-text');
