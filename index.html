@@ -22,17 +22,19 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://ahsan2000.github.io/portfolio/assets/devops-portfolio-social-services.jpg">
   <title>Ahsan Nawaz | DevOps Engineer</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23e0231c'/%3E%3Cpath d='M7 23 13 8h6l6 15h-5l-1-3h-6l-1 3Zm7-7h4l-2-6Z' fill='%2305070a'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="devops-theme.css?v=20261008-smooth-navbar">
+  <link rel="stylesheet" href="devops-theme.css?v=20261008-delivery-network">
   <script src="portfolio-atmosphere.js?v=20261008-fast-loader" defer></script>
-  <script src="delivery-flow.js?v=20261006" defer></script>
   <script src="script.js?v=20261008-animated-underline" defer></script>
   <script src="stack-explorer.js?v=20261007-autoplay-logos" defer></script>
   <script src="contact-form.js?v=20261007-slider-fox" defer></script>
   <script src="section-effects.js?v=20261008" defer></script>
   <script src="visual-effects.js?v=20261008-auto-motion" defer></script>
+  <script src="ai-diagram.js?v=20261008-delivery" defer></script>
   <script src="scroll-story.js?v=20261004-calm-hero" defer></script>
   <script src="page-mascot.js?v=20261008-lazy-reactions" defer></script>
 </head>
@@ -54,7 +56,7 @@
         <div class="scene-controls background-controls"><button id="scene-toggle" type="button" aria-pressed="false">Pause motion</button><span>BACKGROUND MOTION</span></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Ahsan Nawaz portfolio home">
-      <span class="brand-mark">AN</span>
+      <span class="brand-mark"><img src="assets/portfolio-logo.svg" width="42" height="42" alt="" decoding="async"></span>
       <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
     <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Contact ↗</a></nav>
@@ -199,6 +201,49 @@
       <div class="services-actions"><a class="button secondary" href="#contact-form">Discuss your project ↗</a></div>
     </section>
 
+    <section class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">$ kubectl get nodes -n ai</p>
+        <h2 id="ai-title">AI &amp; LLM infrastructure.</h2>
+        <p>AI applications need reliable platforms, secure access, monitoring, and cost control. I build and operate the infrastructure that keeps chatbots and model-serving workloads running.</p>
+      </div>
+      <div class="ai-layout">
+        <div class="ai-diagram">
+          <div class="ai-diagram-heading"><span>EXAMPLE / LLM APP IN PRODUCTION</span><button class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</button></div>
+          <div class="ai-network-scroll" tabindex="0" role="region" aria-label="AI architecture diagram; scroll horizontally on small screens"><svg class="ai-network" viewBox="0 0 700 285" role="group" aria-label="Interactive example AI application architecture">
+<rect class="ai-security-zone" x="140" y="57" width="550" height="215" rx="14"/><text class="ai-zone-label" x="152" y="48">SECURITY · GUARDRAILS · DATA PRIVACY</text>
+<path class="ai-connection" d="M98 140H152"/>
+<path class="ai-connection" d="M258 140H320"/>
+<path class="ai-connection" d="M450 123H518"/>
+<path class="ai-connection" d="M385 180V212"/>
+<path class="ai-connection" d="M450 162C492 162 472 235 518 235"/>
+<circle class="ai-request-dot" r="4"><animateMotion dur="2.5s" path="M98 140H152" repeatCount="indefinite" begin="indefinite"/></circle>
+<circle class="ai-request-dot" r="4"><animateMotion dur="2.9s" path="M258 140H320" repeatCount="indefinite" begin="indefinite"/></circle>
+<circle class="ai-request-dot" r="4"><animateMotion dur="3.3s" path="M450 123H518" repeatCount="indefinite" begin="indefinite"/></circle>
+<circle class="ai-request-dot" r="4"><animateMotion dur="3.7s" path="M385 180V212" repeatCount="indefinite" begin="indefinite"/></circle>
+<circle class="ai-request-dot" r="4"><animateMotion dur="4.1s" path="M450 162C492 162 472 235 518 235" repeatCount="indefinite" begin="indefinite"/></circle>
+<g class="ai-network-node ai-node-users" role="button" tabindex="0" aria-label="Users: Chat interface" aria-pressed="false" data-ai-node="users"><rect x="18" y="116" width="80" height="48" rx="9"/><text class="ai-node-title" x="58.0" y="137">Users</text><text class="ai-node-sub" x="58.0" y="153">Chat interface</text></g>
+<g class="ai-network-node ai-node-gateway" role="button" tabindex="0" aria-label="API gateway: auth · rate limit" aria-pressed="false" data-ai-node="gateway"><rect x="152" y="116" width="106" height="48" rx="9"/><text class="ai-node-title" x="205.0" y="137">API gateway</text><text class="ai-node-sub" x="205.0" y="153">auth · rate limit</text></g>
+<g class="ai-network-node ai-node-kubernetes" role="button" tabindex="0" aria-label="Kubernetes: llm-app ×3" aria-pressed="false" data-ai-node="kubernetes"><rect x="320" y="85" width="130" height="95" rx="9"/><text class="ai-node-title" x="385.0" y="106">Kubernetes</text><rect class="ai-pod" x="334" y="116" width="102" height="24" rx="6"/><text class="ai-node-sub" x="385.0" y="132">llm-app ×3</text><rect class="ai-pod" x="334" y="146" width="102" height="24" rx="6"/><text class="ai-node-sub" x="385.0" y="162">rag-worker</text></g>
+<g class="ai-network-node ai-node-model" role="button" tabindex="0" aria-label="Model serving: GPU node pool" aria-pressed="false" data-ai-node="model"><rect x="518" y="92" width="162" height="58" rx="9"/><text class="ai-node-title" x="599.0" y="113">Model serving</text><text class="ai-node-sub" x="599.0" y="129">GPU node pool</text></g>
+<g class="ai-network-node ai-node-vector" role="button" tabindex="0" aria-label="Vector database: embeddings · context" aria-pressed="false" data-ai-node="vector"><rect x="320" y="212" width="130" height="48" rx="9"/><text class="ai-node-title" x="385.0" y="233">Vector database</text><text class="ai-node-sub" x="385.0" y="249">embeddings · context</text></g>
+<g class="ai-network-node ai-node-monitor" role="button" tabindex="0" aria-label="Monitoring: latency · tokens · cost" aria-pressed="false" data-ai-node="monitor"><rect x="518" y="210" width="162" height="50" rx="9"/><text class="ai-node-title" x="599.0" y="231">Monitoring</text><text class="ai-node-sub" x="599.0" y="247">latency · tokens · cost</text></g>
+</svg></div>
+          <p class="ai-node-detail" aria-live="polite">Select a node to explore its role in the platform.</p>
+          <p class="ai-diagram-note">Illustrative architecture. Ollama or Azure AI Foundry can provide model services; this is not DigiMate’s internal architecture.</p>
+        </div>
+        <div class="ai-services">
+          <article><span aria-hidden="true">01</span><div><h3>AI chatbots &amp; LLM apps</h3><p>Deploy and operate AI assistants with Kubernetes, automated releases, and practical scaling.</p></div></article>
+          <article><span aria-hidden="true">02</span><div><h3>Model-serving platforms</h3><p>Plan self-hosted model workloads with Ollama or cloud AI services with Azure AI Foundry, including resource and GPU requirements.</p></div></article>
+          <article><span aria-hidden="true">03</span><div><h3>Retrieval &amp; data infrastructure</h3><p>Set up the infrastructure for retrieval pipelines, application data, and securely managed context.</p></div></article>
+          <article><span aria-hidden="true">04</span><div><h3>Monitoring &amp; cost control</h3><p>Track application health, latency, resource usage, and spending with actionable dashboards and alerts.</p></div></article>
+          <article><span aria-hidden="true">05</span><div><h3>Security &amp; reliable operations</h3><p>Configure access controls, secrets, networking, and logs for production AI workloads.</p></div></article>
+        </div>
+      </div>
+      <div class="ai-experience"><span class="ai-status">PRODUCTION EXPERIENCE</span><p>I worked on <strong>AL Habib DigiMate</strong>, the bank’s customer-facing AI chatbot, supporting its Azure AKS infrastructure, automated delivery, monitoring, and production operations.</p><a href="#digimate">Explore my DigiMate work ↗</a></div>
+      <div class="services-actions"><a class="button secondary" href="#contact-form">Discuss your AI platform ↗</a></div>
+    </section>
+
     <section class="section consulting" id="consulting" aria-labelledby="consulting-title">
       <div class="section-heading compact"><p class="eyebrow">CONSULTING &amp; REVIEWS</p><h2 id="consulting-title">A clear plan before the next infrastructure change.</h2><p>Bring an existing stack, a recurring production problem, or a new platform idea. I help you decide what to change, why it matters, and how to deliver it.</p></div>
       <div class="capability-grid services-grid">
@@ -277,6 +322,7 @@
             <li><span class="stack-icon tone-0 has-logo brand-harbor" aria-hidden="true"><img loading="lazy" src="assets/tools/harbor.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Harbor</strong><span>Container image registry</span></div></li>
             <li><span class="stack-icon tone-1 has-logo brand-longhorn" aria-hidden="true"><img loading="lazy" src="assets/tools/longhorn.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Longhorn</strong><span>Persistent cluster storage</span></div></li>
             <li><span class="stack-icon tone-2 has-logo brand-ollama" aria-hidden="true"><img loading="lazy" src="assets/tools/ollama.png" width="30" height="30" alt="" decoding="async"></span><div><strong>Ollama</strong><span>AI model serving</span></div></li>
+            <li><span class="stack-icon tone-0 has-logo brand-foundry" aria-hidden="true"><img loading="lazy" src="assets/tools/azure-ai-foundry.jpg" width="30" height="30" alt="" decoding="async"></span><div><strong>Azure AI Foundry</strong><span>Cloud AI platform</span></div></li>
           </ul>
         </div>
         <div class="stack-panel" id="stack-panel-3" role="tabpanel" aria-labelledby="stack-tab-3" tabindex="0" hidden>
@@ -340,24 +386,12 @@
         <h2 id="architecture-title">One continuous path from idea to production.</h2>
         <p>Follow a connected delivery flow through the tools I work with, from the first idea to production and back through feedback.</p>
       </div>
-      <div class="architecture-card live-architecture">
-        <div class="diagram-toolbar"><span><i></i> CONTINUOUS DELIVERY / REFERENCE FLOW</span><button type="button" class="diagram-toggle" aria-pressed="false">Pause flow</button></div>
-        <div class="delivery-map">
-          <svg class="delivery-connections" aria-hidden="true"><defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ff8c80"/></marker></defs><g class="flow-lines"></g></svg>
-          <ol class="delivery-nodes">
-            <li class="delivery-node" style="--stage:0"><span class="node-top"><span class="node-icon" aria-hidden="true">◇</span><span>01</span></span><h3>Idea &amp; scope</h3><p>Requirements · architecture</p><small>Define the goal, release boundaries, and a practical delivery plan.</small></li>
-            <li class="delivery-node" style="--stage:1"><span class="node-top"><span class="node-icon" aria-hidden="true">⑂</span><span>02</span></span><h3>Source control</h3><p>Git · Bitbucket · GitLab</p><small>Review application code and infrastructure changes before merging.</small></li>
-            <li class="delivery-node" style="--stage:2"><span class="node-top"><span class="node-icon" aria-hidden="true">✓</span><span>03</span></span><h3>Build &amp; test</h3><p>Jenkins · GitHub Actions · SonarQube</p><small>Run automated builds, tests, and quality gates on each change.</small></li>
-            <li class="delivery-node" style="--stage:3"><span class="node-top"><span class="node-icon" aria-hidden="true">▣</span><span>04</span></span><h3>Package &amp; publish</h3><p>Docker · Harbor</p><small>Build versioned container images and publish release artifacts.</small></li>
-            <li class="delivery-node" style="--stage:4"><span class="node-top"><span class="node-icon" aria-hidden="true">⌘</span><span>05</span></span><h3>Provision</h3><p>Terraform · Ansible · AWS CDK</p><small>Create repeatable cloud environments with infrastructure as code.</small></li>
-            <li class="delivery-node" style="--stage:5"><span class="node-top"><span class="node-icon" aria-hidden="true">⬡</span><span>06</span></span><h3>Deploy</h3><p>Argo CD · Helm · Kubernetes</p><small>Roll out workloads to AKS, EKS, GKE, or RKE2 with a rollback plan.</small></li>
-            <li class="delivery-node" style="--stage:6"><span class="node-top"><span class="node-icon" aria-hidden="true">☁</span><span>07</span></span><h3>Production</h3><p>AWS · Azure · GCP · Nginx</p><small>Serve traffic with resilient infrastructure, storage, and application services.</small></li>
-            <li class="delivery-node" style="--stage:7"><span class="node-top"><span class="node-icon" aria-hidden="true">↺</span><span>08</span></span><h3>Observe &amp; improve</h3><p>Prometheus · Grafana · EFK · Sentry</p><small>Use metrics, logs, and alerts to guide the next improvement.</small></li>
-          </ol>
-          <div class="diagram-feedback">Production feedback → the next idea, improvement, and release</div>
-        </div>
+      <div class="ai-diagram delivery-architecture">
+        <div class="ai-diagram-heading"><span>CONTINUOUS DELIVERY / REFERENCE FLOW</span><button class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</button></div>
+        <div class="ai-network-scroll" tabindex="0" role="region" aria-label="Delivery architecture; scroll horizontally on small screens"><svg class="ai-network delivery-network" viewBox="0 0 1000 390" role="group" aria-label="Interactive delivery architecture from idea to production and back through feedback"><rect class="ai-security-zone" x="14" y="65" width="972" height="268" rx="16"/><text class="ai-zone-label" x="28" y="53">REVIEWED CHANGES · RELEASE SAFETY · REPEATABLE INFRASTRUCTURE</text><path class="ai-connection" d="M225 136H270"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.2s" path="M225 136H270" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M470 136H515"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.35s" path="M470 136H515" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M715 136H760"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.5s" path="M715 136H760" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M860 172V245"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.6500000000000004s" path="M860 172V245" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M760 281H715"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.8000000000000003s" path="M760 281H715" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M515 281H470"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.95s" path="M515 281H470" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M270 281H225"/><circle class="ai-request-dot" r="4"><animateMotion dur="3.1s" path="M270 281H225" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M125 317V355H8V136H25"/><circle class="ai-request-dot" r="4"><animateMotion dur="3.25s" path="M125 317V355H8V136H25" repeatCount="indefinite" begin="indefinite"/></circle><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 1: Idea &amp; scope" data-ai-description="Define the goal, release boundaries, and a practical delivery plan. Tools: Requirements · architecture." data-ai-node="delivery-0"><rect x="25" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="37" y="118">01</text><text class="ai-node-title" x="125" y="125">Idea &amp; scope</text><text class="ai-node-sub" x="125" y="146">Requirements · architecture</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 2: Source control" data-ai-description="Review application code and infrastructure changes before merging. Tools: Git · Bitbucket · GitLab." data-ai-node="delivery-1"><rect x="270" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="282" y="118">02</text><text class="ai-node-title" x="370" y="125">Source control</text><text class="ai-node-sub" x="370" y="146">Git · Bitbucket · GitLab</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 3: Build &amp; test" data-ai-description="Run automated builds, tests, and quality gates on each change. Tools: Jenkins · GitHub Actions · SonarQube." data-ai-node="delivery-2"><rect x="515" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="527" y="118">03</text><text class="ai-node-title" x="615" y="125">Build &amp; test</text><text class="ai-node-sub" x="615" y="146">Jenkins · GitHub Actions</text><text class="ai-node-sub" x="615" y="160">SonarQube</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 4: Package &amp; publish" data-ai-description="Build versioned container images and publish release artifacts. Tools: Docker · Harbor." data-ai-node="delivery-3"><rect x="760" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="772" y="118">04</text><text class="ai-node-title" x="860" y="125">Package &amp; publish</text><text class="ai-node-sub" x="860" y="146">Docker · Harbor</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 5: Provision" data-ai-description="Create repeatable cloud environments with infrastructure as code. Tools: Terraform · Ansible · AWS CDK." data-ai-node="delivery-4"><rect x="760" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="772" y="263">05</text><text class="ai-node-title" x="860" y="270">Provision</text><text class="ai-node-sub" x="860" y="291">Terraform · Ansible</text><text class="ai-node-sub" x="860" y="305">AWS CDK</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 6: Deploy" data-ai-description="Roll out workloads to AKS, EKS, GKE, or RKE2 with a rollback plan. Tools: Argo CD · Helm · Kubernetes." data-ai-node="delivery-5"><rect x="515" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="527" y="263">06</text><text class="ai-node-title" x="615" y="270">Deploy</text><text class="ai-node-sub" x="615" y="291">Argo CD · Helm</text><text class="ai-node-sub" x="615" y="305">Kubernetes</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 7: Production" data-ai-description="Serve traffic with resilient infrastructure, storage, and application services. Tools: AWS · Azure · GCP · Nginx." data-ai-node="delivery-6"><rect x="270" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="282" y="263">07</text><text class="ai-node-title" x="370" y="270">Production</text><text class="ai-node-sub" x="370" y="291">AWS · Azure · GCP</text><text class="ai-node-sub" x="370" y="305">Nginx</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 8: Observe &amp; improve" data-ai-description="Use metrics, logs, and alerts to guide the next improvement. Tools: Prometheus · Grafana · EFK · Sentry." data-ai-node="delivery-7"><rect x="25" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="37" y="263">08</text><text class="ai-node-title" x="125" y="270">Observe &amp; improve</text><text class="ai-node-sub" x="125" y="291">Prometheus · Grafana</text><text class="ai-node-sub" x="125" y="305">EFK · Sentry</text></g><text class="ai-zone-label" x="310" y="374">PRODUCTION FEEDBACK → THE NEXT IDEA, IMPROVEMENT &amp; RELEASE</text></svg></div>
+        <p class="ai-node-detail" aria-live="polite">Select a delivery stage to explore its tools and purpose. Follow the flow across the top row, back along the bottom row, and through the feedback loop.</p>
         <div class="runtime-services"><div><span>DATA &amp; MESSAGING</span><p>PostgreSQL · MongoDB · MySQL · Redis · KeyDB · Kafka · RabbitMQ</p></div><div><span>INFRASTRUCTURE FOUNDATION</span><p>Linux · Windows Server · CloudFormation · Longhorn · Docker Swarm</p></div></div>
-        <p class="diagram-caption">An illustrative delivery flow using my stack. Tools are selected to fit each project.</p>
+        <p class="ai-diagram-note">An illustrative delivery flow using my stack. Tools are selected to fit each project.</p>
       </div>
     </section>
 

@@ -10,3 +10,5 @@ CloudFormation and AWS CDK use the AWS provider logo. Grouped tool cards use the
 
 - Longhorn: supplied [official horizontal logo](https://longhorn.io/img/logos/longhorn-horizontal-color.png). `longhorn.svg` embeds the supplied artwork and crops the viewport to the purple horns.
 - Ollama: supplied [official navigation logo](https://ollama.com/public/ollama-nav.png).
+
+- Azure AI Foundry: logo image supplied by the portfolio owner via Google’s image thumbnail URL; stored locally as `azure-ai-foundry.jpg`.
