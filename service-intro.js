@@ -4,6 +4,9 @@
   const card = document.querySelector('.hero-service-card');
   const reveal = () => root.classList.remove('service-intro-pending');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const hoverDesktop = matchMedia('(min-width: 761px) and (hover: hover) and (pointer: fine)');
+  // Desktop uses a hover reveal; touch screens retain the opening animation.
+  if (hoverDesktop.matches) { reveal(); return; }
   if (!card || reduced.matches || !card.animate) { reveal(); return; }
   const heading = card.querySelector('h2');
   const firstLine = heading.querySelector('.service-title-first');
