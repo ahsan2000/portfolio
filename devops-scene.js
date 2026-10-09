@@ -4,6 +4,10 @@
   const canvas = document.querySelector('#cloud-scene');
   if (!canvas || !window.THREE) return;
   const T = window.THREE;
+  // Match the main portfolio; keep the shared Upwork scene's original palette.
+  const clarity = document.body.classList.contains('clarity-theme');
+  const primaryColor = clarity ? 0x5eead4 : 0xe0231c;
+  const networkColor = clarity ? 0x93c5fd : 0x55cbd4;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const toggle = document.querySelector('#scene-toggle');
   const mobileGraphics = matchMedia('(max-width: 760px), (pointer: coarse)').matches;
@@ -17,13 +21,13 @@
   camera.position.set(8,7,11); camera.lookAt(0,0,0);
   scene.add(new T.AmbientLight(0xc8d9ea, 1.25));
   const key = new T.DirectionalLight(0xffe3cd, 1.9); key.position.set(4,8,6); scene.add(key);
-  const red = new T.PointLight(0xe0231c, 3, 25); red.position.set(-4,2,3); scene.add(red);
+  const accentLight = new T.PointLight(primaryColor, 3, 25); accentLight.position.set(-4,2,3); scene.add(accentLight);
   const world = new T.Group(); scene.add(world);
   const metal = new T.MeshStandardMaterial({color:0x40566b,roughness:.4,metalness:.75});
   const pale = new T.MeshStandardMaterial({color:0xaab4ad,roughness:.35,metalness:.55});
-  const accent = new T.MeshStandardMaterial({color:0xe0231c,emissive:0xe0231c,emissiveIntensity:.7,roughness:.4});
+  const accent = new T.MeshStandardMaterial({color:primaryColor,emissive:primaryColor,emissiveIntensity:.7,roughness:.4});
   const lines = new T.LineBasicMaterial({color:0x75807c,transparent:true,opacity:.45});
-  const pathMaterial = new T.LineBasicMaterial({color:0xe0231c,transparent:true,opacity:.7});
+  const pathMaterial = new T.LineBasicMaterial({color:primaryColor,transparent:true,opacity:.7});
   const box = new T.BoxGeometry(1,1,1);
   function mesh(geometry, material, x,y,z,sx=1,sy=1,sz=1){const m=new T.Mesh(geometry,material);m.position.set(x,y,z);m.scale.set(sx,sy,sz);world.add(m);return m;}
   function label(text,x,y,z,size=1,color='#aab4ad'){
@@ -31,11 +35,11 @@
     const ctx=c.getContext('2d');ctx.font='26px monospace';ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,256,55);
     const texture=new T.CanvasTexture(c);const sprite=new T.Sprite(new T.SpriteMaterial({map:texture,transparent:true,depthWrite:false}));sprite.position.set(x,y,z);sprite.scale.set(3*size,.56*size,1);world.add(sprite);
   }
-  scene.fog = new T.FogExp2(0x182330, .018);
-  const cyan = new T.MeshStandardMaterial({color:0x55cbd4,emissive:0x287d88,emissiveIntensity:.8,metalness:.5,roughness:.3});
-  const grid=new T.GridHelper(120,120,0x632521,0x20272d);grid.position.set(0,-1.45,-40);world.add(grid);
+  scene.fog = new T.FogExp2(clarity ? 0x0b1220 : 0x182330, .018);
+  const cyan = new T.MeshStandardMaterial({color:networkColor,emissive:0x287d88,emissiveIntensity:.8,metalness:.5,roughness:.3});
+  const grid=new T.GridHelper(120,120,clarity ? 0x245457 : 0x632521,clarity ? 0x20334d : 0x20272d);grid.position.set(0,-1.45,-40);world.add(grid);
   const nodes=[], packets=[], routes=[];
-  function wire(points, color=0xe0231c){const route=points.map(p=>new T.Vector3(...p));world.add(new T.Line(new T.BufferGeometry().setFromPoints(route),new T.LineBasicMaterial({color,transparent:true,opacity:.65})));return route;}
+  function wire(points, color=primaryColor){const route=points.map(p=>new T.Vector3(...p));world.add(new T.Line(new T.BufferGeometry().setFromPoints(route),new T.LineBasicMaterial({color,transparent:true,opacity:.65})));return route;}
   function rack(x,z,height=4){
     mesh(box,metal,x,height/2-1.4,z,1.35,height,1.1);
     for(let j=0;j<8;j++){
@@ -58,7 +62,7 @@
   for(let i=0;i<6;i++){
     const z=-25-Math.floor(i/2)*5,x=i%2?4:-4;
     rack(x,z,3);nodes.push(mesh(box,cyan,x,2.5,z,.65,.65,.65));
-    routes.push(wire([[x,-.9,z],[x/2,-.9,z],[x/2,-.9,-36],[0,-.9,-36]],0x55cbd4));
+    routes.push(wire([[x,-.9,z],[x/2,-.9,z],[x/2,-.9,-36],[0,-.9,-36]],networkColor));
   }
   mesh(new T.CylinderGeometry(.8,.8,.7,7),pale,0,-.9,-36);
   label('SERVICE MESH / NETWORK',0,3.9,-32,1.5,'#83dce3');
@@ -69,7 +73,7 @@
     rack(-5.5,z,3);
   });
   label('JENKINS / BITBUCKET',0,3.4,-53,1.5,'#83dce3');
-  routes.push(wire([[3,.3,-46],[3,.3,-61],[0,.3,-64]],0xe0231c));
+  routes.push(wire([[3,.3,-46],[3,.3,-61],[0,.3,-64]],primaryColor));
   gate(-69,'AUTOMATION / CONTROL',cyan);
   [-5,5].forEach(x=>{for(let i=0;i<3;i++){
     const z=-73-i*5;mesh(box,metal,x,1,z,2.5,3,.3);
@@ -81,7 +85,7 @@
   for(let i=0;i<18;i++)packets.push(mesh(new T.SphereGeometry(.07,8,8),i%2?cyan:accent,0,0,0));
   const dustGeo=new T.BufferGeometry(),dust=[];
   for(let i=0;i<260;i++)dust.push((Math.random()-.5)*18,Math.random()*9-1.5,-Math.random()*100);
-  dustGeo.setAttribute('position',new T.Float32BufferAttribute(dust,3));const particles=new T.Points(dustGeo,new T.PointsMaterial({color:0xc9a24a,size:.035,transparent:true,opacity:.45}));world.add(particles);
+  dustGeo.setAttribute('position',new T.Float32BufferAttribute(dust,3));const particles=new T.Points(dustGeo,new T.PointsMaterial({color:clarity ? 0x5eead4 : 0xc9a24a,size:.035,transparent:true,opacity:.45}));world.add(particles);
   let frame=0,paused=motion.matches,visible=true,lost=false,time=0,last=0,targetX=0,targetY=0,storyProgress=0,sceneProgress=0;
   function render(){renderer.render(scene,camera);}
   function tick(now){frame=0;if(paused||!visible||document.hidden||lost)return;

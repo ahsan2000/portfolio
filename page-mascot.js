@@ -52,7 +52,7 @@
   const showHintWhenReady = () => {
     // Wait for the actual loader removal or its six-second fallback.
     const loader = document.querySelector('#portfolio-loader');
-    if (loader && !document.documentElement.hasAttribute('data-loader-expired')) {
+    if (loader && !loader.classList.contains('is-complete') && !document.documentElement.hasAttribute('data-loader-expired')) {
       hintTimer = setTimeout(showHintWhenReady, 250);
       return;
     }
@@ -103,11 +103,6 @@
       messageTimer = setTimeout(hideMessage, 8000);
     }
   };
-  if (aiSection && 'IntersectionObserver' in window) {
-    new IntersectionObserver(entries => setAI(entries[0].isIntersecting), {
-      rootMargin: '-15% 0px -25% 0px', threshold: 0
-    }).observe(aiSection);
-  }
   let lastMessage = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
@@ -117,7 +112,7 @@
   const mobileScreen = matchMedia('(max-width: 760px)');
   const messageBreak = () => mobileScreen.matches
     ? 8000 + Math.random() * 2000
-    : 3750 + Math.random() * 1000;
+    : 6000 + Math.random() * 3000;
   const hideMessage = () => {
     clearTimeout(messageTimer);
     bubble.hidden = true;
@@ -202,6 +197,52 @@
   ];
   let greeted = false;
   let lastScrollLine = '';
+  const sectionLines = {
+    journey: ['Meet Ahsan: cloud infrastructure, automated releases, and fewer production surprises.', 'I handle the head pats. Ahsan handles the deployments.', 'Welcome! Follow my paws from code to cloud.'],
+    work: ['These are real production contributions. Open a project to see Ahsan’s role.', 'Behind every smooth app is infrastructure doing the heavy lifting.', 'Production stories ahead. My favorite kind of bedtime reading.'],
+    'bank-digital': ['Banking infrastructure needs dependable releases and disaster recovery.', 'Keeping banking workloads steady is serious business. I just bring the paws.', 'Cluster stability, Linux, and networking: the quiet work behind the app.'],
+    digimate: ['DigiMate runs on Azure infrastructure with automated delivery and monitoring.', 'An AI assistant still needs a dependable place to live.', 'AKS, logs, and alerts. Even chatbots need a good support crew.'],
+    tekrevol: ['At TekRevol, Ahsan automated delivery across web, mobile, and backend workloads.', 'Manual deployments? My paws prefer pipelines.', 'Docker, Jenkins, and quality checks keep this release train moving.'],
+    'rise-up-kings': ['Repeatable AWS releases helped deliver changes and urgent hotfixes.', 'Hotfixes should be quick. Production should stay calm.', 'A good pipeline gives the team one less thing to worry about.'],
+    oneview: ['OneView is Ahsan’s independent Android finance tracker, built and shipped.', 'Stocks, funds, and pensions together. I track treats in a separate portfolio.', 'Private local storage. This fox approves of keeping your data close.'],
+    capabilities: ['Cloud setup, CI/CD, infrastructure as code, and production support: pick your starting point.', 'You bring the product. Ahsan brings its cloud foundation.', 'A little automation can rescue a lot of weekends.'],
+    'ai-infrastructure': ['AI applications need secure endpoints, monitoring, and reliable model serving.', 'A clever model still needs a sensible production home.', 'RAG, inference, and observability. The drone is on infrastructure duty.'],
+    consulting: ['Bring your cloud challenge to a conversation with Ahsan.', 'Sometimes a fresh pair of eyes is the best debugging tool. Paws optional.', 'Architecture puzzle? Let’s find the first useful step.'],
+    approach: ['Plan, build, automate, and operate: a practical path to production.', 'Measure twice. Deploy once. Then watch the dashboards.', 'Good runbooks are love letters to your future on-call self.'],
+    experience: ['Explore Ahsan’s engineering experience and production responsibilities.', 'Four-plus years of production lessons. Plenty of coffee along the way.', 'Reliable systems come from practice, not just tool logos.'],
+    engineering: ['Explore the stack by layer to see where each tool fits.', 'Tools are ingredients. Architecture is the recipe.', 'Kubernetes herds containers. I’m still learning to herd my treats.'],
+    architecture: ['Follow the delivery flow from commit through checks to production.', 'A pipeline is a conveyor belt with better quality control.', 'Build, verify, deploy. My release process is sniff, inspect, nap.'],
+    contact: ['Tell Ahsan what you’re building and where you need help.', 'Your project brief is welcome here. So are head pats.', 'One hello could be the start of a stronger production platform.']
+  };
+  let activeSection = 'journey';
+  const contextualBlocks = Object.keys(sectionLines).map(id => document.getElementById(id)).filter(Boolean);
+  const updateSection = () => {
+    const middle = innerHeight * .48;
+    let best = null, bestDistance = Infinity;
+    contextualBlocks.forEach(block => {
+      const rect = block.getBoundingClientRect();
+      if (rect.bottom <= 0 || rect.top >= innerHeight) return;
+      const distance = rect.top <= middle && rect.bottom >= middle ? 0 : Math.min(Math.abs(rect.top - middle), Math.abs(rect.bottom - middle));
+      // Later entries are individual project cards, so prefer them to their parent.
+      if (distance <= bestDistance) { best = block; bestDistance = distance; }
+    });
+    if (!best || best.id === activeSection) return;
+    activeSection = best.id;
+    setAI(activeSection === 'ai-infrastructure');
+    if (!docked && !button.hidden) {
+      dismissHint();
+      hideMessage();
+      nextAutoMessage = performance.now() + 1200;
+    }
+  };
+  let sectionFrame = 0;
+  const scheduleSection = () => {
+    if (!sectionFrame) sectionFrame = requestAnimationFrame(() => { sectionFrame = 0; updateSection(); });
+  };
+  window.addEventListener('scroll', scheduleSection, { passive: true });
+  window.addEventListener('resize', scheduleSection, { passive: true });
+  window.addEventListener('pageshow', scheduleSection);
+  updateSection();
   const checkAutoMessage = () => {
     if (document.hidden || button.hidden || !bubble.hidden || !hint.hidden
       || performance.now() < nextAutoMessage || document.querySelector('#portfolio-loader')) return;
@@ -209,7 +250,7 @@
       showContactLine(contactState);
       return;
     }
-    const lines = aiActive ? aiMessages : greeted ? scrollLines : greetings;
+    const lines = sectionLines[activeSection] || (aiActive ? aiMessages : greetings);
     const choices = lines.filter(line => line !== lastScrollLine);
     lastScrollLine = choices[Math.floor(Math.random() * choices.length)];
     message.textContent = onUpwork ? lastScrollLine.replace('free 30-minute call', 'chat on Upwork').replace('free 30-minute consultation', 'chat on Upwork') : lastScrollLine;
@@ -239,7 +280,7 @@
     scheduleHint(90000, true);
     if (docked) showContactLine(contactState);
     // Pick randomly from every message except the one currently displayed.
-    const activeMessages = aiActive ? aiMessages : messages;
+    const activeMessages = sectionLines[activeSection] || (aiActive ? aiMessages : messages);
     const choices = activeMessages.map((_, index) => index).filter(index => index !== lastMessage);
     lastMessage = choices[Math.floor(Math.random() * choices.length)];
     if (!docked) message.textContent = activeMessages[lastMessage];

@@ -14,7 +14,7 @@
       bar.style.transform = 'scaleX(1)';
       count.textContent = '100%';
       loader.classList.add('is-complete');
-      setTimeout(() => loader.remove(), motion.matches ? 0 : 250);
+      setTimeout(() => { loader.remove(); window.dispatchEvent(new Event('portfolio-ready')); }, motion.matches ? 0 : 250);
     }
     function tick(now) {
       const progress = duration ? Math.min(1, (now - started) / duration) : 1;

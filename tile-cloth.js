@@ -449,7 +449,7 @@ function createCloth(output, plate, options) {
 }
 
 
-  document.querySelectorAll('#work .project-card').forEach(card => {
+  document.querySelectorAll('#work .project-card:not(#oneview)').forEach(card => {
     const output=document.createElement('canvas');output.className='tile-fabric';output.setAttribute('aria-hidden','true');
     card.prepend(output);
     let plate=null, pw=0, ph=0;

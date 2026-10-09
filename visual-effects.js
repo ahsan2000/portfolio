@@ -23,10 +23,10 @@
     try {
       if (!window.THREE) await load('vendor/three.min.js');
       canvas.hidden = false;
-      await load('devops-scene.js?v=20261008-auto-motion');
+      await load('devops-scene.js?v=20261009-navy-teal-v2');
       if (!canvas.parentElement.classList.contains('has-webgl')) throw new Error('Graphics unavailable');
       button.disabled = false;
-      load('tile-cloth.js?v=20261008').catch(() => {});
+      load('tile-cloth.js?v=20261009-oneview').catch(() => {});
     } catch {
       canvas.hidden = true;
       button.parentElement.hidden = true;

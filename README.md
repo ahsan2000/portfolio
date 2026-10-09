@@ -18,7 +18,8 @@ Open http://localhost:8000. No build step is required.
 
 ## Active files
 
-- `styles.css` and `devops-theme.css`: responsive layout, technical typography, and visual styling.
+- `styles.css` and `devops-theme.css`: shared responsive layout and visual styling.
+- `clarity-theme.css`: main portfolio midnight navy, teal, and soft blue theme, clear introduction, and service overview.
 - `script.js`: reveal behavior, navigation, ticker measurement, and opening layout.
 - `portfolio-atmosphere.js`: brief terminal loading screen and drifting tool marks.
 - `visual-effects.js`: deferred automatic desktop graphics loading; mobile, reduced-motion, and data-saving visitors retain the static background.
@@ -27,12 +28,13 @@ Open http://localhost:8000. No build step is required.
 - `scroll-story.js`: scroll-driven scene positioning.
 - `section-effects.js`: pause decorative animations outside the viewport.
 - `stack-explorer.js`: accessible engineering stack tabs and optional tour.
-- `delivery-flow.js`: responsive delivery diagram connections.
-- `page-mascot.js`: fox companion, messages, and interaction-triggered reaction loading.
+- `ai-diagram.js`: interactive AI and delivery architecture diagrams with motion controls.
+- `page-mascot.js`: original riso fox and AI drone, viewport-based section and project messages, randomized dwell messages, and interaction-triggered reaction loading.
+- `service-intro.js`: staged service-card opening after the loader, with reduced-motion support.
 - `contact-form.js`: AJAX enquiry submission and confirmation navigation.
 - `assets/`: active project previews, tool icons, optimized fox sprites, sharing thumbnail, résumé, and attribution notices.
 
-Both pages automatically start the desktop 3D scene after the content loads. Mobile, reduced-motion, and data-saving visitors retain the static background. The motion button pauses or resumes the desktop scene. Both pages share styling and optimized fox assets.
+The Upwork page automatically starts the desktop 3D scene after the content loads. The main portfolio uses a midnight navy, teal, and soft blue theme with a matching blue-and-teal 3D infrastructure background and a brief loading screen. Mobile, reduced-motion, and data-saving visitors retain the static background. The motion button pauses or resumes the desktop scene. Both pages share styling and optimized fox assets.
 
 ## Contact form
 
@@ -49,3 +51,5 @@ The DevOps scene and cloth effects were adapted from the supplied ThreeUI Kage r
 The fox sprites are from Koboyo page-mascot by Kamran Ahmed. Their MIT license is preserved in `assets/page-mascot-LICENSE.txt`. Tool icon sources are documented in `assets/tools/README.md`.
 
 This portfolio is licensed under the [Apache License 2.0](LICENSE).
+
+Typography uses locally hosted Inter and Space Grotesk variable fonts. Their SIL Open Font License files are included in `assets/fonts/`.
