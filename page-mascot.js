@@ -42,7 +42,7 @@
     if (reminder ? reminderShown : invitationShown) return;
     hintTimer = setTimeout(() => {
       if (button.hidden || document.hidden || !bubble.hidden) return;
-      hintLabel.textContent = reminder ? 'One more head pat? 🥺' : 'A little head pat? 🥺';
+      hintLabel.textContent = aiActive ? 'Talk AI infrastructure? 🤖' : reminder ? 'One more head pat? 🥺' : 'A little head pat? 🥺';
       hint.hidden = false;
       if (reminder) reminderShown = true;
       else invitationShown = true;
@@ -75,6 +75,39 @@
     'I bring the charm—and the reliable deployments.',
     'A friendly hello could be the start of your next great project.'
   ];
+  let aiActive = false;
+  const aiMessages = [
+    'Taking an LLM to production? Let’s build its serving platform.',
+    'GPU workloads need reliable infrastructure. Let’s plan yours.',
+    'From model endpoint to monitoring: keep your AI service running.',
+    'Private inference, predictable scaling, and clear observability.',
+    'Building a RAG application? I can help with the infrastructure.'
+  ];
+  const aiSection = document.getElementById('ai-infrastructure');
+  const setAI = active => {
+    if (active === aiActive) return;
+    aiActive = active;
+    companion.classList.toggle('is-ai', active);
+    companion.setAttribute('aria-label', active ? 'Riso AI drone companion' : 'Fox companion');
+    button.setAttribute('aria-label', active ? 'Tap the riso drone for an AI infrastructure hint' : 'Pet the riso fox for a hint');
+    companion.querySelector('.fox-dismiss').setAttribute('aria-label', active ? 'Hide drone companion' : 'Hide fox companion');
+    restore.textContent = active ? 'Show drone' : 'Show fox';
+    restore.setAttribute('aria-label', active ? 'Show drone companion' : 'Show fox companion');
+    hint.setAttribute('aria-label', active ? 'Ask the drone about AI infrastructure' : 'Give the fox a head pat');
+    reaction.hidden = true;
+    dismissHint();
+    hideMessage();
+    if (active && !button.hidden) {
+      message.textContent = aiMessages[0];
+      bubble.hidden = false;
+      messageTimer = setTimeout(hideMessage, 8000);
+    }
+  };
+  if (aiSection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => setAI(entries[0].isIntersecting), {
+      rootMargin: '-15% 0px -25% 0px', threshold: 0
+    }).observe(aiSection);
+  }
   let lastMessage = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
@@ -176,7 +209,7 @@
       showContactLine(contactState);
       return;
     }
-    const lines = greeted ? scrollLines : greetings;
+    const lines = aiActive ? aiMessages : greeted ? scrollLines : greetings;
     const choices = lines.filter(line => line !== lastScrollLine);
     lastScrollLine = choices[Math.floor(Math.random() * choices.length)];
     message.textContent = onUpwork ? lastScrollLine.replace('free 30-minute call', 'chat on Upwork').replace('free 30-minute consultation', 'chat on Upwork') : lastScrollLine;
@@ -206,9 +239,10 @@
     scheduleHint(90000, true);
     if (docked) showContactLine(contactState);
     // Pick randomly from every message except the one currently displayed.
-    const choices = messages.map((_, index) => index).filter(index => index !== lastMessage);
+    const activeMessages = aiActive ? aiMessages : messages;
+    const choices = activeMessages.map((_, index) => index).filter(index => index !== lastMessage);
     lastMessage = choices[Math.floor(Math.random() * choices.length)];
-    if (!docked) message.textContent = messages[lastMessage];
+    if (!docked) message.textContent = activeMessages[lastMessage];
     bubble.hidden = false;
     clearTimeout(messageTimer);
     messageTimer = setTimeout(() => {
@@ -217,7 +251,7 @@
     }, 8000);
     clearTimeout(timer);
     direction.hidden = false;
-    reaction.hidden = !reactionReady;
+    reaction.hidden = aiActive || !reactionReady;
     // Top-middle cell is the heart; bottom-right is the delighted face.
     frame(reaction, 1);
     if (!reduced.matches) companion.querySelector('.fox-sprite').animate([

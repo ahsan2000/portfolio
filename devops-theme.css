@@ -792,3 +792,21 @@ main [id]{scroll-margin-top:calc(var(--opening-header-height,160px) + 20px)}
 .delivery-stage-number{font:9px var(--font-tech);fill:var(--accent);pointer-events:none}
 .delivery-architecture .runtime-services{margin-top:24px}
 .delivery-architecture .ai-node-detail{min-height:3.4em}
+
+/* Mobile reading uses standard UI type with a clear heading hierarchy. */
+@media(max-width:760px){
+ body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;font-weight:400;line-height:1.6}
+ h1,h2,h3,h4,.story-title,.stack-layer h3,.eyebrow,.brand-role,.project-type{font-family:inherit}
+ .hero h1{font-size:36px;line-height:1.15;font-weight:700;letter-spacing:-.035em}
+ .hero .hero-line-final{font-size:20px;line-height:1.4;font-weight:600;letter-spacing:0}
+ h2,.story-title,.engineering-story .story-panel .story-title{font-size:28px;line-height:1.25;font-weight:700}
+ h3,.services-grid h3,.project-content h3,.stack-layer h3,#oneview h3,.consultation-invite h3{font-size:20px;line-height:1.35;font-weight:650}
+ .hero .story-panel .hero-text,.section-heading>p:last-child,.cta>p,.project-content>p:not(.project-type),.project-content li,.capability-grid p,.approach p,.tool-groups dd,.experience-list p,.contact-platforms>p:not(.eyebrow){font-family:inherit;font-size:16px;line-height:1.65;font-weight:400}
+ .eyebrow,.project-type{font-size:12px;font-weight:600;letter-spacing:.08em}
+ .site-header .theme-nav,.site-header.is-compact .theme-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;overflow:visible}
+ .site-header .theme-nav a,.site-header.is-compact .theme-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:6px 0;font-size:12px;line-height:1.2;letter-spacing:0}
+ .site-header .theme-nav .nav-contact,.site-header.is-compact .theme-nav .nav-contact{min-height:36px;padding:6px 10px;border-radius:5px;font-size:12px;box-shadow:none}
+ .theme-nav .nav-contact::before{display:none}
+}
+.fox-companion.is-ai .fox-directions{background-image:url('assets/drone-riso-directions.webp')}
+.fox-companion.is-ai .fox-reactions{display:none}
