@@ -139,3 +139,8 @@ body.clarity-theme{--font-body:"Inter Portfolio",Inter,ui-sans-serif,system-ui,s
 
 /* Brighter commands retain the terminal ribbon’s understated hierarchy. */
 .clarity-theme .command-ticker .ticker-track{color:#d3deee}
+/* The opening state exists before scripts run, preventing a completed-card flash. */
+@media(prefers-reduced-motion:no-preference){
+ html.service-intro-pending .clarity-theme .hero-service-card{opacity:0;visibility:hidden;animation:service-intro-failsafe 0s 5s forwards}
+}
+@keyframes service-intro-failsafe{to{opacity:1;visibility:visible}}
