@@ -1,6 +1,6 @@
 # Ahsan Nawaz — DevOps Engineer Portfolio
 
-A static portfolio featuring cloud infrastructure, Kubernetes operations, infrastructure as code, CI/CD automation, and production reliability.
+A static portfolio led by cloud and DevOps engineering, with full-stack website development, Kotlin Multiplatform apps, domains, DNS, hosting, SSL, and delivery from idea to launch. OneView demonstrates independent ownership of the app, website, and launch.
 
 ## Pages
 

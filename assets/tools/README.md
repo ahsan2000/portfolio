@@ -12,3 +12,6 @@ CloudFormation and AWS CDK use the AWS provider logo. Grouped tool cards use the
 - Ollama: supplied [official navigation logo](https://ollama.com/public/ollama-nav.png).
 
 - Azure AI Foundry: logo image supplied by the portfolio owner via Google’s image thumbnail URL; stored locally as `azure-ai-foundry.jpg`.
+
+- HTML5, CSS3, JavaScript, Kotlin, and Android: Devicon original SVGs, MIT license.
+- GoDaddy, Hostinger, and Let’s Encrypt: Simple Icons SVGs, CC0 1.0; colored for legibility on the portfolio background.

@@ -65,11 +65,12 @@
     'Looking for your next DevOps engineer? I’m ready to help.',
     'Want to talk about what you’re building? I’m listening.',
     onUpwork ? 'One Upwork message away. Let’s build something.' : 'I’m one email away. Your next idea starts with hello.',
-    'Your next DevOps engineer? You’re looking at his portfolio.',
+    'Need a full-stack website or KMP app? Ahsan can build it and take it live.',
+    'Namecheap, GoDaddy, Hostinger, or any other provider—Ahsan can handle domains, DNS, hosting, and SSL.',
     'Less deployment drama. More time to build cool things.',
     'Got a cloud challenge? Let’s untangle it together.',
     'Great ideas deserve reliable infrastructure. Let’s talk.',
-    'You bring the idea. I’ll bring the automation.',
+    'You bring the idea. Ahsan can build the product and its cloud home.',
     'Your pipeline called. It wants us to meet.',
     'Still scrolling? Imagine what we could build together.',
     'I bring the charm—and the reliable deployments.',
@@ -182,7 +183,7 @@
   // Greet once after loading, then leave a real 3–4 second gap between bubbles.
   const greetings = [
     'Hey there! I build reliable infrastructure—and accept head pats. Welcome to my portfolio! 🦊',
-    'Welcome aboard! Reliable infrastructure ahead. Head pats also accepted. 🦊',
+    'Welcome aboard! Cloud, websites, apps, and launches ahead. Head pats also accepted. 🦊',
     'Hey! Looking for a DevOps engineer? You’re in the right place. Let’s build something! 🦊'
   ];
   const scrollLines = [
@@ -190,29 +191,29 @@
     'Cloud bill looking spicy? Let’s talk through your setup together.',
     'Still deploying by hand? Your weekend deserves better. Let me help!',
     'Kubernetes acting mysterious? Bring the puzzle to a free 30-minute consultation.',
-    'Got a platform idea? You bring the goal. I’ll bring the infrastructure.',
+    'Got a website or app idea? Ahsan can help from scratch to live.',
     'Need a second pair of eyes on your architecture? I’m one message away.',
     'Your next release could use fewer surprises. Shall we talk?',
-    'Head pats or infrastructure questions? I’m here for both. Say hello!'
+    'DNS tangled? SSL acting up? Ahsan can help. I supervise with paws.'
   ];
   let greeted = false;
   let lastScrollLine = '';
   const sectionLines = {
-    journey: ['Meet Ahsan: cloud infrastructure, automated releases, and fewer production surprises.', 'I handle the head pats. Ahsan handles the deployments.', 'Welcome! Follow my paws from code to cloud.'],
+    journey: ['Meet Ahsan: Cloud & DevOps Engineer, website and KMP app builder, and your launch partner.', 'I handle the head pats. Ahsan handles the deployments.', 'Welcome! Follow my paws from code to cloud.'],
     work: ['These are real production contributions. Open a project to see Ahsan’s role.', 'Behind every smooth app is infrastructure doing the heavy lifting.', 'Production stories ahead. My favorite kind of bedtime reading.'],
     'bank-digital': ['Banking infrastructure needs dependable releases and disaster recovery.', 'Keeping banking workloads steady is serious business. I just bring the paws.', 'Cluster stability, Linux, and networking: the quiet work behind the app.'],
     digimate: ['DigiMate runs on Azure infrastructure with automated delivery and monitoring.', 'An AI assistant still needs a dependable place to live.', 'AKS, logs, and alerts. Even chatbots need a good support crew.'],
     tekrevol: ['At TekRevol, Ahsan automated delivery across web, mobile, and backend workloads.', 'Manual deployments? My paws prefer pipelines.', 'Docker, Jenkins, and quality checks keep this release train moving.'],
     'rise-up-kings': ['Repeatable AWS releases helped deliver changes and urgent hotfixes.', 'Hotfixes should be quick. Production should stay calm.', 'A good pipeline gives the team one less thing to worry about.'],
-    oneview: ['OneView is Ahsan’s independent Android finance tracker, built and shipped.', 'Stocks, funds, and pensions together. I track treats in a separate portfolio.', 'Private local storage. This fox approves of keeping your data close.'],
-    capabilities: ['Cloud setup, CI/CD, infrastructure as code, and production support: pick your starting point.', 'You bring the product. Ahsan brings its cloud foundation.', 'A little automation can rescue a lot of weekends.'],
+    oneview: ['OneView’s app, website, domain, hosting, DNS, and SSL—all handled by Ahsan.', 'Stocks, funds, and pensions together. I track treats in a separate portfolio.', 'Private local storage. This fox approves of keeping your data close.'],
+    capabilities: ['Cloud, CI/CD, websites, KMP apps, domains, and hosting: pick your starting point.', 'An idea, a half-built website, or a launch problem? Ahsan can help.', 'A little automation can rescue a lot of weekends.'],
     'ai-infrastructure': ['AI applications need secure endpoints, monitoring, and reliable model serving.', 'A clever model still needs a sensible production home.', 'RAG, inference, and observability. The drone is on infrastructure duty.'],
     consulting: ['Bring your cloud challenge to a conversation with Ahsan.', 'Sometimes a fresh pair of eyes is the best debugging tool. Paws optional.', 'Architecture puzzle? Let’s find the first useful step.'],
     approach: ['Plan, build, automate, and operate: a practical path to production.', 'Measure twice. Deploy once. Then watch the dashboards.', 'Good runbooks are love letters to your future on-call self.'],
     experience: ['Explore Ahsan’s engineering experience and production responsibilities.', 'Four-plus years of production lessons. Plenty of coffee along the way.', 'Reliable systems come from practice, not just tool logos.'],
-    engineering: ['Explore the stack by layer to see where each tool fits.', 'Tools are ingredients. Architecture is the recipe.', 'Kubernetes herds containers. I’m still learning to herd my treats.'],
+    engineering: ['Explore the tools by discipline: cloud, delivery, web, mobile, hosting, and AI.', 'Model serving has its own AI category. Even this fox likes an organized toolbox.', 'Kotlin for apps. DNS for domains. Paws for moral support.'],
     architecture: ['Follow the delivery flow from commit through checks to production.', 'A pipeline is a conveyor belt with better quality control.', 'Build, verify, deploy. My release process is sniff, inspect, nap.'],
-    contact: ['Tell Ahsan what you’re building and where you need help.', 'Your project brief is welcome here. So are head pats.', 'One hello could be the start of a stronger production platform.']
+    contact: ['Tell Ahsan what you’re building and where you need help.', 'Your project brief is welcome here. So are head pats.', 'Need a website, an app, or cloud help? One hello gets us started.']
   };
   let activeSection = 'journey';
   const contextualBlocks = Object.keys(sectionLines).map(id => document.getElementById(id)).filter(Boolean);
