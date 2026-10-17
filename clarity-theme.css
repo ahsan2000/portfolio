@@ -112,12 +112,20 @@ body.clarity-theme{--bg:#0b1220;--surface:#142238;--surface-2:#20334d;--text:#f7
  .clarity-theme #oneview .product-visual{flex:0 0 420px;width:100%;height:420px;min-height:420px;border-top:1px solid var(--line)}
 }
 /* Platform buttons retain their own brand colors, including hover and focus. */
+.clarity-theme .contact-platforms .button{gap:12px}
+.clarity-theme .platform-button-label{display:flex;align-items:center;gap:12px;text-align:left}
+.clarity-theme .platform-button-logo{display:block;flex:0 0 24px;width:24px;height:24px;object-fit:contain;filter:brightness(0) invert(1)}
+.clarity-theme .button[href*="upwork.com"] .platform-button-logo{filter:brightness(0)}
+.clarity-theme .button[href*="upwork.com"]:is(:hover,:focus-visible) .platform-button-logo{filter:brightness(0) invert(1)}
 .clarity-theme .button[href*="upwork.com"]{background:#14a800;border-color:#14a800;color:#052b00;font-weight:700;text-shadow:none;box-shadow:none}
 .clarity-theme .button[href*="upwork.com"]:is(:hover,:focus-visible){background:#108a00;border-color:#108a00;color:#fff;text-shadow:none;box-shadow:0 4px 16px #14a80033}
 .clarity-theme .button[href*="linkedin.com"]{background:#0a66c2;border-color:#0a66c2;color:#fff;font-weight:700;text-shadow:none;box-shadow:none}
 .clarity-theme .button[href*="linkedin.com"]:is(:hover,:focus-visible){background:#004182;border-color:#004182;color:#fff;text-shadow:none;box-shadow:0 4px 16px #0a66c233}
 .clarity-theme .button[href*="upwork.com"]:focus-visible{outline-color:#14a800!important}
 .clarity-theme .button[href*="linkedin.com"]:focus-visible{outline-color:#93c5fd!important}
+.clarity-theme .button[href*="hubstafftalent.net"]{background:#294dff;border-color:#294dff;color:#fff;font-weight:700;text-shadow:none;box-shadow:none}
+.clarity-theme .button[href*="hubstafftalent.net"]:is(:hover,:focus-visible){background:#203cc7;border-color:#203cc7;color:#fff;text-shadow:none;box-shadow:0 4px 16px #294dff33}
+.clarity-theme .button[href*="hubstafftalent.net"]:focus-visible{outline-color:#a5b4ff!important}
 
 /* Only the opening Upwork button uses portfolio colors until interaction. */
 .clarity-theme .hero .button[href*="upwork.com"]{background:transparent;border-color:var(--line);color:var(--text);box-shadow:none}
