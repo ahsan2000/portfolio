@@ -543,7 +543,11 @@ body::after{opacity:.015}
 .fox-hint{border-radius:12px;background:#f4e5ce;border:1px solid #ffe6c6;box-shadow:0 4px 16px #0003;bottom:calc(100% + 20px);min-height:44px}
 .fox-hint::before,.fox-hint::after{display:none}
 .at-contact .fox-hint:not([hidden]){display:block;right:50%;transform:translateX(50%);bottom:calc(100% + 20px);width:170px}
-@media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}}
+@media(max-width:999px){
+ .contact-fox-dock .fox-companion.at-contact{left:0;right:0;width:100%;transform:none}
+ .at-contact .fox-boop{margin-left:auto}
+ .at-contact .fox-message{right:76px;width:calc(100% - 84px);max-width:240px;box-sizing:border-box;overflow-wrap:anywhere}
+}
 
 /* Compact footer; reserve space beside the text for the mobile return arrow. */
 footer{max-width:none;width:100%;align-items:center;gap:24px;border-top:1px solid var(--line);padding:28px max(24px,calc((100% - var(--max)) / 2));line-height:1.7}
