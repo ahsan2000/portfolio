@@ -531,18 +531,19 @@ body::after{opacity:.015}
 @media(max-width:999px){.at-contact .fox-message{right:72px;width:calc(100% - 80px)}}
 .contact-fox-dock .fox-companion.at-contact{bottom:auto!important}
 
-/* The fox sits above the form, centered in its own space. */
-.contact-form-wrap{min-width:0}
-.contact-fox-dock{min-height:240px}
-.contact-fox-dock .fox-companion.at-contact{top:auto;bottom:12px!important;left:50%;right:auto;width:100px;transform:translateX(-50%)}
+/* Compact helper above the form, with the message beside the fox. */
+.contact-form-wrap{min-width:0;align-self:start}
+.contact-fox-dock{min-height:112px}
+.contact-fox-dock .fox-companion.at-contact{top:auto;bottom:12px!important;left:50%;right:auto;width:80px;transform:translateX(-50%)}
 .at-contact .fox-boop{margin:0}
-.at-contact .fox-message{top:auto;bottom:calc(100% + 16px);right:50%;width:min(290px,calc(100vw - 64px));max-width:none;transform:translateX(50%);padding:14px 40px 14px 16px}
-.at-contact .fox-message::after{top:auto;bottom:-7px;right:calc(50% - 6px);transform:rotate(45deg)}
-.at-contact .fox-message-contact{display:inline-block;margin-top:10px;font-size:13px}
+.at-contact .fox-message{top:auto;bottom:0;right:calc(100% + 12px);width:clamp(150px,calc(100vw - 180px),240px);max-width:none;transform:none;padding:10px 28px 10px 12px}
+.at-contact .fox-message-text{font-size:12px;line-height:1.4}
+.at-contact .fox-message::after{top:auto;bottom:24px;right:-7px;transform:rotate(-45deg)}
+.at-contact .fox-message-contact{display:none}
 .fox-hint{border-radius:12px;background:#f4e5ce;border:1px solid #ffe6c6;box-shadow:0 4px 16px #0003;bottom:calc(100% + 20px);min-height:44px}
 .fox-hint::before,.fox-hint::after{display:none}
 .at-contact .fox-hint:not([hidden]){display:block;right:50%;transform:translateX(50%);bottom:calc(100% + 20px);width:170px}
-@media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}.at-contact .fox-message{right:50%;width:min(260px,calc(100vw - 64px))}}
+@media(max-width:999px){.contact-fox-dock .fox-companion.at-contact{width:64px}}
 
 /* Compact footer; reserve space beside the text for the mobile return arrow. */
 footer{max-width:none;width:100%;align-items:center;gap:24px;border-top:1px solid var(--line);padding:28px max(24px,calc((100% - var(--max)) / 2));line-height:1.7}

@@ -126,6 +126,11 @@ body.clarity-theme{--bg:#0b1220;--surface:#142238;--surface-2:#20334d;--text:#f7
 .clarity-theme .button[href*="hubstafftalent.net"]{background:#294dff;border-color:#294dff;color:#fff;font-weight:700;text-shadow:none;box-shadow:none}
 .clarity-theme .button[href*="hubstafftalent.net"]:is(:hover,:focus-visible){background:#203cc7;border-color:#203cc7;color:#fff;text-shadow:none;box-shadow:0 4px 16px #294dff33}
 .clarity-theme .button[href*="hubstafftalent.net"]:focus-visible{outline-color:#a5b4ff!important}
+.clarity-theme .button[href*="arc.dev"]{background:#000;border-color:#666;border-radius:4px;color:#fff;font-weight:700;text-shadow:none;box-shadow:none}
+.clarity-theme .button[href*="arc.dev"] .platform-button-logo{flex-basis:64px;width:64px}
+.clarity-theme .button[href*="arc.dev"]:is(:hover,:focus-visible){background:#191919;border-color:#fff;color:#fff;text-shadow:none;box-shadow:none}
+.clarity-theme .button[href*="arc.dev"]:active{background:#292929;border-color:#fff}
+.clarity-theme .button[href*="arc.dev"]:focus-visible{outline-color:#fff!important}
 
 /* Only the opening Upwork button uses portfolio colors until interaction. */
 .clarity-theme .hero .button[href*="upwork.com"]{background:transparent;border-color:var(--line);color:var(--text);box-shadow:none}
