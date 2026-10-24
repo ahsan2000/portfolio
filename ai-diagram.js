@@ -4,7 +4,7 @@
     users: 'Users send questions through the chat interface. Requests enter the application through the API gateway.',
     gateway: 'The API gateway handles authentication and rate limits before forwarding requests to the application.',
     kubernetes: 'Kubernetes runs the chatbot application and retrieval workers, with repeatable deployments and workload scaling.',
-    model: 'Model services generate responses. Depending on the architecture, use self-hosted Ollama or Azure AI Foundry services.',
+    model: 'Model services generate responses. Depending on the architecture, use self-hosted Ollama or Microsoft Foundry services.',
     vector: 'A vector database stores embeddings so retrieval workers can find relevant context for a question.',
     monitor: 'Monitoring tracks latency, errors, token usage, and costs to help operate the application reliably.'
   };
