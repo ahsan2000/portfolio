@@ -72,12 +72,11 @@ html.motion-off .hero-actions .button{translate:none!important}
 .cinematic .cinema-services .hero-service-card>a{margin-top:8px;padding-top:16px;min-height:44px;box-sizing:border-box}
 .cinematic .command-ticker .ticker-track{animation-duration:52.5s}
 .cinematic .command-ticker .ticker-track.ticker-measured{animation-duration:var(--ticker-duration,52.5s)}
-/* Final overview card tilts gently, then settles when hovered or focused. */
+/* Keep the video overview straight at every screen size. */
 .cinematic .section.video-cv{padding-top:56px;padding-bottom:70px;border-top:1px solid #ffffff24;overflow:visible;gap:clamp(32px,5vw,80px)}
-.cinematic .video-cv-player{border-radius:2px;border:2px solid #ffffff24;transform:rotate(4deg);transform-origin:center;transition:transform .65s cubic-bezier(.22,1,.36,1),box-shadow .65s;box-shadow:0 24px 60px #0005}
-.cinematic .video-cv-player:is(:hover,:focus-within){transform:rotate(0deg);box-shadow:0 30px 70px #0006}
+.cinematic .video-cv-player{border-radius:2px;border:2px solid #ffffff24;transform:none;transition:box-shadow .65s;box-shadow:0 24px 60px #0005}
+.cinematic .video-cv-player:is(:hover,:focus-within){box-shadow:0 30px 70px #0006}
 @media(min-width:761px){.cinematic .hero .hero-copy{grid-column:1;grid-row:1}.cinematic .cinema-portrait{grid-column:2;grid-row:1}.cinematic .cinema-facts{grid-column:3;grid-row:1}}
-@media(max-width:900px){.cinematic .video-cv-player{transform:rotate(2deg)}}
 @media(max-width:760px){.cinematic .cinema-facts{max-width:none}.cinematic .section.video-cv{padding:36px 24px 44px}.cinematic .cinema-services .hero-service-card ol{gap:0}}
 @media(hover:none),(prefers-reduced-motion:reduce){.cinematic .video-cv-player{transform:none;transition:none}}
 html.motion-off .cinematic .video-cv-player{transform:none}
