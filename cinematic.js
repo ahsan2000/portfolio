@@ -199,7 +199,12 @@
   if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(main);
   document.fonts?.ready.then(schedule);
   sync();
-  // Font measurements are taken once; the letters animate independently of hero parallax.
-  if (document.fonts) document.fonts.ready.then(assemblePortfolio);
-  else assemblePortfolio();
+  // Let the restored opening loader finish before revealing the shuffled hero letters.
+  const loaderReady = document.querySelector('#portfolio-loader') ? new Promise(resolve => {
+    const done = () => { window.removeEventListener('portfolio-ready', done); window.clearTimeout(fallback); resolve(); };
+    const fallback = window.setTimeout(done, 2100);
+    window.addEventListener('portfolio-ready', done, { once: true });
+  }) : Promise.resolve();
+  const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+  Promise.all([loaderReady, fontsReady]).then(assemblePortfolio);
 })();
