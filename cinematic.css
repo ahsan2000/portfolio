@@ -1,7 +1,7 @@
 /* Cinematic opening: a single desktop composition, normal document flow on phones. */
 body.cinematic{background:#0b1220;overflow-x:clip}
 .cinematic .cloud-stage,.cinematic .parallax-scrim,.cinematic .infra-foreground,.cinematic .background-controls{display:none!important}
-.cinematic .site-header{position:relative;max-width:1600px;min-height:80px;margin:auto;padding:14px 4%;display:flex;flex-wrap:wrap;gap:20px;align-items:center;box-sizing:border-box}
+.cinematic .site-header{position:sticky;top:0;z-index:90;max-width:1600px;min-height:80px;margin:auto;padding:14px 4%;display:flex;flex-wrap:wrap;gap:20px;align-items:center;box-sizing:border-box}
 .cinematic .brand{order:0;margin-right:auto}
 .cinematic .theme-nav{order:1;flex-wrap:wrap;gap:24px}
 .cinematic .theme-nav a{min-height:44px;display:inline-flex;align-items:center}
@@ -171,3 +171,10 @@ html.motion-off .cinema-atmosphere>i{transform:none}
 /* Measure the rendered glyphs instead of assuming every letter has equal width. */
 .cinematic .hero .cinema-word{font-size:var(--hero-word-font,clamp(72px,20.2vw,400px))}
 @media(max-width:760px){.cinematic .hero .cinema-word{font-size:var(--hero-word-font,19vw)}}
+
+/* Preserve the scroll-driven compact header across cinematic layouts. */
+.cinematic .site-header.is-compact{min-height:0;padding-block:8px;gap:8px}
+@media(max-width:760px){
+ .cinematic .site-header.is-compact{row-gap:0}
+ .cinematic .site-header.is-compact .theme-nav{grid-row:1}
+}
