@@ -49,13 +49,31 @@
     if (skillTimer !== null) window.clearTimeout(skillTimer);
     skillTimer = null;
   }
+  function fitHeroWord() {
+    if (!heroWord) return;
+    heroWord.style.removeProperty('--hero-word-font');
+    const available = heroWord.clientWidth;
+    const glyphs = [...heroWord.querySelectorAll('.assembly-letter')];
+    if (!available || !glyphs.length) return;
+    // offsetWidth is independent of the scroll-linked perspective and glyph animation.
+    const naturalWidth = glyphs.reduce((width, glyph) => width + glyph.offsetWidth, 0);
+    if (!naturalWidth) return;
+    const baseSize = parseFloat(getComputedStyle(heroWord).fontSize);
+    const safeWidth = Math.max(1, available - Math.max(24, available * .035));
+    heroWord.style.setProperty('--hero-word-font', `${baseSize * Math.min(1, safeWidth / naturalWidth)}px`);
+  }
   function finishAssembly() {
     animationVersion++;
     letterAnimations.forEach(animation => animation.cancel());
     letterAnimations = [];
     if (heroWord) {
-      heroWord.textContent = 'PORTFOLIO';
-      heroWord.style.removeProperty('--word-size');
+      heroWord.replaceChildren(...[...'PORTFOLIO'].map(letter => {
+        const span = document.createElement('span');
+        span.className = 'assembly-letter';
+        span.textContent = letter;
+        return span;
+      }));
+      fitHeroWord();
     }
   }
   async function animateHeroWord(label) {
@@ -74,7 +92,7 @@
     const previousAnimations = letterAnimations;
     const letters = [...label];
     const scrambledOrder = label === 'PORTFOLIO' ? [5, 7, 6, 4, 1, 2, 0, 3, 8] : letters.map((_, index) => (index + Math.ceil(letters.length / 2)) % letters.length);
-    heroWord.style.setProperty('--word-size', `${Math.min(1, 9 / letters.length)}`);
+    heroWord.style.removeProperty('--word-size');
     const spans = letters.map(letter => {
       const span = document.createElement('span');
       span.className = 'assembly-letter';
@@ -82,6 +100,7 @@
       return span;
     });
     heroWord.replaceChildren(...spans);
+    fitHeroWord();
     previousAnimations.forEach(animation => animation.cancel());
     const positions = spans.map(span => span.getBoundingClientRect());
     const startX = [];
@@ -154,7 +173,14 @@
     link.addEventListener('blur', reset);
   });
   window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', schedule, { passive: true });
+  window.addEventListener('resize', () => {
+    // Settle the glyphs before refitting so old animation coordinates cannot clip them.
+    animationVersion++;
+    letterAnimations.forEach(animation => animation.cancel());
+    letterAnimations = [];
+    fitHeroWord();
+    schedule();
+  }, { passive: true });
   window.addEventListener('pageshow', schedule);
   reduced.addEventListener('change', sync);
   compact.addEventListener('change', schedule);

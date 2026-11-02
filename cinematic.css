@@ -151,3 +151,23 @@ html.motion-off .cinema-atmosphere>i{transform:none}
 /* Long skill names fit the same reserved hero space without moving the content. */
 .cinematic .cinema-word{font-size:clamp(72px,calc(20.2vw * var(--word-size,1)),calc(320px * var(--word-size,1)))}
 @media(max-width:760px){.cinematic .hero .cinema-word{font-size:calc(19vw * var(--word-size,1))}}
+/* Reference-inspired greeting, generous desktop composition and fading lettering. */
+@font-face{font-family:'Portfolio Handwriting';src:url('assets/fonts/caveat-500.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+.cinematic .hero .hero-intro{font-family:'Portfolio Handwriting','Segoe Print','Bradley Hand',cursive;font-size:clamp(38px,3.7vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.035em;text-transform:none;color:#f2efeb;margin:0 0 22px!important;transform:rotate(-7deg);transform-origin:left center}
+.cinematic .cinema-word{opacity:.72;color:#39cbb9;mask-image:linear-gradient(to bottom,#000 0%,#000 42%,#0009 78%,#0002 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 42%,#0009 78%,#0002 100%);font-size:clamp(72px,calc(20.2vw * var(--word-size,1)),calc(400px * var(--word-size,1)))}
+@media(min-width:1101px){
+ .cinematic .site-header{max-width:1920px;padding-inline:3.3%}
+ .cinematic .hero.parallax-story{max-width:1920px;padding-inline:6%;padding-top:24px}
+ .cinematic .hero .cinema-word{left:6%;right:6%;top:12%}
+ .cinematic .hero .story-panels{grid-template-columns:minmax(0,1fr) minmax(0,1.85fr) minmax(0,1fr);gap:32px}
+ .cinematic .hero .story-panel:first-child{padding-bottom:32px}
+ .cinematic .hero .cinema-facts{padding-bottom:32px;max-width:300px}
+}
+@media(max-width:760px){
+ .cinematic .hero .hero-intro{font-size:40px;line-height:1.1;margin:0 0 16px!important;transform:rotate(-6deg);transform-origin:center}
+ .cinematic .hero .cinema-word{font-size:calc(19vw * var(--word-size,1));opacity:.6}
+}
+
+/* Measure the rendered glyphs instead of assuming every letter has equal width. */
+.cinematic .hero .cinema-word{font-size:var(--hero-word-font,clamp(72px,20.2vw,400px))}
+@media(max-width:760px){.cinematic .hero .cinema-word{font-size:var(--hero-word-font,19vw)}}
