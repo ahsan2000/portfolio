@@ -25,28 +25,25 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20261009-navy-teal-v2">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20261009-navy-teal-v2">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=20261009-navy-teal-v2">
-  <script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('service-intro-pending')</script>
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-grotesk-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="devops-theme.css?v=20261020-video-cv">
   <link rel="stylesheet" href="clarity-theme.css?v=20261009-hover-card">
-  <script src="portfolio-atmosphere.js?v=20261009-navy-teal-v2" defer></script>
-  <script src="service-intro.js?v=20261009-hover-card" defer></script>
-  <script src="script.js?v=20261008-animated-underline" defer></script>
-  <script src="stack-explorer.js?v=20261007-autoplay-logos" defer></script>
+  <script src="script.js?v=20261102-ticker" defer></script>
+  <script src="stack-explorer.js?v=20261102-swipe" defer></script>
   <script src="contact-form.js?v=20261007-slider-fox" defer></script>
   <script src="section-effects.js?v=20261008" defer></script>
-  <script src="visual-effects.js?v=20261009-oneview" defer></script>
 
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
-  <script src="scroll-story.js?v=20261004-calm-hero" defer></script>
   <script src="page-mascot.js?v=20261010-full-delivery" defer></script>
+  <link rel="stylesheet" href="cinematic.css?v=20261102j">
+  <script src="cinematic.js?v=20261102l" defer></script>
 </head>
-<body class="clarity-theme">
-  <div id="portfolio-loader" role="status" aria-label="Loading portfolio">
-    <div class="loader-inner"><span class="loader-mark">AN<span></span></span><p>$ kubectl get portfolio -n ahsan-nawaz</p><div class="loader-track"><i></i></div><div class="loader-meta"><span>Preparing the experience</span><b>0%</b></div></div>
-  </div>
+<body class="clarity-theme cinematic">
+  <div class="cinema-atmosphere" aria-hidden="true"><span></span><span></span><i></i></div>
+  <div class="chapter-backdrop" aria-hidden="true"><span></span><span></span></div>
   <a class="skip-link" href="#work">Skip to selected work</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
@@ -61,62 +58,52 @@
       <span class="brand-mark"><img src="assets/portfolio-logo.svg?v=20261009-navy-teal-v2" width="42" height="42" alt="" decoding="async"></span>
       <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
-    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Contact ↗</a></nav>
+    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Let’s talk ↗</a></nav>
   </header>
 
   <main id="top">
     <div class="story-track parallax-track" id="journey">
-    <section class="hero parallax-story" aria-label="Introducing Ahsan Nawaz, Cloud and DevOps Engineer">
+    <section data-backdrop="PORTFOLIO" class="hero parallax-story" aria-labelledby="hero-title">
+      <div class="cinema-meta"><span>CLOUD &amp; DEVOPS ENGINEER<br><small>BUILD · DEPLOY · KEEP IT RUNNING</small></span><a class="availability-pill" href="#contact"><span aria-hidden="true"></span> Available for projects</a></div>
+      <div class="cinema-word" aria-hidden="true">PORTFOLIO</div>
       <div class="story-panels">
-      <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
-        <div class="availability-pill"><span aria-hidden="true"></span> Available for projects · Remote worldwide</div>
-        <p class="eyebrow hero-intro">HI, I’M AHSAN NAWAZ</p>
-        <h1 id="hero-title"><span class="hero-line">Cloud &amp; DevOps</span><span class="outline-word">Engineer.</span></h1>
-        <p class="hero-tagline">Ship with confidence.<br>Keep production running.</p>
-        <p class="hero-text">I’m a Cloud &amp; DevOps Engineer with 4+ years across banking and multi-cloud infrastructure. I design Kubernetes platforms, automate releases, and build monitoring and disaster recovery into production. I also build and launch websites and KMP apps, including OneView.</p>
-        <ul class="hero-specialties" aria-label="Core services"><li>Cloud &amp; DevOps</li><li>Websites &amp; KMP apps</li><li>From scratch to live</li></ul>
-        <div class="hero-actions">
-          <a class="button primary" href="#work"><span>View my work</span><span aria-hidden="true">↗</span></a>
-          <a class="button secondary button-shine" href="#contact">Hire me ↗</a>
-          <a class="resume-link" href="assets/Ahsan-Nawaz-DevOps-Resume.pdf?v=20261024" target="_blank" rel="noopener noreferrer" aria-label="Open Ahsan Nawaz's résumé PDF in a new tab">View résumé <span aria-hidden="true">↗</span></a>
+        <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
+          <p class="eyebrow hero-intro">HELLO, I’M</p>
+          <h1 id="hero-title">Ahsan<br> Nawaz<span class="name-dot">.</span></h1>
+          <p class="cinema-role">Cloud &amp; DevOps<br> Engineer.</p>
+          <p class="hero-text">I build cloud infrastructure, automate releases, and keep production running. 4+ years across banking and multi-cloud platforms.</p>
+          <div class="hero-actions"><a class="button primary" href="#work">Explore my work ↓</a><a class="cinema-hire" href="#contact">Let’s talk ↗</a></div>
+          <p class="cinema-location">↗ KARACHI, PAKISTAN · REMOTE WORLDWIDE</p>
         </div>
-        <p class="journey-cue">EXPLORE MY PRODUCTION WORK ↓</p>
+        <figure class="cinema-portrait">
+          <div class="portrait-frame"><img src="assets/ahsan-cutout-800.webp" srcset="assets/ahsan-cutout-480.webp 480w, assets/ahsan-cutout-800.webp 800w, assets/ahsan-cutout-1254.webp 1254w" sizes="(max-width: 760px) 80vw, 44vw" width="1254" height="1254" alt="Ahsan Nawaz, Cloud and DevOps Engineer" fetchpriority="high" decoding="async"></div>
+        </figure>
+        <aside class="cinema-facts" aria-label="Production experience">
+          <p class="cinema-motto">Ship with confidence.<br>Keep production running.</p>
+          <div><strong>4<span>+</span></strong><span>YEARS IN<br>PRODUCTION DEVOPS</span></div>
+          <div><strong>150<span>+</span></strong><span>KUBERNETES<br>NODES</span></div>
+          <div><strong class="fact-word">Multi-cloud</strong><span>INFRASTRUCTURE<br>&amp; AUTOMATION</span></div>
+          <a class="cinema-resume" href="assets/Ahsan-Nawaz-DevOps-Resume.pdf?v=20261024" target="_blank" rel="noopener noreferrer">↓ View résumé</a>
+        </aside>
       </div>
-      <aside class="hero-service-card" aria-label="How I help your team">
+      <div class="cinema-bottom"><a href="#video-cv">▷ Portfolio overview</a><a href="#work">SCROLL TO DISCOVER ↓</a><span>CLOUD · CODE · PRODUCTION</span></div>
+    </section>
+    </div>
+
+    <div class="cinema-services" data-backdrop="LET’S TALK">      <aside class="hero-service-card" aria-label="How I help your team">
         <span class="service-card-label">FROM CODE TO PRODUCTION</span>
         <h2><span class="service-title-first">Your product.</span><span class="service-title-second">From idea to live.</span></h2>
         <ol><li><span>01</span><div><strong>Build your product</strong><p>Full-stack websites and KMP applications.</p></div></li><li><span>02</span><div><strong>Take it live</strong><p>Cloud, hosting, domains, DNS, SSL, and CI/CD.</p></div></li><li><span>03</span><div><strong>Keep it reliable</strong><p>Monitoring, troubleshooting, and production support.</p></div></li></ol>
         <a href="#capabilities">Explore my services <span aria-hidden="true">↗</span></a>
-      </aside>
-      </div>
-
-    </section>
-    </div>
-
-    <section class="proof" aria-label="Experience summary">
-      <div><strong>4+ years</strong><span>Production DevOps</span></div>
-      <div><strong>150+ nodes</strong><span>Kubernetes operations</span></div>
-      <div><strong>Multi-cloud</strong><span>Major cloud platforms</span></div>
-      <div><strong>DR tested</strong><span>Login &amp; transaction flows</span></div>
-    </section>
+      </aside></div>
 
     <div class="scroll-ticker command-ticker" aria-hidden="true">
       <div class="ticker-track"><span><code><b>$</b> kubectl get pods -A</code><code><b>$</b> terraform plan</code><code><b>$</b> helm list -A</code><code><b>$</b> docker ps</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> git status</code><code><b>$</b> nginx -t</code><code><b>$</b> argocd app list</code></span><span><code><b>$</b> kubectl get pods -A</code><code><b>$</b> terraform plan</code><code><b>$</b> helm list -A</code><code><b>$</b> docker ps</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> git status</code><code><b>$</b> nginx -t</code><code><b>$</b> argocd app list</code></span></div>
     </div>
 
-    <section class="section video-cv" id="video-cv" aria-labelledby="video-cv-title">
-      <div class="video-cv-copy">
-        <p class="eyebrow">PORTFOLIO VIDEO OVERVIEW</p>
-        <h2 id="video-cv-title">My portfolio.<br> In one video.</h2>
-        <p>A slide-based overview of my Cloud &amp; DevOps experience, skills, and selected projects—all summarized in one video.</p>
-        <a class="video-cv-link" href="https://www.youtube.com/watch?v=zOjXJfv1N1g" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="video-cv-player">
-        <iframe width="1337" height="752" src="https://www.youtube.com/embed/zOjXJfv1N1g" title="Ahsan Nawaz | Multi-Cloud DevOps Engineer – Video CV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
+
+    <section data-backdrop="PROJECTS" class="section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="eyebrow">SELECTED DEVOPS WORK</p>
         <h2 id="work-title">Production systems I design and operate.</h2>
@@ -209,7 +196,7 @@
       </div>
     </section>
 
-    <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+    <section data-backdrop="LET’S TALK" class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
       <div class="section-heading compact">
         <p class="eyebrow">SERVICES</p>
         <h2 id="capabilities-title">What I can offer.</h2>
@@ -228,7 +215,7 @@
       <div class="services-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your project ↗</a></div>
     </section>
 
-    <section class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
+    <section data-backdrop="AI & LLM" class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
       <div class="section-heading compact">
         <h2 id="ai-title">AI &amp; LLM infrastructure.</h2>
         <p>AI applications need reliable platforms, secure access, monitoring, and cost control. I build and operate the infrastructure that keeps chatbots and model-serving workloads running.</p>
@@ -270,7 +257,7 @@
       <div class="services-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your AI platform ↗</a></div>
     </section>
 
-    <section class="section consulting" id="consulting" aria-labelledby="consulting-title">
+    <section data-backdrop="LET’S PLAN" class="section consulting" id="consulting" aria-labelledby="consulting-title">
       <div class="section-heading compact"><p class="eyebrow">CONSULTING &amp; REVIEWS</p><h2 id="consulting-title">A clear plan before the next infrastructure change.</h2><p>Bring an existing stack, a recurring production problem, or a new platform idea. I help you decide what to change, why it matters, and how to deliver it.</p></div>
       <div class="capability-grid services-grid">
         <div><span>01</span><h3>Architecture &amp; cloud choices</h3><p>Review major cloud providers—including AWS, Azure, GCP, and DigitalOcean—against your workloads, team, and budget. Get practical recommendations for networking, access, and deployment.</p></div>
@@ -281,7 +268,7 @@
       <div class="consultation-invite"><div><p class="eyebrow">START WITH A CONVERSATION</p><h3>A free 30-minute introductory call.</h3><p>We’ll discuss your goal, current stack, and biggest challenge. After reviewing the scope, I’ll outline recommended next steps and a proposal for the work.</p></div><a class="button primary" href="#contact-form">Request a consultation ↗</a></div>
     </section>
 
-    <section class="section approach" id="approach" aria-labelledby="approach-title">
+    <section data-backdrop="THE PROCESS" class="section approach" id="approach" aria-labelledby="approach-title">
       <div>
         <p class="eyebrow">HOW I WORK</p>
         <h2 id="approach-title">Clear scope. Tested changes. Usable handover.</h2>
@@ -293,7 +280,7 @@
       </ol>
     </section>
 
-    <section class="section experience" id="experience" aria-labelledby="experience-title">
+    <section data-backdrop="EXPERIENCE" class="section experience" id="experience" aria-labelledby="experience-title">
       <div class="section-heading compact">
         <p class="eyebrow">PROFESSIONAL EXPERIENCE</p>
         <h2 id="experience-title">4+ years across production cloud platforms.</h2>
@@ -309,10 +296,11 @@
       <p class="section-note">Freelance GKE project: deployed a microservices staging environment on an existing cluster, configuring DNS, ingress, and frontend-to-backend connectivity.</p>
     </section>
 
-    <section class="section tool-stack" id="engineering" aria-labelledby="tools-title">
+    <section data-backdrop="TECH STACK" class="section tool-stack" id="engineering" aria-labelledby="tools-title">
       <span id="stack" class="stack-anchor" aria-hidden="true"></span>
       <div class="section-heading compact"><p class="eyebrow">STACK &amp; TOOLS / 13 CATEGORIES</p><h2 id="tools-title">The tools behind your product.</h2><p>Explore my tools by engineering discipline: cloud and operations, application development, hosting, and AI platforms.</p></div>
       <div class="stack-explorer" role="group" aria-label="Engineering stack explorer">
+        <p class="stack-swipe-hint">Swipe left or right to explore skills ↔</p>
         <div class="stack-tabs" role="tablist" aria-label="Engineering disciplines">
           <button type="button" class="stack-tab" id="stack-tab-0" role="tab" aria-selected="true" aria-controls="stack-panel-0" tabindex="0"><span>01</span> Cloud</button>
           <button type="button" class="stack-tab" id="stack-tab-1" role="tab" aria-selected="false" aria-controls="stack-panel-1" tabindex="-1"><span>02</span> IaC &amp; automation</button>
@@ -446,7 +434,7 @@
       </div>
     </section>
 
-    <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
+    <section data-backdrop="THE PIPELINE" class="section architecture" id="architecture" aria-labelledby="architecture-title">
       <div class="section-heading compact">
         <p class="eyebrow">SANITIZED REFERENCE ARCHITECTURE</p>
         <h2 id="architecture-title">One continuous path from idea to production.</h2>
@@ -461,7 +449,19 @@
       </div>
     </section>
 
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <section data-backdrop="IN MOTION" class="section video-cv" id="video-cv" aria-labelledby="video-cv-title">
+      <div class="video-cv-copy">
+        <p class="eyebrow">PORTFOLIO VIDEO OVERVIEW</p>
+        <h2 id="video-cv-title">My portfolio.<br> In one video.</h2>
+        <p>A slide-based overview of my Cloud &amp; DevOps experience, skills, and selected projects—all summarized in one video.</p>
+        <a class="video-cv-link" href="https://www.youtube.com/watch?v=zOjXJfv1N1g" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="video-cv-player">
+        <iframe width="1337" height="752" src="https://www.youtube.com/embed/zOjXJfv1N1g" title="Ahsan Nawaz | Multi-Cloud DevOps Engineer – Video CV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section data-backdrop="LET’S TALK" class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="section-heading compact">
         <p class="eyebrow">CONTACT</p>
         <h2 id="contact-title">Let’s build, launch, or improve your product.</h2>
@@ -497,6 +497,7 @@
         </div>
       </div>
     </section>
+
 
   </main>
 

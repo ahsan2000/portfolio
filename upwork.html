@@ -28,13 +28,15 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="devops-theme.css?v=20261020-video-cv">
-  <script src="script.js?v=20261008-animated-underline" defer></script>
-  <script src="visual-effects.js?v=20261008-auto-motion" defer></script>
+  <script src="script.js?v=20261102-ticker" defer></script>
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
-  <script src="scroll-story.js?v=20261004-calm-hero" defer></script>
   <script src="page-mascot.js?v=20261010-full-delivery" defer></script>
+  <link rel="stylesheet" href="cinematic.css?v=20261102j">
+  <script src="cinematic.js?v=20261102l" defer></script>
 </head>
-<body>
+<body class="clarity-theme cinematic">
+  <div class="cinema-atmosphere" aria-hidden="true"><span></span><span></span><i></i></div>
+  <div class="chapter-backdrop" aria-hidden="true"><span></span><span></span></div>
   <a class="skip-link" href="#work">Skip to selected work</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
         <div class="cloud-stage parallax-world">
@@ -54,52 +56,46 @@
       <a href="#work">Selected work</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#approach">Approach</a>
+      <a class="nav-contact" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a">Let’s talk ↗</a>
     </nav>
   </header>
 
   <main id="top">
     <div class="story-track parallax-track" id="journey">
-    <section class="hero parallax-story" aria-label="DevOps engineering journey">
+    <section data-backdrop="PORTFOLIO" class="hero parallax-story" aria-labelledby="hero-title">
+      <div class="cinema-meta"><span>CLOUD &amp; DEVOPS ENGINEER<br><small>BUILD · DEPLOY · KEEP IT RUNNING</small></span><a class="availability-pill" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a"><span aria-hidden="true"></span> Available for projects</a></div>
+      <div class="cinema-word" aria-hidden="true">PORTFOLIO</div>
       <div class="story-panels">
-      <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
-        <div class="availability-pill"><span aria-hidden="true"></span> Available for projects · Remote worldwide</div>
-        <p class="eyebrow">DEVOPS ENGINEER · KARACHI, PAKISTAN</p>
-        <h1 id="hero-title"><span class="hero-line">From commit.</span><span class="outline-word">To cloud.</span><span class="hero-line hero-line-final">Built to keep running.</span></h1>
-        <p class="hero-text">I’m a Cloud &amp; DevOps Engineer with 4+ years of production experience across Kubernetes and major cloud platforms. I also build full-stack websites and Kotlin Multiplatform (KMP) apps, and manage domains, DNS, hosting, and SSL—from scratch to live. Available remotely worldwide.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#work">View production work</a>
-          <a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer">Hire me on Upwork</a>
+        <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
+          <p class="eyebrow hero-intro">HELLO, I’M</p>
+          <h1 id="hero-title">Ahsan<br> Nawaz<span class="name-dot">.</span></h1>
+          <p class="cinema-role">Cloud &amp; DevOps<br> Engineer.</p>
+          <p class="hero-text">I build cloud infrastructure, automate releases, and keep production running. 4+ years across banking and multi-cloud platforms.</p>
+          <div class="hero-actions"><a class="button primary" href="#work">Explore my work ↓</a><a class="cinema-hire" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a">Hire on Upwork ↗</a></div>
+          <p class="cinema-location">↗ KARACHI, PAKISTAN · REMOTE WORLDWIDE</p>
         </div>
+        <figure class="cinema-portrait">
+          <div class="portrait-frame"><img src="assets/ahsan-cutout-800.webp" srcset="assets/ahsan-cutout-480.webp 480w, assets/ahsan-cutout-800.webp 800w, assets/ahsan-cutout-1254.webp 1254w" sizes="(max-width: 760px) 80vw, 44vw" width="1254" height="1254" alt="Ahsan Nawaz, Cloud and DevOps Engineer" fetchpriority="high" decoding="async"></div>
+        </figure>
+        <aside class="cinema-facts" aria-label="Production experience">
+          <p class="cinema-motto">Ship with confidence.<br>Keep production running.</p>
+          <div><strong>4<span>+</span></strong><span>YEARS IN<br>PRODUCTION DEVOPS</span></div>
+          <div><strong>150<span>+</span></strong><span>KUBERNETES<br>NODES</span></div>
+          <div><strong class="fact-word">Multi-cloud</strong><span>INFRASTRUCTURE<br>&amp; AUTOMATION</span></div>
+          <a class="cinema-resume" href="assets/Ahsan-Nawaz-DevOps-Resume.pdf?v=20261024" target="_blank" rel="noopener noreferrer">↓ View résumé</a>
+        </aside>
       </div>
-      </div>
-
+      <div class="cinema-bottom"><a href="#video-cv">▷ Portfolio overview</a><a href="#work">SCROLL TO DISCOVER ↓</a><span>CLOUD · CODE · PRODUCTION</span></div>
     </section>
     </div>
-
-    <section class="proof" aria-label="Experience summary">
-      <div><strong>4+ years</strong><span>Production DevOps</span></div>
-      <div><strong>150+ nodes</strong><span>Kubernetes operations</span></div>
-      <div><strong>Multi-cloud</strong><span>Major cloud platforms</span></div>
-      <div><strong>DR tested</strong><span>Login &amp; transaction flows</span></div>
-    </section>
 
     <div class="scroll-ticker command-ticker" aria-hidden="true">
       <div class="ticker-track"><span><code><b>$</b> aws sts get-caller-identity</code><code><b>$</b> kubectl get pods -A</code><code><b>$</b> kubectl logs -f deployment/api</code><code><b>$</b> az account show</code><code><b>$</b> kubectl describe node</code><code><b>$</b> helm list -A</code><code><b>$</b> gcloud compute instances list</code><code><b>$</b> docker ps</code><code><b>$</b> docker compose ps</code><code><b>$</b> rabbitmqctl list_queues name messages consumers</code><code><b>$</b> terraform plan</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> ollama ls</code><code><b>$</b> git status</code><code><b>$</b> systemctl status nginx</code><code><b>$</b> aws eks list-clusters</code><code><b>$</b> journalctl -u nginx -f</code><code><b>$</b> tail -f /var/log/syslog</code><code><b>$</b> az aks list</code><code><b>$</b> ss -tuln</code><code><b>$</b> df -h</code><code><b>$</b> gcloud container clusters list</code><code><b>$</b> free -h</code><code><b>$</b> top</code><code><b>$</b> rabbitmqctl status</code><code><b>$</b> ps aux</code><code><b>$</b> ip route</code><code><b>$</b> ollama ps</code><code><b>$</b> dig oneviewportfolio.com</code><code><b>$</b> curl -I https://oneviewportfolio.com</code><code><b>$</b> grep -i error app.log</code><code><b>$</b> find /var/log -name &quot;*.log&quot;</code><code><b>$</b> uptime</code><code><b>$</b> nginx -t</code><code><b>$</b> docker node ls</code><code><b>$</b> systemctl status rke2-server</code><code><b>$</b> aws cloudformation list-stacks</code><code><b>$</b> cdk diff</code><code><b>$</b> curl -I https://harbor.example.com/v2/</code><code><b>$</b> kubectl get volumes.longhorn.io -n longhorn-system</code><code><b>$</b> gh run list</code><code><b>$</b> glab pipeline list</code><code><b>$</b> curl -I https://jenkins.example.com/login</code><code><b>$</b> curl -I https://bitbucket.org</code><code><b>$</b> argocd app list</code><code><b>$</b> curl https://sonarqube.example.com/api/system/status</code><code><b>$</b> curl http://localhost:3000/api/health</code><code><b>$</b> promtool check config prometheus.yml</code><code><b>$</b> curl http://localhost:9200/_cluster/health</code><code><b>$</b> kubectl get pods -n logging</code><code><b>$</b> sentry-cli info</code><code><b>$</b> journalctl -p warning -n 50</code><code><b>$</b> kafka-topics.sh --bootstrap-server localhost:9092 --list</code><code><b>$</b> pg_isready</code><code><b>$</b> psql -c &quot;SELECT version();&quot;</code><code><b>$</b> mongosh --eval &quot;db.runCommand({ ping: 1 })&quot;</code><code><b>$</b> mysqladmin ping</code><code><b>$</b> redis-cli ping</code><code><b>$</b> keydb-cli ping</code><code><b>$</b> kubectl get ingress -A</code><code><b>$</b> Get-Service W3SVC</code><code><b>$</b> dotnet --info</code><code><b>$</b> Get-WinEvent -LogName System -MaxEvents 10</code><code><b>$</b> Get-Process</code><code><b>$</b> bash -n deploy.sh</code><code><b>$</b> python3 --version</code><code><b>$</b> go version</code></span><span><code><b>$</b> aws sts get-caller-identity</code><code><b>$</b> kubectl get pods -A</code><code><b>$</b> kubectl logs -f deployment/api</code><code><b>$</b> az account show</code><code><b>$</b> kubectl describe node</code><code><b>$</b> helm list -A</code><code><b>$</b> gcloud compute instances list</code><code><b>$</b> docker ps</code><code><b>$</b> docker compose ps</code><code><b>$</b> rabbitmqctl list_queues name messages consumers</code><code><b>$</b> terraform plan</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> ollama ls</code><code><b>$</b> git status</code><code><b>$</b> systemctl status nginx</code><code><b>$</b> aws eks list-clusters</code><code><b>$</b> journalctl -u nginx -f</code><code><b>$</b> tail -f /var/log/syslog</code><code><b>$</b> az aks list</code><code><b>$</b> ss -tuln</code><code><b>$</b> df -h</code><code><b>$</b> gcloud container clusters list</code><code><b>$</b> free -h</code><code><b>$</b> top</code><code><b>$</b> rabbitmqctl status</code><code><b>$</b> ps aux</code><code><b>$</b> ip route</code><code><b>$</b> ollama ps</code><code><b>$</b> dig oneviewportfolio.com</code><code><b>$</b> curl -I https://oneviewportfolio.com</code><code><b>$</b> grep -i error app.log</code><code><b>$</b> find /var/log -name &quot;*.log&quot;</code><code><b>$</b> uptime</code><code><b>$</b> nginx -t</code><code><b>$</b> docker node ls</code><code><b>$</b> systemctl status rke2-server</code><code><b>$</b> aws cloudformation list-stacks</code><code><b>$</b> cdk diff</code><code><b>$</b> curl -I https://harbor.example.com/v2/</code><code><b>$</b> kubectl get volumes.longhorn.io -n longhorn-system</code><code><b>$</b> gh run list</code><code><b>$</b> glab pipeline list</code><code><b>$</b> curl -I https://jenkins.example.com/login</code><code><b>$</b> curl -I https://bitbucket.org</code><code><b>$</b> argocd app list</code><code><b>$</b> curl https://sonarqube.example.com/api/system/status</code><code><b>$</b> curl http://localhost:3000/api/health</code><code><b>$</b> promtool check config prometheus.yml</code><code><b>$</b> curl http://localhost:9200/_cluster/health</code><code><b>$</b> kubectl get pods -n logging</code><code><b>$</b> sentry-cli info</code><code><b>$</b> journalctl -p warning -n 50</code><code><b>$</b> kafka-topics.sh --bootstrap-server localhost:9092 --list</code><code><b>$</b> pg_isready</code><code><b>$</b> psql -c &quot;SELECT version();&quot;</code><code><b>$</b> mongosh --eval &quot;db.runCommand({ ping: 1 })&quot;</code><code><b>$</b> mysqladmin ping</code><code><b>$</b> redis-cli ping</code><code><b>$</b> keydb-cli ping</code><code><b>$</b> kubectl get ingress -A</code><code><b>$</b> Get-Service W3SVC</code><code><b>$</b> dotnet --info</code><code><b>$</b> Get-WinEvent -LogName System -MaxEvents 10</code><code><b>$</b> Get-Process</code><code><b>$</b> bash -n deploy.sh</code><code><b>$</b> python3 --version</code><code><b>$</b> go version</code></span></div>
     </div>
 
-    <section class="section video-cv" id="video-cv" aria-labelledby="video-cv-title">
-      <div class="video-cv-copy">
-        <p class="eyebrow">PORTFOLIO VIDEO OVERVIEW</p>
-        <h2 id="video-cv-title">My portfolio.<br> In one video.</h2>
-        <p>A slide-based overview of my Cloud &amp; DevOps experience, skills, and selected projects—all summarized in one video.</p>
-        <a class="video-cv-link" href="https://www.youtube.com/watch?v=zOjXJfv1N1g" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="video-cv-player">
-        <iframe width="1337" height="752" src="https://www.youtube.com/embed/zOjXJfv1N1g" title="Ahsan Nawaz | Multi-Cloud DevOps Engineer – Video CV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
+
+    <section data-backdrop="PROJECTS" class="section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="eyebrow">SELECTED PRODUCTION WORK</p>
         <h2 id="work-title">Top production projects I have worked on</h2>
@@ -149,7 +145,7 @@
       </div>
     </section>
 
-    <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+    <section data-backdrop="LET’S TALK" class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
       <div class="section-heading compact">
         <p class="eyebrow">SERVICES</p>
         <h2 id="capabilities-title">What I can offer.</h2>
@@ -169,7 +165,7 @@
       <div class="services-actions"><a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a">Discuss your project ↗</a></div>
     </section>
 
-    <section class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
+    <section data-backdrop="AI & LLM" class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
       <div class="section-heading compact">
         <p class="eyebrow">$ kubectl get nodes -n ai</p>
         <h2 id="ai-title">AI &amp; LLM infrastructure.</h2>
@@ -212,7 +208,7 @@
       <div class="services-actions"><a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a">Discuss your AI platform ↗</a></div>
     </section>
 
-    <section class="section approach" id="approach" aria-labelledby="approach-title">
+    <section data-backdrop="THE PROCESS" class="section approach" id="approach" aria-labelledby="approach-title">
       <div><p class="eyebrow">HOW I WORK</p><h2 id="approach-title">Clear scope. Tested changes. Usable handover.</h2></div>
       <ol>
         <li><span>01</span><div><strong>Understand</strong><p>Review the stack, current failure or goal, access boundaries, and target date.</p></div></li>
@@ -221,7 +217,7 @@
       </ol>
     </section>
 
-    <section class="section tool-stack" id="engineering" aria-labelledby="tools-title">
+    <section data-backdrop="TECH STACK" class="section tool-stack" id="engineering" aria-labelledby="tools-title">
       <div class="section-heading compact"><p class="eyebrow">STACK &amp; TOOLS</p><h2 id="tools-title">The tools I work with</h2></div>
       <dl class="tool-groups">
         <div tabindex="0"><dt>Cloud platforms</dt><dd>Cloud infrastructure and managed services.<ul class="stack-tools" aria-label="Cloud platforms tools"><li><span class="stack-icon tone-0 has-logo brand-amazonwebservices" aria-hidden="true"><img loading="lazy" src="assets/tools/amazonwebservices.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>AWS</strong><span>Cloud infrastructure</span></div></li><li><span class="stack-icon tone-1 has-logo brand-azure" aria-hidden="true"><img loading="lazy" src="assets/tools/azure.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Azure</strong><span>Cloud infrastructure &amp; services</span></div></li><li><span class="stack-icon tone-2 has-logo brand-googlecloud" aria-hidden="true"><img loading="lazy" src="assets/tools/googlecloud.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Google Cloud</strong><span>Cloud infrastructure &amp; services</span></div></li><li><span class="stack-icon tone-0 has-logo brand-digitalocean" aria-hidden="true"><img loading="lazy" src="assets/tools/digitalocean.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>DigitalOcean</strong><span>Application infrastructure</span></div></li></ul></dd></div>
@@ -240,6 +236,17 @@
       </dl>
     </section>
 
+    <section data-backdrop="IN MOTION" class="section video-cv" id="video-cv" aria-labelledby="video-cv-title">
+      <div class="video-cv-copy">
+        <p class="eyebrow">PORTFOLIO VIDEO OVERVIEW</p>
+        <h2 id="video-cv-title">My portfolio.<br> In one video.</h2>
+        <p>A slide-based overview of my Cloud &amp; DevOps experience, skills, and selected projects—all summarized in one video.</p>
+        <a class="video-cv-link" href="https://www.youtube.com/watch?v=zOjXJfv1N1g" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="video-cv-player">
+        <iframe width="1337" height="752" src="https://www.youtube.com/embed/zOjXJfv1N1g" title="Ahsan Nawaz | Multi-Cloud DevOps Engineer – Video CV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
   </main>
 
   <footer><span>© 2026 Ahsan Nawaz</span><span class="footer-note"><span>Engineering reliability. Innovating remotely.</span><span class="footer-availability">Available worldwide.</span></span></footer>

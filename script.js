@@ -97,7 +97,7 @@ if (skillsTicker) {
     while (skillsTicker.children.length < copies) skillsTicker.append(originalGroup.cloneNode(true));
     while (skillsTicker.children.length > copies) skillsTicker.lastElementChild.remove();
     skillsTicker.style.setProperty('--ticker-distance', `${unitWidth}px`);
-    skillsTicker.style.setProperty('--ticker-duration', `${unitWidth / 45}s`);
+    skillsTicker.style.setProperty('--ticker-duration', `${unitWidth / 60}s`);
     skillsTicker.classList.add('ticker-measured');
   };
   const tickerResize = new ResizeObserver(() => {
