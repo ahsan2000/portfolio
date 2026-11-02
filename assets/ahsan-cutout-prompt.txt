@@ -1,1 +1,0 @@
-Built-in image_gen edit; background-extraction. Remove only the blue studio background from the supplied portrait. Preserve face, identity, hair, expression, pose, navy jacket and shirt, lighting, and square framing. Actual transparent alpha background; natural hair edges. No text or added objects. Responsive WebP exports: 480, 800, 1254 pixels.
