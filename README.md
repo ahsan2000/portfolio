@@ -38,7 +38,9 @@ The main page submits through FormSubmit to `productsbyahsan@gmail.com`. Inbox d
 
 ## Deployment
 
-The site uses GitHub Pages. Publish the updated files and rerun PageSpeed Insights to measure deployed performance.
+The site uses GitHub Pages with the repository root as its publishing source. Keep the empty `.nojekyll` file in the root so Pages serves the static HTML, CSS, and JavaScript directly. This also prevents Jekyll from parsing reference Markdown files such as `prompt.md` as Liquid templates.
+
+Commit and push `.nojekyll` with the site updates, then check that the GitHub Pages deployment succeeds. Rerun PageSpeed Insights to measure deployed performance.
 
 ## Attribution and license
 
