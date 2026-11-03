@@ -39,14 +39,15 @@
   };
   const scheduleHint = (delay, reminder = false) => {
     clearTimeout(hintTimer);
+    if (!matchMedia('(max-width: 760px)').matches) return;
     if (reminder ? reminderShown : invitationShown) return;
     hintTimer = setTimeout(() => {
-      if (button.hidden || document.hidden || !bubble.hidden) return;
-      hintLabel.textContent = aiActive ? 'Talk AI infrastructure? 🤖' : reminder ? 'One more head pat? 🥺' : 'A little head pat? 🥺';
+      if (docked || button.hidden || document.hidden || !bubble.hidden) return;
+      hintLabel.textContent = aiActive ? 'Tap for an AI summary 🤖' : 'Pat me for a section summary 🦊';
       hint.hidden = false;
       if (reminder) reminderShown = true;
       else invitationShown = true;
-      hintTimer = setTimeout(dismissHint, 8000);
+      hintTimer = setTimeout(dismissHint, mobileScreen.matches ? 3000 : 5000);
     }, delay);
   };
   const showHintWhenReady = () => {
@@ -98,18 +99,14 @@
     reaction.hidden = true;
     dismissHint();
     hideMessage();
-    if (active && !button.hidden) {
-      message.textContent = aiMessages[0];
-      bubble.hidden = false;
-      messageTimer = setTimeout(hideMessage, 8000);
-    }
+
   };
   let lastMessage = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   let timer;
   let messageTimer;
-  let nextAutoMessage = performance.now();
+  let nextAutoMessage = performance.now() + 1000;
   const mobileScreen = matchMedia('(max-width: 760px)');
   const messageBreak = () => mobileScreen.matches
     ? 8000 + Math.random() * 2000
@@ -118,6 +115,7 @@
     clearTimeout(messageTimer);
     bubble.hidden = true;
     nextAutoMessage = performance.now() + messageBreak();
+    if (!docked && greeted) scheduleHint(1200);
   };
   const frame = (element, index) => {
     element.style.backgroundPosition = `${index % 3 * 50}% ${Math.floor(index / 3) * 50}%`;
@@ -130,6 +128,8 @@
   let lastContactLine = '';
   const contactLines = {
     idle: ['Say hi! Tell me what you’re building.', 'Got a cloud puzzle? I like those. Tell me below!', 'A little hello could start a big project. I’m listening!', 'You write the brief. I’ll supervise the send button.'],
+    writing: ['Tell me your goal and where you need help.', 'A few project details will help me reply.'],
+    sliding: ['Slide all the way to unlock Send.'],
     ready: ['All set! Your message is cleared for takeoff.', 'Ready when you are. One click and we’re off!', 'The slide is done. Time to say hello!'],
     sending: ['Your hello is on its way to my inbox… paws crossed!', 'Your message is on its way. I’m watching the inbox route!', 'Sending now! Even a fox has to wait for the network.', 'Tiny paws, important delivery. Sending your message…'],
     error: ['The network got shy. Your words are safe here—try again!', 'Delivery wasn’t confirmed. Keep your message and give it another go.'],
@@ -139,7 +139,7 @@
     if (button.hidden) return;
     dismissHint();
     const lines = contactLines[state] || contactLines.idle;
-    const choices = lines.filter(line => line !== lastContactLine);
+    const choices = lines.filter(line => lines.length === 1 || line !== lastContactLine);
     lastContactLine = choices[Math.floor(Math.random() * choices.length)];
     message.textContent = lastContactLine;
     bubble.hidden = false;
@@ -175,46 +175,101 @@
       contactObserver.observe(contactForm.parentElement);
     }
     contactForm.addEventListener('focusin', () => moveToForm(true));
+    let writingPromptAt = -Infinity;
+    contactForm.addEventListener('input', event => {
+      if (!event.target.matches('input:not([type=range]), textarea') || performance.now() - writingPromptAt < 8000) return;
+      writingPromptAt = performance.now();
+      contactState = 'writing';
+      if (docked) showContactLine(contactState);
+    });
+    contactForm.querySelector('input[type=range]')?.addEventListener('input', event => {
+      if (Number(event.target.value) >= 100 || contactState === 'sliding') return;
+      contactState = 'sliding';
+      if (docked) showContactLine(contactState);
+    });
+    contactForm.querySelector('input[type=range]')?.addEventListener('pointerdown', () => {
+      contactState = 'sliding';
+      if (docked) showContactLine(contactState);
+    });
     window.addEventListener('portfolio-contact-state', event => {
       contactState = event.detail.state;
       if (docked) showContactLine(contactState);
     });
   }
-  // Greet once after loading, then leave a real 3–4 second gap between bubbles.
+  // Desktop commentary follows the current section; mobile adds a pat-to-summarize prompt.
   const greetings = [
     'Hey there! I build reliable infrastructure—and accept head pats. Welcome to my portfolio! 🦊',
     'Welcome aboard! Cloud, websites, apps, and launches ahead. Head pats also accepted. 🦊',
     'Hey! Looking for a DevOps engineer? You’re in the right place. Let’s build something! 🦊'
   ];
-  const scrollLines = [
-    'Infrastructure stuck? I can help untangle it. Want a free 30-minute call?',
-    'Cloud bill looking spicy? Let’s talk through your setup together.',
-    'Still deploying by hand? Your weekend deserves better. Let me help!',
-    'Kubernetes acting mysterious? Bring the puzzle to a free 30-minute consultation.',
-    'Got a website or app idea? Ahsan can help from scratch to live.',
-    'Need a second pair of eyes on your architecture? I’m one message away.',
-    'Your next release could use fewer surprises. Shall we talk?',
-    'DNS tangled? SSL acting up? Ahsan can help. I supervise with paws.'
-  ];
   let greeted = false;
-  let lastScrollLine = '';
+  const summarizedSections = new Set();
+  let lastAutoLine = "";
   const sectionLines = {
-    journey: ['Meet Ahsan: Cloud & DevOps Engineer, website and KMP app builder, and your launch partner.', 'I handle the head pats. Ahsan handles the deployments.', 'Welcome! Follow my paws from code to cloud.'],
-    work: ['These are real production contributions. Open a project to see Ahsan’s role.', 'Behind every smooth app is infrastructure doing the heavy lifting.', 'Production stories ahead. My favorite kind of bedtime reading.'],
-    'bank-digital': ['Banking infrastructure needs dependable releases and disaster recovery.', 'Keeping banking workloads steady is serious business. I just bring the paws.', 'Cluster stability, Linux, and networking: the quiet work behind the app.'],
-    digimate: ['DigiMate runs on Azure infrastructure with automated delivery and monitoring.', 'An AI assistant still needs a dependable place to live.', 'AKS, logs, and alerts. Even chatbots need a good support crew.'],
-    tekrevol: ['At TekRevol, Ahsan automated delivery across web, mobile, and backend workloads.', 'Manual deployments? My paws prefer pipelines.', 'Docker, Jenkins, and quality checks keep this release train moving.'],
-    'rise-up-kings': ['Repeatable AWS releases helped deliver changes and urgent hotfixes.', 'Hotfixes should be quick. Production should stay calm.', 'A good pipeline gives the team one less thing to worry about.'],
-    oneview: ['OneView’s app, website, domain, hosting, DNS, and SSL—all handled by Ahsan.', 'Stocks, funds, and pensions together. I track treats in a separate portfolio.', 'Private local storage. This fox approves of keeping your data close.'],
-    capabilities: ['Cloud, CI/CD, websites, KMP apps, domains, and hosting: pick your starting point.', 'An idea, a half-built website, or a launch problem? Ahsan can help.', 'A little automation can rescue a lot of weekends.'],
-    'ai-infrastructure': ['AI applications need secure endpoints, monitoring, and reliable model serving.', 'A clever model still needs a sensible production home.', 'RAG, inference, and observability. The drone is on infrastructure duty.'],
-    consulting: ['Bring your cloud challenge to a conversation with Ahsan.', 'Sometimes a fresh pair of eyes is the best debugging tool. Paws optional.', 'Architecture puzzle? Let’s find the first useful step.'],
-    approach: ['Plan, build, automate, and operate: a practical path to production.', 'Measure twice. Deploy once. Then watch the dashboards.', 'Good runbooks are love letters to your future on-call self.'],
-    experience: ['Explore Ahsan’s engineering experience and production responsibilities.', 'Four-plus years of production lessons. Plenty of coffee along the way.', 'Reliable systems come from practice, not just tool logos.'],
-    engineering: ['Explore the tools by discipline: cloud, delivery, web, mobile, hosting, and AI.', 'Model serving has its own AI category. Even this fox likes an organized toolbox.', 'Kotlin for apps. DNS for domains. Paws for moral support.'],
-    architecture: ['Follow the delivery flow from commit through checks to production.', 'A pipeline is a conveyor belt with better quality control.', 'Build, verify, deploy. My release process is sniff, inspect, nap.'],
-    contact: ['Tell Ahsan what you’re building and where you need help.', 'Your project brief is welcome here. So are head pats.', 'Need a website, an app, or cloud help? One hello gets us started.']
-  };
+    "journey": [
+        "Welcome! I build cloud infrastructure, websites, and apps. Have something in mind? Send me a message.",
+        "From your first idea to launch, I can help connect the pieces. Tell me what you’re building."
+    ],
+    "work": [
+        "Explore my production contributions and the role I played. Need help with a similar setup? Let’s talk.",
+        "Behind every smooth app is dependable infrastructure. Want help with yours? Send me a message."
+    ],
+    "bank-digital": [
+        "Banking workloads need dependable releases and disaster recovery. Need help planning yours? Let’s talk.",
+        "Cluster stability, Linux, and networking keep things running. Facing a similar challenge? Message me."
+    ],
+    "digimate": [
+        "DigiMate brings Azure, automated delivery, and monitoring together. Building an AI service? Let’s talk infrastructure.",
+        "Even a clever chatbot needs a reliable home. Need help with AKS, logs, or alerts? Send me a message."
+    ],
+    "tekrevol": [
+        "At TekRevol, I automated delivery for web, mobile, and backend workloads. Want a smoother pipeline? Let’s talk.",
+        "Docker, Jenkins, and quality checks keep releases moving. Need that for your team? Message me."
+    ],
+    "rise-up-kings": [
+        "Repeatable AWS releases helped deliver changes and hotfixes. Want a similar delivery flow? Let’s talk.",
+        "Hotfixes should be quick and repeatable. Need help automating your releases? Send me a message."
+    ],
+    "oneview": [
+        "OneView is my side project, from app to website and hosting. Have a product idea of your own? Let’s talk.",
+        "An app needs more than code: DNS, hosting, and SSL matter too. Need help getting yours live? Message me."
+    ],
+    "capabilities": [
+        "Cloud, CI/CD, websites, apps, and hosting: choose your starting point. Tell me where you need help.",
+        "Have an idea, a half-built website, or a launch problem? Send me a message and we’ll find the next step."
+    ],
+    "ai-infrastructure": [
+        "AI apps need secure endpoints, monitoring, and reliable serving. Building one? Let’s plan its infrastructure.",
+        "RAG, inference, and observability belong together. Need help connecting them? Send me a message."
+    ],
+    "consulting": [
+        "Have a cloud or architecture puzzle? Tell me what’s happening and we can work through the next step.",
+        "A fresh pair of eyes can help untangle a tricky setup. Send me a message about your challenge."
+    ],
+    "approach": [
+        "Plan, build, automate, and operate: that’s my approach. Want help taking your project through those steps? Let’s talk.",
+        "Good pipelines and runbooks make releases easier. Need help putting them in place? Message me."
+    ],
+    "experience": [
+        "Explore my production experience and responsibilities. Looking for this kind of help on your team? Let’s talk.",
+        "Reliable systems take hands-on practice. Need a DevOps engineer for your next challenge? Send me a message."
+    ],
+    "engineering": [
+        "Explore my tools for cloud, delivery, apps, and AI. Need help choosing or connecting your stack? Let’s talk.",
+        "The right tools should make your work easier. Tell me what you’re building and where you’re stuck."
+    ],
+    "architecture": [
+        "Follow the flow from commit to checks and production. Want a pipeline like this? Send me a message.",
+        "Build, verify, deploy, and monitor. Need help connecting that flow for your team? Let’s talk."
+    ],
+    "video-cv": [
+        "Watch a quick introduction to my work and approach. Think we could work together? Send me a message."
+    ],
+    "contact": [
+        "Tell me what you’re building and where you need help. A few project details are a great start.",
+        "Need a website, an app, or cloud help? Send me your idea and let’s find the next step."
+    ]
+};
   let activeSection = 'journey';
   const contextualBlocks = Object.keys(sectionLines).map(id => document.getElementById(id)).filter(Boolean);
   const updateSection = () => {
@@ -233,32 +288,41 @@
     if (!docked && !button.hidden) {
       dismissHint();
       hideMessage();
-      nextAutoMessage = performance.now() + 1200;
+      dismissHint();
+      nextAutoMessage = performance.now() + 1800;
+      invitationShown = false;
     }
   };
   let sectionFrame = 0;
   const scheduleSection = () => {
     if (!sectionFrame) sectionFrame = requestAnimationFrame(() => { sectionFrame = 0; updateSection(); });
   };
-  window.addEventListener('scroll', scheduleSection, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!docked && !bubble.hidden) hideMessage();
+    nextAutoMessage = performance.now() + 1800;
+    scheduleSection();
+  }, { passive: true });
+  document.addEventListener('focusin', event => {
+    if (!companion.contains(event.target) && !docked) hideMessage();
+  });
   window.addEventListener('resize', scheduleSection, { passive: true });
   window.addEventListener('pageshow', scheduleSection);
   updateSection();
   const checkAutoMessage = () => {
-    if (document.hidden || button.hidden || !bubble.hidden || !hint.hidden
+    if (docked || (mobileScreen.matches && greeted && summarizedSections.has(activeSection))
+      || document.activeElement?.matches('input, textarea, select')
+      || document.hidden || button.hidden || !bubble.hidden || !hint.hidden
       || performance.now() < nextAutoMessage || document.querySelector('#portfolio-loader')) return;
-    if (greeted && docked) {
-      showContactLine(contactState);
-      return;
-    }
-    const lines = sectionLines[activeSection] || (aiActive ? aiMessages : greetings);
-    const choices = lines.filter(line => line !== lastScrollLine);
-    lastScrollLine = choices[Math.floor(Math.random() * choices.length)];
-    message.textContent = onUpwork ? lastScrollLine.replace('free 30-minute call', 'chat on Upwork').replace('free 30-minute consultation', 'chat on Upwork') : lastScrollLine;
+    const lines = greeted ? (sectionLines[activeSection] || greetings) : greetings;
+    const choices = lines.filter(line => lines.length === 1 || line !== lastAutoLine);
+    lastAutoLine = choices[Math.floor(Math.random() * choices.length)];
+    message.textContent = lastAutoLine;
+    if (greeted || activeSection === 'journey') summarizedSections.add(activeSection);
     greeted = true;
+    dismissHint();
     bubble.hidden = false;
     clearTimeout(messageTimer);
-    messageTimer = setTimeout(hideMessage, 8000);
+    messageTimer = setTimeout(hideMessage, mobileScreen.matches ? 2000 : 8000);
   };
   let autoMessageTimer = setInterval(checkAutoMessage, 250);
   window.addEventListener('scroll', checkAutoMessage, { passive: true });
@@ -282,7 +346,7 @@
     if (docked) showContactLine(contactState);
     // Pick randomly from every message except the one currently displayed.
     const activeMessages = sectionLines[activeSection] || (aiActive ? aiMessages : messages);
-    const choices = activeMessages.map((_, index) => index).filter(index => index !== lastMessage);
+    const choices = activeMessages.map((_, index) => index).filter(index => activeMessages.length === 1 || index !== lastMessage);
     lastMessage = choices[Math.floor(Math.random() * choices.length)];
     if (!docked) message.textContent = activeMessages[lastMessage];
     bubble.hidden = false;
@@ -290,7 +354,7 @@
     messageTimer = setTimeout(() => {
       if (bubble.contains(document.activeElement)) button.focus();
       hideMessage();
-    }, 8000);
+    }, docked ? 8000 : mobileScreen.matches ? 3000 : 5000);
     clearTimeout(timer);
     direction.hidden = false;
     reaction.hidden = aiActive || !reactionReady;
