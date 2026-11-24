@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-labelledby="title">
+  <title id="title">OneView icon</title>
+  <rect width="108" height="108" rx="27" fill="#0b342a"/>
+  <path d="M54 18 87 36v36L54 90 21 72V36Z" fill="none" stroke="#3b8c69" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M31 43 47 30v48m0-29 15 29 17-42" fill="none" stroke="#78d6a6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="47" cy="49" r="5" fill="#f4c44e"/>
+</svg>

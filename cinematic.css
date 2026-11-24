@@ -177,3 +177,14 @@ html.motion-off .cinema-atmosphere>i{transform:none}
  .cinematic .site-header.is-compact{row-gap:0}
  .cinematic .site-header.is-compact .theme-nav{grid-row:1}
 }
+
+/* Wide service overview with a compact vertical rhythm. */
+.cinematic .cinema-services{max-width:1230px;margin-block:20px}
+.cinematic .cinema-services .hero-service-card{padding:16px 32px}
+.cinematic .cinema-services .hero-service-card h2{margin:8px 0 12px}
+.cinematic .cinema-services .hero-service-card li{padding:10px 0}
+.cinematic .cinema-services .hero-service-card>a{margin-top:0;padding-top:8px;min-height:44px}
+@media(max-width:760px){
+ .cinematic .cinema-services .hero-service-card{padding:16px 20px}
+ .cinematic .cinema-services .hero-service-card h2{font-size:24px}
+}

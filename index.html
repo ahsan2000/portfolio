@@ -29,8 +29,8 @@
   <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-grotesk-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="devops-theme.css?v=20261118-github">
-  <link rel="stylesheet" href="clarity-theme.css?v=20261009-hover-card">
+  <link rel="stylesheet" href="devops-theme.css?v=20261124-buttons">
+  <link rel="stylesheet" href="clarity-theme.css?v=20261124-card-fix">
   <script src="script.js?v=20261102-ticker" defer></script>
   <script src="stack-explorer.js?v=20261102-swipe" defer></script>
   <script src="contact-form.js?v=20261007-slider-fox" defer></script>
@@ -38,7 +38,7 @@
 
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
   <script src="page-mascot.js?v=20261103-section-contact" defer></script>
-  <link rel="stylesheet" href="cinematic.css?v=20261102o">
+  <link rel="stylesheet" href="cinematic.css?v=20261124-wide-short-services">
   <script src="portfolio-atmosphere.js?v=20261102-loader" defer></script>
   <script src="cinematic.js?v=20261102o" defer></script>
 </head>
@@ -62,7 +62,7 @@
       <span class="brand-mark"><img src="assets/portfolio-logo.svg?v=20261009-navy-teal-v2" width="42" height="42" alt="" decoding="async"></span>
       <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
-    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Let’s talk ↗</a></nav>
+    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#side-projects">Side Projects</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Let’s talk ↗</a></nav>
   </header>
 
   <main id="top">
@@ -160,42 +160,37 @@
             <a href="https://www.riseupkings.com/" target="_blank" rel="noopener noreferrer" aria-label="View Rise Up Kings public platform in a new tab">View public platform <span aria-hidden="true">↗</span></a>
           </div>
         </article>
-        <article class="project-card product-feature" id="oneview">
-          <div class="product-story">
-            <div class="project-number">05 · INDEPENDENT PRODUCT</div>
-            <div class="project-content">
-              <p class="project-type">Independent product · App &amp; website · Personal finance</p>
-              <h3>OneView</h3>
-              <p class="product-lead">The app, the website, and the launch—built and managed by me.</p>
-              <dl class="case-study"><div><dt>Challenge</dt><dd>Investment records spread across statements and asset types make it difficult to see the whole portfolio.</dd></div><div><dt>My work</dt><dd>Built the app and product website, purchased the domain and hosting, and managed DNS, SSL, deployment, and launch. The Android tracker includes on-device statement import, performance tracking, and private local storage.</dd></div><div><dt>Outcome</dt><dd>OneView brings stocks, mutual funds, and pension investments together in one view, with biometric protection, backup, and restore.</dd></div></dl>
-              <ul>
-                <li>Complete product ownership: app, website, domain, hosting, DNS, and SSL</li>
-                <li>On-device PDF, CSV, TXT, and scanned-statement import</li>
-                <li>Portfolio performance, allocation, dividends, and activity</li>
-                <li>Private local storage, biometric lock, backup, and restore</li>
-              </ul>
-              <div class="product-actions">
-                <a href="https://oneviewportfolio.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore the live OneView product website in a new tab">Explore OneView <span aria-hidden="true">↗</span></a>
-                <span>Independent product · Launched 2026</span>
-              </div>
-            </div>
+
+      </div>
+
+
+    </section>
+
+    <section data-backdrop="SIDE PROJECTS" class="section side-projects" id="side-projects" aria-labelledby="side-projects-title">
+      <div class="section-heading">
+        <p class="eyebrow">SIDE PROJECTS · PERSONAL IDEAS</p>
+        <h2 id="side-projects-title">Built After Hours.</h2>
+        <p>A little curiosity, a real-world problem, and something of my own. Personal apps I build beyond my Cloud &amp; DevOps work.</p>
+      </div>
+      <div class="side-project-grid">
+        <article class="side-project-card" id="oneview">
+          <div class="side-project-header">
+            <img class="side-project-icon" src="assets/oneview-mark.svg" width="48" height="48" alt="" loading="lazy" decoding="async">
+            <div><p class="side-project-category">PERSONAL FINANCE</p><h3>OneView</h3></div>
+            <span class="side-project-tag">App &amp; web</span>
           </div>
-          <div class="product-visual" aria-hidden="true">
-            <div class="product-orbit orbit-one">STOCKS · FUNDS · PENSION ·</div>
-            <div class="product-orbit orbit-two">PRIVATE · CLEAR · ONE VIEW ·</div>
-            <div class="phone-shell">
-              <div class="phone-speaker"></div>
-              <div class="app-top"><span>OneView</span><i>•••</i></div>
-              <small>TOTAL PORTFOLIO</small>
-              <strong>Rs 4,284,500</strong>
-              <div class="app-change">↗ 12.4% total return</div>
-              <div class="mini-chart"><i></i></div>
-              <div class="app-allocation"><span><i></i>Stocks</span><b>54%</b></div>
-              <div class="app-allocation"><span><i></i>Mutual funds</span><b>31%</b></div>
-              <div class="app-allocation"><span><i></i>Pension</span><b>15%</b></div>
-            </div>
-            <div class="product-badge">BUILT &amp; SHIPPED<br><strong>BY AHSAN</strong></div>
+          <p>Your investments, in one view. A personal portfolio tracker for stocks, mutual funds, and pensions, with on-device statement imports and private local storage.</p>
+          <div class="side-project-links"><a href="https://oneviewportfolio.com/" target="_blank" rel="noopener noreferrer">Explore OneView</a><span>Personal side project</span></div>
+        </article>
+        <article class="side-project-card" id="skipflow">
+          <div class="side-project-header">
+            <img class="side-project-icon" src="assets/skipflow-icon.svg" width="48" height="48" alt="" loading="lazy" decoding="async">
+            <div><p class="side-project-category">EVERYDAY AUTOMATION</p><h3>SkipFlow</h3></div>
+            <span class="side-project-tag">Android</span>
           </div>
+          <p>Less tapping, keep watching. Automatically taps available Skip ad buttons in YouTube and YouTube Music, with optional volume control and floating pause / resume.</p>
+          <p class="side-project-note">Android 8.0+ · Requires Accessibility access.</p>
+          <div class="side-project-links"><a href="https://github.com/ahsan2000/SkipFlow/releases/latest" target="_blank" rel="noopener noreferrer">Download APK</a><a href="https://github.com/ahsan2000/SkipFlow" target="_blank" rel="noopener noreferrer">GitHub &amp; setup</a></div>
         </article>
       </div>
 
@@ -270,7 +265,7 @@
         </div>
       </div>
       <div class="ai-experience"><span class="ai-status">PRODUCTION EXPERIENCE</span><p>I designed and deployed the infrastructure for <strong>AL Habib DigiMate</strong>, the bank’s live AI chatbot: Azure AKS, VMs, App Service, MongoDB, Redis, logging, and private networking. My work also included RAG setup and model configuration in Microsoft Foundry, with Ollama experience on the project.</p><a href="#digimate">Explore my DigiMate work ↗</a></div>
-      <div class="services-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your AI platform ↗</a></div>
+      <div class="services-actions ai-section-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your AI platform ↗</a></div>
     </section>
 
     <section data-backdrop="LET’S PLAN" class="section consulting" id="consulting" aria-labelledby="consulting-title">
