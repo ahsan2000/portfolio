@@ -1,0 +1,78 @@
+/* Layout integration only; Sakuga's drawing and reaction code stays upstream. */
+sakuga-button{vertical-align:middle;max-width:100%}
+sakuga-button.sakuga-link{margin:4px 8px 10px 0}
+sakuga-button::part(button){max-width:100%;box-sizing:border-box;white-space:normal}
+.hero-actions sakuga-button,.services-actions sakuga-button{flex:0 1 auto}
+.contact-platforms>sakuga-button{display:block;margin:12px 0}
+.contact-platforms>sakuga-button::part(button){width:100%;text-align:left}
+.github-callout>sakuga-button{flex-shrink:1}
+sakuga-button :is(.platform-button-label){display:inline-flex;align-items:center;gap:10px}
+sakuga-button .platform-button-logo{max-height:24px;object-fit:contain}
+#send-slider{display:block;--sk-slider-width:100%;width:100%;max-width:100%;margin-top:38px;margin-bottom:8px}
+.send-check-heading>#send-slider-label{color:var(--text);font-size:14px}
+.form-submit-row{padding-top:8px}
+/* Keep small utility controls compact while preserving the component's effects. */
+sakuga-button:is(.ai-motion-toggle,.stack-arrow,.stack-play,#scene-toggle){padding:0;border:0;background:none;box-shadow:none;height:auto;width:auto}
+sakuga-button:is(.ai-motion-toggle,.stack-arrow,.stack-play,#scene-toggle)::part(button){font-size:14px;padding:10px 14px}
+@media(max-width:480px){sakuga-button::part(button){font-size:16px;padding:12px 18px}.github-callout>sakuga-button{width:100%}.github-callout>sakuga-button::part(button){width:100%}}
+/* Portfolio palette supplied through Sakuga's supported theme variables. */
+:root{--sk-card:#142238;--sk-ink:#f7f9fc;--sk-dim:#b9c5d6;--sk-soft:#20334d;--sk-pri:#5eead4;--sk-pri-ink:#082f2a;--sk-acc:#5eead4;--sk-track:#20334d;--sk-r:7px;--sk-bw:1px;--sk-sh:none;--sk-btn-sh:none;--sk-btn-line:#5eead4;--sk-alt-sh:none;--sk-alt-line:#ffffff40;--sk-tick:#5eead4;--sk-fill:#5eead4}
+sakuga-button::part(button){font-family:inherit;font-style:normal;font-weight:650;font-size:14px;line-height:1.4;padding:12px 18px;min-height:44px;letter-spacing:0}
+sakuga-button:not([variant="secondary"]),sakuga-button.nav-contact{--sk-card:#5eead4;--sk-ink:#082f2a;--sk-btn-line:#5eead4;--sk-alt-line:#5eead4;--sk-acc:#082f2a}
+sakuga-button::part(button):focus-visible{outline:2px solid #5eead4;outline-offset:4px}
+.cinematic .theme-nav sakuga-button.nav-contact{margin:0;background:transparent;padding:0;border:0}
+.cinematic .theme-nav sakuga-button.nav-contact::part(button){padding:10px 20px;font-size:14px}
+.form-row>sakuga-input{display:block;min-width:0;width:100%;--sk-input-width:100%}
+sakuga-input::before{content:attr(label);display:block;color:var(--text);font-size:.85rem;margin-bottom:.5rem}
+sakuga-input::part(input){box-sizing:border-box;color:var(--text);font-family:inherit;font-weight:400;min-height:48px}
+sakuga-input:focus-within::part(input){outline:2px solid #5eead4;outline-offset:3px}
+@media(max-width:760px){.cinematic .theme-nav sakuga-button.nav-contact::part(button){font-size:11px;padding:10px 12px}.hero-actions sakuga-button::part(button){font-size:11px;padding:10px 12px}.hero-actions sakuga-button.sakuga-link{margin-right:0}}
+/* Align slotted labels and their arrows on one row, including branded CTAs. */
+sakuga-button::part(button){display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:Inter,system-ui,sans-serif;border-radius:7px}
+.contact-platforms>sakuga-button::part(button){display:flex;justify-content:space-between;min-height:52px}
+sakuga-button .platform-button-label{display:inline-flex;min-width:0;gap:12px}
+sakuga-button .platform-button-label+span{flex:0 0 auto;margin-left:auto}
+.contact-platforms>sakuga-button{margin:12px 0}
+sakuga-button[data-href*="upwork.com"]{--sk-card:#14a800;--sk-ink:#052b00;--sk-alt-line:#14a800}
+sakuga-button[data-href*="upwork.com"] .platform-button-logo{filter:brightness(0)}
+sakuga-button[data-href*="linkedin.com"]{--sk-card:#0a66c2;--sk-ink:#fff;--sk-alt-line:#0a66c2}
+sakuga-button[data-href*="hubstafftalent.net"]{--sk-card:#294dff;--sk-ink:#fff;--sk-alt-line:#294dff}
+sakuga-button[data-href*="arc.dev"]{--sk-card:#000;--sk-ink:#fff;--sk-alt-line:#666}
+sakuga-button[data-href*="arc.dev"] .platform-button-logo{width:64px;flex-basis:64px}
+sakuga-button.sakuga-link:hover::part(button){box-shadow:0 4px 18px #5eead426;border-color:#5eead4}
+.cinematic .hero .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:auto;max-width:100%}
+.cinematic .hero .hero-actions>sakuga-button{flex:0 1 auto;width:auto;margin:0;min-width:0}
+.cinematic .hero .hero-actions>sakuga-button::part(button){min-height:46px;padding:12px 16px;font-size:13px}
+sakuga-button.hero-explore,sakuga-button.hero-talk{--sk-card:#5eead4;--sk-ink:#082f2a;--sk-alt-line:#5eead4;--sk-alt-sh:0 4px 18px #5eead426}
+sakuga-button.hero-talk{--sk-card:#142238;--sk-ink:#5eead4;--sk-alt-line:#5eead480;--sk-alt-sh:none}
+/* The scroll container holds all 13 categories without widening the page. */
+.stack-tabs.sakuga-tab-scroll{display:block;max-width:100%;min-width:0;overflow-x:auto;padding:20px 8px 8px;scroll-padding:8px}
+#skill-tabs{display:inline-block;width:max-content;min-width:100%;margin-top:0;--sk-card:#142238;--sk-ink:#b9c5d6}
+#skill-tabs::part(tabs){border-color:#ffffff24;background:#142238;box-shadow:none}
+#skill-tabs::part(tab){color:#f7f9fc;font:600 13px/1.4 Inter,system-ui,sans-serif;min-height:48px;padding:12px 18px;border-left-color:#ffffff24}
+#skill-tabs::part(tab):focus-visible{outline:2px solid #5eead4;outline-offset:-3px;border-radius:6px}
+#skill-tabs::part(indicator){background:#203f47;border-color:#5eead4;border-width:2px}
+@media(max-width:760px){.cinematic .hero .hero-actions{justify-content:center;gap:10px}.cinematic .hero .hero-actions>sakuga-button::part(button){font-size:12px;padding:10px 14px}#skill-tabs::part(tab){padding:12px 14px}}
+.sakuga-button-content{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%}
+.clarity-theme sakuga-button[data-href*="upwork.com"] .platform-button-logo{filter:brightness(0)}
+/* A compact consultation callout with a clear, prominent action. */
+.cinematic .consultation-invite{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;padding:20px 24px;margin-top:24px}
+.cinematic .consultation-invite>div{max-width:640px}
+.cinematic .consultation-invite .eyebrow{margin:0 0 6px}
+.cinematic .consultation-invite h3{margin:0 0 8px}
+.cinematic .consultation-invite p:not(.eyebrow){margin:0;font-size:15px;line-height:1.6}
+.cinematic .consultation-invite>sakuga-button{margin:0;justify-self:end;--sk-card:#5eead4;--sk-ink:#082f2a;--sk-alt-line:#5eead4;--sk-r:10px;--sk-alt-sh:0 4px 14px #5eead420}
+.cinematic .consultation-invite>sakuga-button::part(button){padding:12px 18px;border-radius:10px;font-weight:700}
+/* Custom elements do not match :disabled; remove the legacy outer button skin. */
+body.cinematic #contact-submit{display:inline-block;padding:0;margin:0;background:transparent;border:0;border-radius:12px;box-shadow:none;overflow:visible;color:inherit;opacity:1;--sk-r:12px}
+body.cinematic #contact-submit::before{content:none;display:none}
+body.cinematic #contact-submit::part(button){border-radius:12px;padding:13px 22px;min-height:48px;font-weight:700;opacity:1;box-shadow:0 3px 12px #5eead422;transition:opacity .2s ease,box-shadow .2s ease}
+body.cinematic #contact-submit[disabled]{--sk-card:#68bdb0;--sk-ink:#082f2a;--sk-btn-line:#7fd3c6}
+body.cinematic #contact-submit[disabled]::part(button){opacity:.82;box-shadow:none;cursor:not-allowed}
+body.cinematic #contact-submit:not([disabled]):hover::part(button){box-shadow:0 5px 18px #5eead43b}
+@media(max-width:820px){.cinematic .consultation-invite{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px}.cinematic .consultation-invite>sakuga-button{justify-self:start}}
+@media(max-width:480px){.cinematic .consultation-invite{padding:18px;gap:14px}.cinematic .consultation-invite>sakuga-button{width:100%}.cinematic .consultation-invite>sakuga-button::part(button){width:100%}}
+@media(prefers-reduced-motion:reduce){body.cinematic #contact-submit::part(button){transition:none}}
+/* Match the AI platform action to the consultation callout. */
+.cinematic .ai-section-actions>sakuga-button{margin:0;--sk-card:#5eead4;--sk-ink:#082f2a;--sk-alt-line:#5eead4;--sk-r:10px;--sk-alt-sh:0 4px 14px #5eead420}
+.cinematic .ai-section-actions>sakuga-button::part(button){padding:12px 18px;border-radius:10px;font-weight:700}

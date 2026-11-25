@@ -1,7 +1,9 @@
-(() => {
+(async () => {
   const explorer = document.querySelector('.stack-explorer');
   if (!explorer) return;
-  const tabs = [...explorer.querySelectorAll('.stack-tab')];
+  await customElements.whenDefined('sakuga-tabs');
+  const tabControl = explorer.querySelector('sakuga-tabs');
+  const tabs = [...tabControl.shadowRoot.querySelectorAll('[role="tab"]')];
   const panels = [...explorer.querySelectorAll('.stack-panel')];
   const play = explorer.querySelector('.stack-play');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,9 +25,8 @@
   const pause = () => { playing = false; stopTimer(); updateControl(); };
   function select(index, focus = false) {
     active = (index + tabs.length) % tabs.length;
-    tabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === active));
-      tab.tabIndex = i === active ? 0 : -1;
+    if (tabControl.selected !== active) tabControl.selected = active;
+    panels.forEach((panel, i) => {
       panels[i].hidden = i !== active;
       panels[i].classList.remove('stack-enter');
     });
@@ -37,18 +38,15 @@
     explorer.querySelector('.stack-current').textContent = String(active + 1).padStart(2, '0');
     explorer.style.setProperty('--stack-progress', `${(active + 1) / tabs.length * 100}%`);
     const tab = tabs[active];
-    const strip = tab.parentElement;
-    strip.scrollTo({ left: tab.offsetLeft - strip.offsetLeft - (strip.clientWidth - tab.clientWidth) / 2, behavior: motion.matches || document.documentElement.classList.contains('motion-off') ? 'instant' : 'smooth' });
+    const strip = explorer.querySelector('.sakuga-tab-scroll');
+    strip.scrollTo({ left: strip.scrollLeft + tab.getBoundingClientRect().left - strip.getBoundingClientRect().left - (strip.clientWidth - tab.clientWidth) / 2, behavior: motion.matches || document.documentElement.classList.contains('motion-off') ? 'instant' : 'smooth' });
     if (focus) tab.focus({ preventScroll: true });
   }
   const navigate = index => { select(index); schedule(); };
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => navigate(i));
-    tab.addEventListener('keydown', event => {
-      const index = event.key === 'ArrowRight' ? active + 1 : event.key === 'ArrowLeft' ? active - 1 : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : null;
-      if (index === null) return;
-      event.preventDefault(); pause(); select(index, true);
-    });
+  tabControl.addEventListener('change', event => navigate(event.detail.index));
+  // Sakuga owns arrow/Home/End keyboard selection and the landing effects.
+  tabControl.addEventListener('keydown', event => {
+    if (['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) pause();
   });
   explorer.querySelector('.stack-prev').addEventListener('click', () => navigate(active - 1));
   explorer.querySelector('.stack-next').addEventListener('click', () => navigate(active + 1));
@@ -63,7 +61,7 @@
   // Native vertical scrolling stays available; only deliberate horizontal gestures switch layers.
   let swipe = null;
   explorer.addEventListener('pointerdown', event => {
-    if (event.pointerType !== 'touch' || !event.isPrimary || !event.target.closest('.stack-panel') || event.target.closest('a,button,input,select,textarea')) return;
+    if (event.pointerType !== 'touch' || !event.isPrimary || !event.target.closest('.stack-panel') || event.target.closest('a,button,input,select,textarea,sakuga-button,sakuga-input')) return;
     swipe = { id: event.pointerId, x: event.clientX, y: event.clientY, time: performance.now() };
     explorer.setPointerCapture(event.pointerId);
     stopTimer();

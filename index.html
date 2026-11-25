@@ -32,9 +32,15 @@
   <link rel="stylesheet" href="devops-theme.css?v=20261124-buttons">
   <link rel="stylesheet" href="clarity-theme.css?v=20261124-card-fix">
   <script src="script.js?v=20261102-ticker" defer></script>
-  <script src="stack-explorer.js?v=20261102-swipe" defer></script>
-  <script src="contact-form.js?v=20261007-slider-fox" defer></script>
+  <script src="stack-explorer.js?v=20261125-sakuga-tabs" defer></script>
+  <script src="contact-form.js?v=20261125-sakuga-input" defer></script>
   <script src="section-effects.js?v=20261008" defer></script>
+  <script src="button.js?v=20261125" defer></script>
+  <script src="slider.js?v=20261125" defer></script>
+  <script src="input.js?v=20261125" defer></script>
+  <script src="tabs.js?v=20261125" defer></script>
+  <link rel="stylesheet" href="sakuga-portfolio.css?v=20261125-ai-cta">
+  <script src="sakuga-portfolio.js?v=20261125-input" defer></script>
 
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
   <script src="page-mascot.js?v=20261103-section-contact" defer></script>
@@ -56,13 +62,13 @@
     <canvas id="cloud-scene" aria-label="Three-dimensional cloud infrastructure, Kubernetes network, and deployment pipeline" role="img"></canvas>
   </div>
   <div class="parallax-scrim" aria-hidden="true"></div>
-  <div class="scene-controls background-controls"><button id="scene-toggle" type="button" aria-pressed="false">Pause motion</button><span>BACKGROUND MOTION</span></div>
+  <div class="scene-controls background-controls"><sakuga-button variant="secondary" id="scene-toggle" type="button" aria-pressed="false">Pause motion</sakuga-button><span>BACKGROUND MOTION</span></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Ahsan Nawaz portfolio home">
       <span class="brand-mark"><img src="assets/portfolio-logo.svg?v=20261009-navy-teal-v2" width="42" height="42" alt="" decoding="async"></span>
       <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
-    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><a class="nav-contact" href="#contact">Let’s talk ↗</a></nav>
+    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><sakuga-button variant="secondary" class="sakuga-link nav-contact" data-href="#contact">Let’s talk ↗</sakuga-button></nav>
   </header>
 
   <main id="top">
@@ -76,7 +82,7 @@
           <h1 id="hero-title">Ahsan<br> Nawaz<span class="name-dot">.</span></h1>
           <p class="cinema-role">Cloud &amp; DevOps<br> Engineer.</p>
           <p class="hero-text">I build cloud infrastructure, automate releases, and keep production running. 4+ years across banking and multi-cloud platforms.</p>
-          <div class="hero-actions"><a class="button primary" href="#work">Explore my work ↓</a><a class="cinema-hire" href="#contact">Let’s talk ↗</a></div>
+          <div class="hero-actions"><sakuga-button variant="secondary" class="sakuga-link hero-explore" data-href="#work">Explore my work ↓</sakuga-button><sakuga-button variant="secondary" class="sakuga-link hero-talk" data-href="#contact">Let’s talk ↗</sakuga-button></div>
           <p class="cinema-location">↗ KARACHI, PAKISTAN · REMOTE WORLDWIDE</p>
         </div>
         <figure class="cinema-portrait">
@@ -200,10 +206,10 @@
           <h3 id="github-work-title">Explore more of my work on GitHub.</h3>
           <p>Go beyond the highlights. Browse my public repositories, explore the code, and follow what I’m building next.</p>
         </div>
-        <a class="button secondary github-callout-link" href="https://github.com/ahsan2000" target="_blank" rel="noopener noreferrer" aria-label="Explore Ahsan Nawaz’s work on GitHub (opens in a new tab)">
+        <sakuga-button variant="secondary" class="sakuga-link" data-href="https://github.com/ahsan2000" data-target="_blank" data-rel="noopener noreferrer" aria-label="Explore Ahsan Nawaz’s work on GitHub (opens in a new tab)">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.63 0c2.15-1.45 3.1-1.15 3.1-1.15.61 1.55.23 2.7.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.03.76 2.08v3.09c0 .3.2.65.77.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
           Explore my GitHub <span aria-hidden="true">↗</span>
-        </a>
+        </sakuga-button>
       </aside>
     </section>
 
@@ -223,7 +229,7 @@
         <div><span>07</span><h3>Domains, DNS &amp; SSL</h3><p>Help with domain purchase and configuration, DNS records, and SSL certificates. Work with any domain registrar or hosting provider—including Namecheap, GoDaddy, and Hostinger—to connect your domain and enable HTTPS.</p></div>
         <div><span>08</span><h3>Hosting &amp; launch</h3><p>Choose and configure hosting with any provider, connect your website or app, and verify the live setup. Get help with a fresh launch, a hosting migration, or ongoing maintenance.</p></div>
       </div>
-      <div class="services-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your project ↗</a></div>
+      <div class="services-actions"><sakuga-button variant="secondary" class="sakuga-link" data-href="#contact-form">Discuss your project ↗</sakuga-button></div>
     </section>
 
     <section data-backdrop="AI & LLM" class="section ai-infrastructure" id="ai-infrastructure" aria-labelledby="ai-title">
@@ -233,7 +239,7 @@
       </div>
       <div class="ai-layout">
         <div class="ai-diagram">
-          <div class="ai-diagram-heading"><span>EXAMPLE / LLM APP IN PRODUCTION</span><button class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</button></div>
+          <div class="ai-diagram-heading"><span>EXAMPLE / LLM APP IN PRODUCTION</span><sakuga-button variant="secondary" class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</sakuga-button></div>
           <div class="ai-network-scroll" tabindex="0" role="region" aria-label="AI architecture diagram; scroll horizontally on small screens"><svg class="ai-network" viewBox="0 0 700 285" role="group" aria-label="Interactive example AI application architecture">
 <rect class="ai-security-zone" x="140" y="57" width="550" height="215" rx="14"/><text class="ai-zone-label" x="152" y="48">SECURITY · GUARDRAILS · DATA PRIVACY</text>
 <path class="ai-connection" d="M98 140H152"/>
@@ -265,7 +271,7 @@
         </div>
       </div>
       <div class="ai-experience"><span class="ai-status">PRODUCTION EXPERIENCE</span><p>I designed and deployed the infrastructure for <strong>AL Habib DigiMate</strong>, the bank’s live AI chatbot: Azure AKS, VMs, App Service, MongoDB, Redis, logging, and private networking. My work also included RAG setup and model configuration in Microsoft Foundry, with Ollama experience on the project.</p><a href="#digimate">Explore my DigiMate work ↗</a></div>
-      <div class="services-actions ai-section-actions"><a class="button secondary button-shine" href="#contact-form">Discuss your AI platform ↗</a></div>
+      <div class="services-actions ai-section-actions"><sakuga-button variant="secondary" class="sakuga-link" data-href="#contact-form">Discuss your AI platform ↗</sakuga-button></div>
     </section>
 
     <section data-backdrop="LET’S PLAN" class="section consulting" id="consulting" aria-labelledby="consulting-title">
@@ -276,7 +282,7 @@
         <div><span>03</span><h3>Cost &amp; reliability review</h3><p>Identify resource waste, bottlenecks, and single points of failure. Prioritize improvements to performance, recovery, and production stability.</p></div>
         <div><span>04</span><h3>Release &amp; security review</h3><p>Review manual deployment steps, quality checks, rollback paths, and access controls. Get a plan for repeatable delivery with fewer operational risks.</p></div>
       </div>
-      <div class="consultation-invite"><div><p class="eyebrow">START WITH A CONVERSATION</p><h3>A free 30-minute introductory call.</h3><p>We’ll discuss your goal, current stack, and biggest challenge. After reviewing the scope, I’ll outline recommended next steps and a proposal for the work.</p></div><a class="button primary" href="#contact-form">Request a consultation ↗</a></div>
+      <div class="consultation-invite"><div><p class="eyebrow">START WITH A CONVERSATION</p><h3>A free 30-minute introductory call.</h3><p>We’ll discuss your goal, current stack, and biggest challenge. After reviewing the scope, I’ll outline recommended next steps and a proposal for the work.</p></div><sakuga-button variant="secondary" class="sakuga-link" data-href="#contact-form">Request a consultation ↗</sakuga-button></div>
     </section>
 
     <section data-backdrop="THE PROCESS" class="section approach" id="approach" aria-labelledby="approach-title">
@@ -312,22 +318,24 @@
       <div class="section-heading compact"><p class="eyebrow">STACK &amp; TOOLS / 13 CATEGORIES</p><h2 id="tools-title">The tools behind your product.</h2><p>Explore my tools by engineering discipline: cloud and operations, application development, hosting, and AI platforms.</p></div>
       <div class="stack-explorer" role="group" aria-label="Engineering stack explorer">
         <p class="stack-swipe-hint">Swipe left or right to explore skills ↔</p>
-        <div class="stack-tabs" role="tablist" aria-label="Engineering disciplines">
-          <button type="button" class="stack-tab" id="stack-tab-0" role="tab" aria-selected="true" aria-controls="stack-panel-0" tabindex="0"><span>01</span> Cloud</button>
-          <button type="button" class="stack-tab" id="stack-tab-1" role="tab" aria-selected="false" aria-controls="stack-panel-1" tabindex="-1"><span>02</span> IaC &amp; automation</button>
-          <button type="button" class="stack-tab" id="stack-tab-2" role="tab" aria-selected="false" aria-controls="stack-panel-2" tabindex="-1"><span>03</span> Containers</button>
-          <button type="button" class="stack-tab" id="stack-tab-3" role="tab" aria-selected="false" aria-controls="stack-panel-3" tabindex="-1"><span>04</span> CI/CD &amp; GitOps</button>
-          <button type="button" class="stack-tab" id="stack-tab-4" role="tab" aria-selected="false" aria-controls="stack-panel-4" tabindex="-1"><span>05</span> Observability</button>
-          <button type="button" class="stack-tab" id="stack-tab-5" role="tab" aria-selected="false" aria-controls="stack-panel-5" tabindex="-1"><span>06</span> Security &amp; quality</button>
-          <button type="button" class="stack-tab" id="stack-tab-6" role="tab" aria-selected="false" aria-controls="stack-panel-6" tabindex="-1"><span>07</span> Databases</button>
-          <button type="button" class="stack-tab" id="stack-tab-7" role="tab" aria-selected="false" aria-controls="stack-panel-7" tabindex="-1"><span>08</span> Messaging</button>
-          <button type="button" class="stack-tab" id="stack-tab-8" role="tab" aria-selected="false" aria-controls="stack-panel-8" tabindex="-1"><span>09</span> Systems</button>
-          <button type="button" class="stack-tab" id="stack-tab-9" role="tab" aria-selected="false" aria-controls="stack-panel-9" tabindex="-1"><span>10</span> Web development</button>
-          <button type="button" class="stack-tab" id="stack-tab-10" role="tab" aria-selected="false" aria-controls="stack-panel-10" tabindex="-1"><span>11</span> Mobile &amp; KMP</button>
-          <button type="button" class="stack-tab" id="stack-tab-11" role="tab" aria-selected="false" aria-controls="stack-panel-11" tabindex="-1"><span>12</span> Domains &amp; hosting</button>
-          <button type="button" class="stack-tab" id="stack-tab-12" role="tab" aria-selected="false" aria-controls="stack-panel-12" tabindex="-1"><span>13</span> AI platforms</button>
+        <div class="stack-tabs sakuga-tab-scroll">
+          <sakuga-tabs id="skill-tabs" label="Engineering disciplines">
+            <option value="stack-panel-0">Cloud</option>
+            <option value="stack-panel-1">IaC &amp; automation</option>
+            <option value="stack-panel-2">Containers</option>
+            <option value="stack-panel-3">CI/CD &amp; GitOps</option>
+            <option value="stack-panel-4">Observability</option>
+            <option value="stack-panel-5">Security &amp; quality</option>
+            <option value="stack-panel-6">Databases</option>
+            <option value="stack-panel-7">Messaging</option>
+            <option value="stack-panel-8">Systems</option>
+            <option value="stack-panel-9">Web development</option>
+            <option value="stack-panel-10">Mobile &amp; KMP</option>
+            <option value="stack-panel-11">Domains &amp; hosting</option>
+            <option value="stack-panel-12">AI platforms</option>
+          </sakuga-tabs>
         </div>
-        <div class="stack-panel" id="stack-panel-0" role="tabpanel" aria-labelledby="stack-tab-0" tabindex="0">
+        <div class="stack-panel" id="stack-panel-0" role="tabpanel" aria-label="Cloud" tabindex="0">
           <div class="stack-layer"><div class="stack-number">01<span>/ 13</span></div><h3>Cloud platforms</h3><p>Cloud infrastructure and managed services.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>AWS production provisioning, Azure banking AI infrastructure, and GKE staging delivery.</p><a href="#bank-digital">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Cloud platforms tools">
             <li><span class="stack-icon tone-0 has-logo brand-amazonwebservices" aria-hidden="true"><img loading="lazy" src="assets/tools/amazonwebservices.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>AWS</strong><span>Cloud infrastructure</span></div></li>
@@ -336,7 +344,7 @@
             <li><span class="stack-icon tone-0 has-logo brand-digitalocean" aria-hidden="true"><img loading="lazy" src="assets/tools/digitalocean.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>DigitalOcean</strong><span>Application infrastructure</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-1" role="tabpanel" aria-labelledby="stack-tab-1" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-1" role="tabpanel" aria-label="IaC &amp; automation" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">02<span>/ 13</span></div><h3>Infrastructure as code &amp; configuration</h3><p>Provision and configure repeatable environments.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Infrastructure provisioning and configuration automation across my cloud work.</p><a href="#tekrevol">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Infrastructure as code &amp; configuration tools">
             <li><span class="stack-icon tone-0 has-logo brand-terraform" aria-hidden="true"><img loading="lazy" src="assets/tools/terraform.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Terraform</strong><span>Infrastructure as code</span></div></li>
@@ -345,7 +353,7 @@
             <li><span class="stack-icon tone-0 has-logo brand-amazonwebservices" aria-hidden="true"><img loading="lazy" src="assets/tools/amazonwebservices.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>AWS CDK</strong><span>Infrastructure in code</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-2" role="tabpanel" aria-labelledby="stack-tab-2" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-2" role="tabpanel" aria-label="Containers" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">03<span>/ 13</span></div><h3>Containers &amp; orchestration</h3><p>Build, package, and operate containerized workloads.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>150+ node Kubernetes operations at Teresol; Helm platform components at Bank AL Habib.</p><a href="#bank-digital">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Containers &amp; orchestration tools">
             <li><span class="stack-icon tone-0 has-logo brand-kubernetes" aria-hidden="true"><img loading="lazy" src="assets/tools/kubernetes.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Kubernetes</strong><span>RKE2 · AKS · EKS · GKE</span></div></li>
@@ -355,7 +363,7 @@
             <li><span class="stack-icon tone-1 has-logo brand-longhorn" aria-hidden="true"><img loading="lazy" src="assets/tools/longhorn.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Longhorn</strong><span>Persistent cluster storage</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-3" role="tabpanel" aria-labelledby="stack-tab-3" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-3" role="tabpanel" aria-label="CI/CD &amp; GitOps" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">04<span>/ 13</span></div><h3>Source control, CI/CD &amp; GitOps</h3><p>Version changes and automate the release lifecycle.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Automated delivery for web, mobile, and backend workloads.</p><a href="#tekrevol">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Source control, CI/CD &amp; GitOps tools">
             <li><span class="stack-icon tone-2 has-logo brand-git" aria-hidden="true"><img loading="lazy" src="assets/tools/git.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Git</strong><span>Version control</span></div></li>
@@ -366,7 +374,7 @@
             <li><span class="stack-icon tone-1 has-logo brand-argocd" aria-hidden="true"><img loading="lazy" src="assets/tools/argocd.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Argo CD</strong><span>Staging GitOps delivery</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-4" role="tabpanel" aria-labelledby="stack-tab-4" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-4" role="tabpanel" aria-label="Observability" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">05<span>/ 13</span></div><h3>Monitoring, logging &amp; observability</h3><p>Understand system health through metrics, logs, and errors.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Dashboards, alerts, logging, and production troubleshooting for banking and AI workloads.</p><a href="#digimate">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Monitoring, logging &amp; observability tools">
             <li><span class="stack-icon tone-0 has-logo brand-grafana" aria-hidden="true"><img loading="lazy" src="assets/tools/grafana.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Grafana</strong><span>Dashboards &amp; visibility</span></div></li>
@@ -376,7 +384,7 @@
             <li><span class="stack-icon tone-1 has-logo brand-sentry" aria-hidden="true"><img loading="lazy" src="assets/tools/sentry.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Sentry</strong><span>Application error tracking</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-5" role="tabpanel" aria-labelledby="stack-tab-5" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-5" role="tabpanel" aria-label="Security &amp; quality" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">06<span>/ 13</span></div><h3>Security &amp; code quality</h3><p>Review code quality and surface security issues.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Quality gates, vulnerability scanning, and security event monitoring.</p><a href="#capabilities">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Security &amp; code quality tools">
             <li><span class="stack-icon tone-0 has-logo brand-sonarqube" aria-hidden="true"><img loading="lazy" src="assets/tools/sonarqube.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>SonarQube</strong><span>Code quality analysis</span></div></li>
@@ -384,7 +392,7 @@
             <li><span class="stack-icon tone-1" aria-hidden="true">SI</span><div><strong>SIEM</strong><span>Security event monitoring</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-6" role="tabpanel" aria-labelledby="stack-tab-6" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-6" role="tabpanel" aria-label="Databases" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">07<span>/ 13</span></div><h3>Databases &amp; caching</h3><p>Store application data and support fast access.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Database and cache infrastructure supporting application workloads.</p><a href="#architecture">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Databases &amp; caching tools">
             <li><span class="stack-icon tone-0 has-logo brand-postgresql" aria-hidden="true"><img loading="lazy" src="assets/tools/postgresql.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>PostgreSQL</strong><span>Relational database</span></div></li>
@@ -393,14 +401,14 @@
             <li><span class="stack-icon tone-0 has-logo brand-redis" aria-hidden="true"><img loading="lazy" src="assets/tools/redis.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Redis / KeyDB</strong><span>Caching &amp; in-memory data</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-7" role="tabpanel" aria-labelledby="stack-tab-7" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-7" role="tabpanel" aria-label="Messaging" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">08<span>/ 13</span></div><h3>Messaging &amp; event streaming</h3><p>Connect services through queues and event streams.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Messaging infrastructure alongside cloud and application services.</p><a href="#architecture">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Messaging &amp; event streaming tools">
             <li><span class="stack-icon tone-1 has-logo brand-apachekafka" aria-hidden="true"><img loading="lazy" src="assets/tools/apachekafka.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Kafka</strong><span>Event streaming</span></div></li>
             <li><span class="stack-icon tone-2 has-logo brand-rabbitmq" aria-hidden="true"><img loading="lazy" src="assets/tools/rabbitmq.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>RabbitMQ</strong><span>Message queues</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-8" role="tabpanel" aria-labelledby="stack-tab-8" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-8" role="tabpanel" aria-label="Systems" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">09<span>/ 13</span></div><h3>Operating systems &amp; scripting</h3><p>Administer servers and automate operational tasks.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Server operations, shell automation, and engineering tooling.</p><a href="#capabilities">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Operating systems &amp; scripting tools">
             <li><span class="stack-icon tone-0 has-logo brand-linux" aria-hidden="true"><img loading="lazy" src="assets/tools/linux.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Linux</strong><span>Server operations</span></div></li>
@@ -409,7 +417,7 @@
             <li><span class="stack-icon tone-2 has-logo brand-python" aria-hidden="true"><img loading="lazy" src="assets/tools/python.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Python / Go</strong><span>Application tooling &amp; automation</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-9" role="tabpanel" aria-labelledby="stack-tab-9" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-9" role="tabpanel" aria-label="Web development" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">10<span>/ 13</span></div><h3>Web &amp; backend development</h3><p>Build website interfaces and connect application backends.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>OneView’s product website, built and launched alongside the app.</p><a href="#oneview">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Web &amp; backend development tools">
             <li><span class="stack-icon tone-0 has-logo brand-html5" aria-hidden="true"><img loading="lazy" src="assets/tools/html5.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>HTML5</strong><span>Website structure</span></div></li>
@@ -418,14 +426,14 @@
             <li><span class="stack-icon tone-2 has-logo brand-dot-net" aria-hidden="true"><img loading="lazy" src="assets/tools/dot-net.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>IIS / .NET</strong><span>Backend development &amp; IIS hosting</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-10" role="tabpanel" aria-labelledby="stack-tab-10" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-10" role="tabpanel" aria-label="Mobile &amp; KMP" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">11<span>/ 13</span></div><h3>Mobile &amp; Kotlin Multiplatform</h3><p>Build apps with shared logic and platform integration.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>Independent app development and release ownership for OneView.</p><a href="#oneview">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Mobile &amp; Kotlin Multiplatform tools">
             <li><span class="stack-icon tone-0 has-logo brand-kotlin" aria-hidden="true"><img loading="lazy" src="assets/tools/kotlin.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Kotlin / KMP</strong><span>Kotlin Multiplatform · shared app logic</span></div></li>
             <li><span class="stack-icon tone-1 has-logo brand-android" aria-hidden="true"><img loading="lazy" src="assets/tools/android.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Android</strong><span>Mobile app delivery</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-11" role="tabpanel" aria-labelledby="stack-tab-11" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-11" role="tabpanel" aria-label="Domains &amp; hosting" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">12<span>/ 13</span></div><h3>Domains, DNS, hosting &amp; HTTPS</h3><p>Work with any domain registrar or hosting provider. Namecheap, GoDaddy, and Hostinger are examples; I can manage domain purchases, DNS, hosting, migrations, and HTTPS on your chosen platform.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>OneView’s domain purchase, hosting, DNS, SSL, and live deployment.</p><a href="#oneview">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="Domains, DNS, hosting &amp; HTTPS tools">
             <li><span class="stack-icon tone-0 has-logo brand-godaddy" aria-hidden="true"><img loading="lazy" src="assets/tools/godaddy.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>GoDaddy</strong><span>Example registrar · domain &amp; DNS</span></div></li>
@@ -434,14 +442,14 @@
             <li><span class="stack-icon tone-0 has-logo brand-nginx" aria-hidden="true"><img loading="lazy" src="assets/tools/nginx.svg" width="30" height="30" alt="" decoding="async"></span><div><strong>Nginx</strong><span>Web server · reverse proxy · ingress</span></div></li>
           </ul>
         </div>
-        <div class="stack-panel" id="stack-panel-12" role="tabpanel" aria-labelledby="stack-tab-12" tabindex="0" hidden>
+        <div class="stack-panel" id="stack-panel-12" role="tabpanel" aria-label="AI platforms" tabindex="0" hidden>
           <div class="stack-layer"><div class="stack-number">13<span>/ 13</span></div><h3>AI platforms &amp; model serving</h3><p>Run model inference and work with cloud AI services.</p><div class="stack-evidence"><span>IN PRACTICE</span><p>AI platform infrastructure, serving options, and production operations.</p><a href="#ai-infrastructure">Explore related work <span aria-hidden="true">↗</span></a></div></div>
           <ul class="stack-tools" aria-label="AI platforms &amp; model serving tools">
             <li><span class="stack-icon tone-2 has-logo brand-ollama" aria-hidden="true"><img loading="lazy" src="assets/tools/ollama.png" width="30" height="30" alt="" decoding="async"></span><div><strong>Ollama</strong><span>AI model serving</span></div></li>
             <li><span class="stack-icon tone-0 has-logo brand-foundry" aria-hidden="true"><img loading="lazy" src="assets/tools/azure-ai-foundry.jpg" width="30" height="30" alt="" decoding="async"></span><div><strong>Microsoft Foundry</strong><span>Cloud AI platform</span></div></li>
           </ul>
         </div>
-        <div class="stack-controls"><button type="button" class="stack-arrow stack-prev" aria-label="Previous tool category">←</button><div class="stack-position"><span class="stack-current">01</span><span class="stack-progress" aria-hidden="true"><i></i></span><span>13</span></div><div class="stack-control-end"><button type="button" class="stack-play" aria-pressed="true">Pause tour</button><button type="button" class="stack-arrow stack-next" aria-label="Next tool category">→</button></div></div>
+        <div class="stack-controls"><sakuga-button variant="secondary" type="button" class="stack-arrow stack-prev" aria-label="Previous tool category">←</sakuga-button><div class="stack-position"><span class="stack-current">01</span><span class="stack-progress" aria-hidden="true"><i></i></span><span>13</span></div><div class="stack-control-end"><sakuga-button variant="secondary" type="button" class="stack-play" aria-pressed="true">Pause tour</sakuga-button><sakuga-button variant="secondary" type="button" class="stack-arrow stack-next" aria-label="Next tool category">→</sakuga-button></div></div>
       </div>
     </section>
 
@@ -452,7 +460,7 @@
         <p>Follow a connected delivery flow through the tools I work with, from the first idea to production and back through feedback.</p>
       </div>
       <div class="ai-diagram delivery-architecture">
-        <div class="ai-diagram-heading"><span>CONTINUOUS DELIVERY / REFERENCE FLOW</span><button class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</button></div>
+        <div class="ai-diagram-heading"><span>CONTINUOUS DELIVERY / REFERENCE FLOW</span><sakuga-button variant="secondary" class="ai-motion-toggle" type="button" aria-pressed="false">Pause flow</sakuga-button></div>
         <div class="ai-network-scroll" tabindex="0" role="region" aria-label="Delivery architecture; scroll horizontally on small screens"><svg class="ai-network delivery-network" viewBox="0 0 1000 390" role="group" aria-label="Interactive delivery architecture from idea to production and back through feedback"><rect class="ai-security-zone" x="14" y="65" width="972" height="268" rx="16"/><text class="ai-zone-label" x="28" y="53">REVIEWED CHANGES · RELEASE SAFETY · REPEATABLE INFRASTRUCTURE</text><path class="ai-connection" d="M225 136H270"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.2s" path="M225 136H270" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M470 136H515"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.35s" path="M470 136H515" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M715 136H760"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.5s" path="M715 136H760" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M860 172V245"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.6500000000000004s" path="M860 172V245" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M760 281H715"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.8000000000000003s" path="M760 281H715" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M515 281H470"/><circle class="ai-request-dot" r="4"><animateMotion dur="2.95s" path="M515 281H470" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M270 281H225"/><circle class="ai-request-dot" r="4"><animateMotion dur="3.1s" path="M270 281H225" repeatCount="indefinite" begin="indefinite"/></circle><path class="ai-connection" d="M125 317V355H8V136H25"/><circle class="ai-request-dot" r="4"><animateMotion dur="3.25s" path="M125 317V355H8V136H25" repeatCount="indefinite" begin="indefinite"/></circle><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 1: Idea &amp; scope" data-ai-description="Define the goal, release boundaries, and a practical delivery plan. Tools: Requirements · architecture." data-ai-node="delivery-0"><rect x="25" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="37" y="118">01</text><text class="ai-node-title" x="125" y="125">Idea &amp; scope</text><text class="ai-node-sub" x="125" y="146">Requirements · architecture</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 2: Source control" data-ai-description="Review application code and infrastructure changes before merging. Tools: Git · Bitbucket · GitLab." data-ai-node="delivery-1"><rect x="270" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="282" y="118">02</text><text class="ai-node-title" x="370" y="125">Source control</text><text class="ai-node-sub" x="370" y="146">Git · Bitbucket · GitLab</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 3: Build &amp; test" data-ai-description="Run automated builds, tests, and quality gates on each change. Tools: Jenkins · GitHub Actions · SonarQube." data-ai-node="delivery-2"><rect x="515" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="527" y="118">03</text><text class="ai-node-title" x="615" y="125">Build &amp; test</text><text class="ai-node-sub" x="615" y="146">Jenkins · GitHub Actions</text><text class="ai-node-sub" x="615" y="160">SonarQube</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 4: Package &amp; publish" data-ai-description="Build versioned container images and publish release artifacts. Tools: Docker · Harbor." data-ai-node="delivery-3"><rect x="760" y="100" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="772" y="118">04</text><text class="ai-node-title" x="860" y="125">Package &amp; publish</text><text class="ai-node-sub" x="860" y="146">Docker · Harbor</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 5: Provision" data-ai-description="Create repeatable cloud environments with infrastructure as code. Tools: Terraform · Ansible · AWS CDK." data-ai-node="delivery-4"><rect x="760" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="772" y="263">05</text><text class="ai-node-title" x="860" y="270">Provision</text><text class="ai-node-sub" x="860" y="291">Terraform · Ansible</text><text class="ai-node-sub" x="860" y="305">AWS CDK</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 6: Deploy" data-ai-description="Roll out workloads to AKS, EKS, GKE, or RKE2 with a rollback plan. Tools: Argo CD · Helm · Kubernetes." data-ai-node="delivery-5"><rect x="515" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="527" y="263">06</text><text class="ai-node-title" x="615" y="270">Deploy</text><text class="ai-node-sub" x="615" y="291">Argo CD · Helm</text><text class="ai-node-sub" x="615" y="305">Kubernetes</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 7: Production" data-ai-description="Serve traffic with resilient infrastructure, storage, and application services. Tools: AWS · Azure · GCP · Nginx." data-ai-node="delivery-6"><rect x="270" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="282" y="263">07</text><text class="ai-node-title" x="370" y="270">Production</text><text class="ai-node-sub" x="370" y="291">AWS · Azure · GCP</text><text class="ai-node-sub" x="370" y="305">Nginx</text></g><g class="ai-network-node" role="button" tabindex="0" aria-pressed="false" aria-label="Stage 8: Observe &amp; improve" data-ai-description="Use metrics, logs, and alerts to guide the next improvement. Tools: Prometheus · Grafana · EFK · Sentry." data-ai-node="delivery-7"><rect x="25" y="245" width="200" height="72" rx="9"/><text class="delivery-stage-number" x="37" y="263">08</text><text class="ai-node-title" x="125" y="270">Observe &amp; improve</text><text class="ai-node-sub" x="125" y="291">Prometheus · Grafana</text><text class="ai-node-sub" x="125" y="305">EFK · Sentry</text></g><text class="ai-zone-label" x="310" y="374">PRODUCTION FEEDBACK → THE NEXT IDEA, IMPROVEMENT &amp; RELEASE</text></svg></div>
         <p class="ai-node-detail" aria-live="polite">Select a delivery stage to explore its tools and purpose. Follow the flow across the top row, back along the bottom row, and through the feedback loop.</p>
         <div class="runtime-services"><div><span>DATA &amp; MESSAGING</span><p>PostgreSQL · MongoDB · MySQL · Redis · KeyDB · Kafka · RabbitMQ</p></div><div><span>INFRASTRUCTURE FOUNDATION</span><p>Linux · Windows Server · CloudFormation · Longhorn · Docker Swarm</p></div></div>
@@ -481,10 +489,10 @@
       <div class="contact-layout">
         <div class="contact-platforms">
           <p class="eyebrow">LET’S CONNECT</p><p>You’ll speak directly with the engineer doing the work. Share your goal and current challenge; I’ll reply to understand the scope and agree on the next step.</p>
-          <a class="button secondary" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" target="_blank" rel="noopener noreferrer"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/upwork.svg" width="24" height="24" alt="" aria-hidden="true">Discuss on Upwork</span><span aria-hidden="true">↗</span></a>
-          <a class="button secondary" href="https://arc.dev/@productsbyahsan" target="_blank" rel="noopener noreferrer"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/arc.svg" width="64" height="24" alt="" aria-hidden="true">Connect on Arc</span><span aria-hidden="true">↗</span></a>
-          <a class="button secondary" href="https://hubstafftalent.net/profiles/ahsan-nawaz-2" target="_blank" rel="noopener noreferrer"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/hubstaff-talent.svg" width="24" height="24" alt="" aria-hidden="true">Connect on Hubstaff Talent</span><span aria-hidden="true">↗</span></a>
-          <a class="button secondary" href="https://www.linkedin.com/in/ahsannz/" target="_blank" rel="noopener noreferrer"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/linkedin.svg" width="24" height="24" alt="" aria-hidden="true">Connect on LinkedIn</span><span aria-hidden="true">↗</span></a>
+          <sakuga-button variant="secondary" class="sakuga-link" data-href="https://www.upwork.com/freelancers/~0110eb49d43b69795a" data-target="_blank" data-rel="noopener noreferrer"><span class="sakuga-button-content"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/upwork.svg" width="24" height="24" alt="" aria-hidden="true">Discuss on Upwork</span><span aria-hidden="true">↗</span></span></sakuga-button>
+          <sakuga-button variant="secondary" class="sakuga-link" data-href="https://arc.dev/@productsbyahsan" data-target="_blank" data-rel="noopener noreferrer"><span class="sakuga-button-content"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/arc.svg" width="64" height="24" alt="" aria-hidden="true">Connect on Arc</span><span aria-hidden="true">↗</span></span></sakuga-button>
+          <sakuga-button variant="secondary" class="sakuga-link" data-href="https://hubstafftalent.net/profiles/ahsan-nawaz-2" data-target="_blank" data-rel="noopener noreferrer"><span class="sakuga-button-content"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/hubstaff-talent.svg" width="24" height="24" alt="" aria-hidden="true">Connect on Hubstaff Talent</span><span aria-hidden="true">↗</span></span></sakuga-button>
+          <sakuga-button variant="secondary" class="sakuga-link" data-href="https://www.linkedin.com/in/ahsannz/" data-target="_blank" data-rel="noopener noreferrer"><span class="sakuga-button-content"><span class="platform-button-label"><img class="platform-button-logo" src="assets/tools/linkedin.svg" width="24" height="24" alt="" aria-hidden="true">Connect on LinkedIn</span><span aria-hidden="true">↗</span></span></sakuga-button>
         <ul class="contact-expectations"><li>Free 30-minute introductory call on request</li><li>Clear scope, deliverables, and pricing before work starts</li><li>Documented setup and practical handover</li><li>Remote collaboration worldwide</li></ul>
         </div>
         <div class="contact-form-wrap">
@@ -494,14 +502,14 @@
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Ahsan Nawaz" maxlength="100" required></label><label>Your email<input type="email" name="email" autocomplete="email" placeholder="productsbyahsan@gmail.com" maxlength="254" required></label></div>
+          <div class="form-row"><sakuga-input name="name" label="Your name" autocomplete="name" placeholder="Your full name" maxlength="100" required></sakuga-input><sakuga-input type="email" name="email" label="Your email" autocomplete="email" placeholder="you@example.com" maxlength="254" required></sakuga-input></div>
           <label>Your project or consultation request<textarea name="message" rows="5" minlength="20" maxlength="5000" placeholder="What do you need built, launched, automated, or fixed? Share your website, app, cloud, domain, or hosting needs and your timeline." required></textarea></label>
           <div class="send-check" id="send-check">
-            <div class="send-check-heading"><label for="send-slider">Slide to send</label><span id="send-check-state">Slide to unlock</span></div>
-            <div class="send-slider-track"><span class="send-slider-fill" aria-hidden="true"></span><span class="send-slider-caption" aria-hidden="true">Slide right →</span><input type="range" id="send-slider" min="0" max="100" step="1" value="0" aria-label="Slide to send: move to 100 to unlock the send button" aria-describedby="send-slider-help"></div>
+            <div class="send-check-heading"><span id="send-slider-label">Slide to unlock sending</span><span id="send-check-state">Slide to unlock</span></div>
+            <sakuga-slider id="send-slider" value="0" min="0" max="100" step="1" unit="%" label="Slide to send: move to 100 to unlock the send button" aria-describedby="send-slider-help"></sakuga-slider>
             <small id="send-slider-help">Drag to the end. Keyboard: use the arrow keys or press End.</small>
           </div>
-          <div class="form-submit-row"><button class="button primary" id="contact-submit" type="submit" disabled>Send enquiry ↗</button><small>I’ll reply to your email to discuss the next step.</small></div>
+          <div class="form-submit-row"><sakuga-button id="contact-submit" type="submit" disabled>Send enquiry</sakuga-button><small>I’ll reply to your email to discuss the next step.</small></div>
           <p id="contact-status" class="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <noscript><p>Please enable JavaScript to use this form, or contact me through Upwork or LinkedIn.</p></noscript>
         </form>
