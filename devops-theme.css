@@ -78,9 +78,9 @@ html.js :is(.project-card,.capability-grid>div,.contact-grid>a).fabric-tile:hove
 .tile-fabric{position:absolute;z-index:-1;pointer-events:none;display:block}
 .fabric-tile>:not(.tile-fabric){position:relative;z-index:1}
 #portfolio-loader{position:fixed;inset:0;z-index:1000;background:#05070a;display:none;align-items:center;justify-content:center;transition:opacity .25s ease,visibility .25s}
-.js #portfolio-loader{display:flex;animation:loader-failsafe 0s 15s forwards}
+.js #portfolio-loader{display:flex;animation:loader-failsafe 0s 2s forwards}
 #portfolio-loader.is-complete{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{width:min(620px,84vw);text-align:center}
+.loader-inner{width:min(420px,74vw);text-align:center}
 .loader-mark{display:block;position:relative;width:56px;height:56px;margin:0 auto 30px;font:20px/56px monospace;color:#dfe7e0}
 .loader-mark>span{position:absolute;inset:0;border:1px solid #5eead455;border-top-color:#5eead4;animation:loader-orbit 2.4s linear infinite}
 .loader-inner>p{font:10px monospace;letter-spacing:.3em;color:#929d99;margin-bottom:24px}
@@ -887,6 +887,3 @@ body .button,
 body .theme-nav .nav-contact,
 body button:not([class*="fox-"]),
 body input:is([type="submit"],[type="button"],[type="reset"]){border-radius:var(--button-radius)!important}
-
-/* Opening progress: leave space for the component’s cloud and ground effects. */
-.loader-inner sakuga-progress{margin:0 auto 20px;--sk-progress-width:100%}
