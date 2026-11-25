@@ -3,30 +3,34 @@
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
   const loader = document.querySelector('#portfolio-loader');
   if (loader) {
-    const bar = loader.querySelector('i'), count = loader.querySelector('b');
-    const started = performance.now();
-    const duration = motion.matches ? 0 : 650;
-    let finished = false, frame = 0;
+    const progress = loader.querySelector('sakuga-progress');
+    let finished = false;
     function finish() {
       if (finished) return;
       finished = true;
-      cancelAnimationFrame(frame);
-      bar.style.transform = 'scaleX(1)';
-      count.textContent = '100%';
+      clearTimeout(failsafe);
       loader.classList.add('is-complete');
       setTimeout(() => { loader.remove(); window.dispatchEvent(new Event('portfolio-ready')); }, motion.matches ? 0 : 250);
     }
-    function tick(now) {
-      const progress = duration ? Math.min(1, (now - started) / duration) : 1;
-      count.textContent = `${Math.floor(progress * 100)}%`;
-      bar.style.transform = `scaleX(${progress})`;
-      if (progress >= 1) finish();
-      else frame = requestAnimationFrame(tick);
-    }
-    // This intro never waits for images or optional graphics to download.
-    frame = requestAnimationFrame(tick);
-    setTimeout(finish, 1000);
+    // Recovery only: a missing component or stalled asset must not block the site.
+    const failsafe = setTimeout(finish, 12000);
+    progress.addEventListener('sakuga:done', finish, { once: true });
     window.addEventListener('pageshow', event => { if (event.persisted) finish(); });
+    if (typeof progress.set === 'function') {
+      const images = [...document.images].filter(image => image.loading !== 'lazy');
+      const tasks = images.map(image => image.complete ? Promise.resolve() : new Promise(resolve => {
+        image.addEventListener('load', resolve, { once: true });
+        image.addEventListener('error', resolve, { once: true });
+      }));
+      tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
+      let settled = 0;
+      progress.set(0, true);
+      tasks.forEach(task => Promise.resolve(task).catch(() => {}).then(() => {
+        if (!finished) progress.set(++settled / tasks.length, motion.matches);
+      }));
+    } else {
+      finish();
+    }
   }
   const field=document.querySelector('.tool-drift');
   if(!field || motion.matches || matchMedia('(max-width: 760px), (pointer: coarse)').matches || navigator.connection?.saveData)return;
