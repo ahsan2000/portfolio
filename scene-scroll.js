@@ -63,7 +63,7 @@
   const offerCounter=document.createElement('p');offerCounter.className='offer-counter';
   offerCounter.setAttribute('aria-hidden','true');offerGrid?.after(offerCounter);
   const work=document.getElementById('work');const rail=work?.querySelector('.project-grid');
-  let enabled=false,nativeOpening=false,current=-1,frame=0,origin=0,height=0,transition=0,total=0,cameraY=null,lastPaint=0;
+  let enabled=false,nativeOpening=false,current=-1,frame=0,origin=0,height=0,transition=0,total=0;
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const ease=v=>v*v*(3-2*v);
   // Skip identical writes: settled cards and hidden scenes need no frame work.
@@ -81,7 +81,7 @@
     if(nativeOpening) main.before(scenes[0].panel);
     else if(scenes[0].panel.parentElement && scenes[0].panel.parentElement!==stage) stage.prepend(scenes[0].panel);
     height=stage.clientHeight;origin=scrollY+main.getBoundingClientRect().top;transition=height*.8;
-    scenes.forEach(s=>{s.panel.style.display="block";styleCache.delete(s.panel);});
+    scenes.forEach(s=>{s.panel.style.display="block";s.panel.style.contentVisibility="visible";styleCache.delete(s.panel);});
     let cursor=0;
     scenes.forEach((s,i)=>{
       if(nativeOpening&&i===0){s.start=0;s.hold=0;s.overflow=0;return;}
@@ -103,12 +103,7 @@
   }
   function paint(){
     frame=0;if(!enabled)return;
-    const targetY=clamp(scrollY-origin,0,total);
-    const now=performance.now(),dt=Math.min(50,Math.max(1,now-lastPaint||16));lastPaint=now;
-    if(cameraY===null)cameraY=targetY;
-    cameraY+=(targetY-cameraY)*(1-Math.exp(-dt/42));
-    if(Math.abs(targetY-cameraY)<.15)cameraY=targetY;
-    const y=cameraY;
+    const y=clamp(scrollY-origin,0,total);
     let selected=nativeOpening?1:0;
     scenes.forEach((s,i)=>{
       if(nativeOpening&&i===0){s.panel.removeAttribute('style');s.inner.removeAttribute('style');return;}
@@ -116,9 +111,10 @@
       const outgoing=i===scenes.length-1?0:clamp((y-s.start-s.hold)/transition);
       const visible=incoming>0&&outgoing<1;
       // display:none cannot be defeated by descendant visibility declarations.
-      style(s.panel,'display',visible?'block':'none');
+      style(s.panel,'contentVisibility',visible?'visible':'hidden');
+      style(s.panel,'pointerEvents',visible?'':'none');
       style(s.panel,'willChange',visible?'transform,opacity':'auto');
-      if(!visible)return;
+      if(!visible){style(s.panel,'opacity','0');return;}
       const a=ease(incoming),b=ease(outgoing);
       style(s.panel,'zIndex',String(i+1));
       style(s.panel,'opacity',(a*(1-b)).toFixed(3));
@@ -167,7 +163,6 @@
     emblem.style.opacity=current===0?'.42':'.16';
     window.dispatchEvent(new CustomEvent('portfolio-camera-frame',{detail:{y:scrollY-origin<0?scrollY:y+origin}}));
     emblem.style.transform=`translate3d(${Math.sin(phase*Math.PI*2)*5}vw,${Math.cos(phase*Math.PI*2)*4}vh,0) rotate(${-8+phase*16}deg)`;
-    if(cameraY!==targetY)schedule();
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(paint);}
   function route(hash,behavior='smooth'){
@@ -184,7 +179,7 @@
   function mode(){
     enabled=!motion.matches;
     document.documentElement.classList.toggle('scene-scroll',enabled);document.documentElement.classList.toggle('scene-reading',!enabled);
-    main.style.height='';current=-1;cameraY=null;
+    main.style.height='';current=-1;
     scenes.forEach(s=>{styleCache.delete(s.panel);styleCache.delete(s.inner);});
     offerCards.forEach(card=>styleCache.delete(card));if(rail)styleCache.delete(rail);
     scenes.forEach(s=>{s.panel.removeAttribute('style');s.inner.removeAttribute('style');s.panel.inert=false;s.panel.removeAttribute('aria-hidden');});
@@ -199,9 +194,12 @@
     if(hash&&route(hash)){e.preventDefault();e.stopImmediatePropagation();history.pushState(null,'',hash);}
   },true);
   window.addEventListener('hashchange',()=>{if(enabled)route(location.hash);});window.addEventListener('popstate',()=>{if(enabled)route(location.hash||'#top');});
-  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',()=>{const next=!motion.matches;if(next!==enabled)mode();else measure();});motion.addEventListener('change',mode);
+  window.addEventListener('scroll',schedule,{passive:true});
+  let measureFrame=0;
+  function scheduleMeasure(){if(!measureFrame)measureFrame=requestAnimationFrame(()=>{measureFrame=0;measure();});}
+  window.addEventListener('resize',scheduleMeasure,{passive:true});motion.addEventListener('change',mode);
   // Fixed dimensions keep hidden scenes measurable without painting them.
-  if('ResizeObserver'in window){const observer=new ResizeObserver(()=>measure());observer.observe(stage);}
+  if('ResizeObserver'in window){const observer=new ResizeObserver(scheduleMeasure);observer.observe(stage);}
   document.fonts?.ready.then(measure);
   window.addEventListener('load',measure,{once:true});
   mode();

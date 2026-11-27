@@ -136,3 +136,15 @@
  .cinematic #work .project-details{padding-bottom:76px}
  .cinematic #work .details-open .project-preview>img{transform:none}
 }
+/* Cache the decorative ribbon as two images, never live curved text. */
+.scene-emblem .snake-ring-layer{position:absolute;inset:-25%;transform-origin:50% 50%;will-change:transform,opacity}
+.scene-emblem .snake-ring-layer>img{display:block;width:100%;height:100%;max-width:none;animation:snake-orbit-drift 150s linear infinite}
+.scene-emblem .snake-wave-layer{position:absolute;left:-350%;top:-166.667%;width:733.333%;height:466.667%;will-change:transform,opacity;transform-origin:54.545% 46.43%;pointer-events:none}
+.scene-emblem .snake-wave-layer>img{display:block;width:100%;height:100%;max-width:none}
+@keyframes snake-orbit-drift{to{transform:rotate(360deg)}}
+.scene-scroll .scene-panel{contain:layout style;clip-path:none!important;transition:none!important}
+.scene-scroll .scene-panel>.scene-content{transition:none!important}
+.scene-scroll .scene-stage .scene-content :is(.architecture-card,.contact-grid>a,.cta,.stack-explorer){backdrop-filter:none}
+.scene-scroll .scene-content .section-motion{filter:none!important}
+@media(max-width:900px){.scene-scroll .scene-stage{height:100svh}}
+@media(prefers-reduced-motion:reduce){.snake-ring-layer>img{animation:none!important}}

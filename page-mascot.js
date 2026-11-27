@@ -276,6 +276,7 @@
     const middle = innerHeight * .48;
     let best = null, bestDistance = Infinity;
     contextualBlocks.forEach(block => {
+      if(block.closest('.scene-panel[aria-hidden="true"]'))return;
       const rect = block.getBoundingClientRect();
       if (rect.bottom <= 0 || rect.top >= innerHeight) return;
       const distance = rect.top <= middle && rect.bottom >= middle ? 0 : Math.min(Math.abs(rect.top - middle), Math.abs(rect.bottom - middle));
@@ -295,7 +296,7 @@
   };
   let sectionFrame = 0;
   const scheduleSection = () => {
-    if (!sectionFrame) sectionFrame = requestAnimationFrame(() => { sectionFrame = 0; updateSection(); });
+    if (!sectionFrame) sectionFrame = setTimeout(() => { sectionFrame = 0; updateSection(); }, 120);
   };
   window.addEventListener('scroll', () => {
     if (!docked && !bubble.hidden) hideMessage();
@@ -325,7 +326,7 @@
     messageTimer = setTimeout(hideMessage, mobileScreen.matches ? 2000 : 8000);
   };
   let autoMessageTimer = setInterval(checkAutoMessage, 250);
-  window.addEventListener('scroll', checkAutoMessage, { passive: true });
+  // The scroll handler postpones messages; the existing timer checks after idle.
   window.addEventListener('pagehide', () => { clearInterval(autoMessageTimer); autoMessageTimer = 0; });
   window.addEventListener('pageshow', () => {
     if (!autoMessageTimer) autoMessageTimer = setInterval(checkAutoMessage, 250);
