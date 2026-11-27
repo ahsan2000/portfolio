@@ -20,6 +20,7 @@ if (!reducedMotion) {
   let scrollFrame = 0;
   const updateScrollMotion = () => {
     const page = document.documentElement;
+    if(page.classList.contains('scene-scroll')){scrollFrame=0;return;}
     const maxScroll = Math.max(page.scrollHeight - window.innerHeight, 1);
     const progress = Math.min(window.scrollY / maxScroll, 1);
     page.style.setProperty('--scroll-progress', progress.toFixed(4));
@@ -136,14 +137,16 @@ if (skillsTicker) {
 // Shrink the header after scrolling; restore it near the top.
 (() => {
   const header = document.querySelector('.site-header');
-  if (!header) return;
+  const mobileHeader = document.querySelector('.mobile-site-header');
+  if (!header && !mobileHeader) return;
   let compact = false, frame = 0;
   const update = () => {
     frame = 0;
     const next = compact ? window.scrollY > 32 : window.scrollY > 100;
     if (next !== compact) {
       compact = next;
-      header.classList.toggle('is-compact', compact);
+      header?.classList.toggle('is-compact', compact);
+      mobileHeader?.classList.toggle('is-compact', compact);
     }
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };

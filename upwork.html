@@ -28,7 +28,7 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="devops-theme.css?v=20261125-simple-loader">
-  <script src="script.js?v=20261102-ticker" defer></script>
+  <script src="script.js?v=20261127-scene-owner" defer></script>
   <script src="button.js?v=20261125" defer></script>
   <script src="slider.js?v=20261125" defer></script>
   <script src="input.js?v=20261125" defer></script>
@@ -38,8 +38,16 @@
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
   <script src="page-mascot.js?v=20261103-section-contact" defer></script>
   <link rel="stylesheet" href="cinematic.css?v=20261124-wide-short-services">
+  <link rel="stylesheet" href="studio-theme.css?v=20261126">
   <script src="portfolio-atmosphere.js?v=20261125-simple-loader" defer></script>
-  <script src="cinematic.js?v=20261102o" defer></script>
+  <script src="cinematic.js?v=20261127-scene-owner" defer></script>
+  <link rel="stylesheet" href="scene-scroll.css?v=20261126-section-motion">
+  <link rel="stylesheet" href="responsive-layout.css?v=20261126-nav-spacing6">
+  <script src="scene-scroll.js?v=20261127-smooth-pass" defer></script>
+  <script src="headline-words.js?v=20261126-alternate2" defer></script>
+  <script src="project-details.js?v=20261126-scrollfix" defer></script>
+  <link rel="stylesheet" href="motion-experience.css?v=20261127-mobile-image-flow">
+  <script src="motion-experience.js?v=20261127-smooth-pass" defer></script>
 </head>
 <body class="clarity-theme cinematic">
   <div id="portfolio-loader" role="status" aria-label="Loading Ahsan Nawaz’s portfolio">
@@ -70,6 +78,11 @@
     </nav>
   </header>
 
+  <header class="mobile-site-header" aria-label="Mobile site header">
+    <div class="mobile-header-row"><a class="mobile-identity" href="#top"><img src="assets/portfolio-logo.svg" width="28" height="28" alt=""><span>Ahsan Nawaz</span></a><a class="mobile-contact" href="https://www.upwork.com/freelancers/~0110eb49d43b69795a">Let’s talk</a></div>
+    <nav class="mobile-nav-links" aria-label="Mobile navigation"></nav>
+  </header>
+
   <main id="top">
     <div class="story-track parallax-track" id="journey">
     <section data-backdrop="PORTFOLIO" class="hero parallax-story" aria-labelledby="hero-title">
@@ -77,11 +90,12 @@
       <div class="cinema-word" aria-hidden="true">PORTFOLIO</div>
       <div class="story-panels">
         <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
-          <p class="eyebrow hero-intro">Hello, I’m</p>
-          <h1 id="hero-title">Ahsan<br> Nawaz<span class="name-dot">.</span></h1>
-          <p class="cinema-role">Cloud &amp; DevOps<br> Engineer.</p>
-          <p class="hero-text">I build cloud infrastructure, automate releases, and keep production running. 4+ years across banking and multi-cloud platforms.</p>
-          <div class="hero-actions"><sakuga-button variant="secondary" class="sakuga-link hero-explore" data-href="#work">Explore my work ↓</sakuga-button></div>
+          <p class="eyebrow hero-intro">AHSAN NAWAZ · MULTI-CLOUD &amp; DEVOPS ENGINEER</p>
+          <h1 id="hero-title" aria-label="Build with purpose. Deploy with confidence."><span class="hero-heading-line"><span class="hero-prefix"><b class="hero-word" style="--word:0">Build</b> <b class="hero-word" style="--word:1">with</b></span> <b class="hero-word rotating-word" data-rotate="build" style="--word:2">purpose.</b></span><span class="hero-heading-line"><span class="hero-prefix"><b class="hero-word" style="--word:3">Deploy</b> <b class="hero-word" style="--word:4">with</b></span> <em class="hero-word rotating-word" data-rotate="deploy" style="--word:5">confidence.</em></span></h1>
+          <p class="cinema-role">From your first deployment to production at scale.</p>
+          <p class="hero-text"><span class="hero-intro-desktop">I engineer resilient multi-cloud infrastructure and automated delivery pipelines, backed by 4+ years of production DevOps experience across digital banking and technology platforms.</span><span class="hero-intro-mobile">Resilient multi-cloud infrastructure. Automated delivery. 4+ years of production DevOps experience.</span></p>
+          <div class="hero-actions"><sakuga-button variant="secondary" class="sakuga-link hero-explore" data-href="#work">Explore my work</sakuga-button></div>
+          <dl class="hero-mobile-proof" aria-label="Production experience"><div><dt>4+</dt><dd>Years in production</dd></div><div><dt>150+</dt><dd>Kubernetes nodes</dd></div><div><dt>Multi-cloud</dt><dd>Infrastructure</dd></div></dl>
           <p class="cinema-location">↗ KARACHI, PAKISTAN · REMOTE WORLDWIDE</p>
         </div>
         <figure class="cinema-portrait">
@@ -99,6 +113,17 @@
     </section>
     </div>
 
+    <div class="studio-showcase" aria-label="Explore selected projects">
+      <a href="#bank-digital" class="studio-shot"><img src="assets/bank-al-habib-digital-horizontal.webp" width="1280" height="640" alt="AL Habib Digital project" decoding="async"><span>Banking infrastructure <b>AL Habib Digital</b></span></a>
+      <a href="#digimate" class="studio-shot"><img src="assets/digimate-horizontal.webp" width="1280" height="640" alt="DigiMate AI platform project" decoding="async"><span>Cloud &amp; AI platforms <b>AL Habib DigiMate</b></span></a>
+      <a href="#tekrevol" class="studio-shot"><img src="assets/tekrevol-horizontal.webp" width="1280" height="640" alt="TekRevol infrastructure project" decoding="async"><span>Production operations <b>TekRevol</b></span></a>
+    </div>
+
+    <aside class="studio-identity" aria-label="About Ahsan Nawaz">
+      <div class="studio-person"><img src="assets/ahsan-rim-480.webp" width="480" height="480" alt="Ahsan Nawaz" loading="lazy"><div><p>YOUR ENGINEER, FROM BUILD TO PRODUCTION</p><h2>Ahsan Nawaz.</h2><span>Based in Pakistan. Working worldwide.</span></div></div>
+      <div class="studio-proof"><div><strong>4+</strong><span>Years in production</span></div><div><strong>150+</strong><span>Kubernetes nodes</span></div><div class="multi-cloud-proof"><strong>Multi-cloud</strong><span>Infrastructure &amp; automation</span></div><a href="assets/Ahsan-Nawaz-DevOps-Resume.pdf?v=20261024" target="_blank" rel="noopener noreferrer">View résumé</a></div>
+    </aside>
+
     <div class="scroll-ticker command-ticker" aria-hidden="true">
       <div class="ticker-track"><span><code><b>$</b> aws sts get-caller-identity</code><code><b>$</b> kubectl get pods -A</code><code><b>$</b> kubectl logs -f deployment/api</code><code><b>$</b> az account show</code><code><b>$</b> kubectl describe node</code><code><b>$</b> helm list -A</code><code><b>$</b> gcloud compute instances list</code><code><b>$</b> docker ps</code><code><b>$</b> docker compose ps</code><code><b>$</b> rabbitmqctl list_queues name messages consumers</code><code><b>$</b> terraform plan</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> ollama ls</code><code><b>$</b> git status</code><code><b>$</b> systemctl status nginx</code><code><b>$</b> aws eks list-clusters</code><code><b>$</b> journalctl -u nginx -f</code><code><b>$</b> tail -f /var/log/syslog</code><code><b>$</b> az aks list</code><code><b>$</b> ss -tuln</code><code><b>$</b> df -h</code><code><b>$</b> gcloud container clusters list</code><code><b>$</b> free -h</code><code><b>$</b> top</code><code><b>$</b> rabbitmqctl status</code><code><b>$</b> ps aux</code><code><b>$</b> ip route</code><code><b>$</b> ollama ps</code><code><b>$</b> dig oneviewportfolio.com</code><code><b>$</b> curl -I https://oneviewportfolio.com</code><code><b>$</b> grep -i error app.log</code><code><b>$</b> find /var/log -name &quot;*.log&quot;</code><code><b>$</b> uptime</code><code><b>$</b> nginx -t</code><code><b>$</b> docker node ls</code><code><b>$</b> systemctl status rke2-server</code><code><b>$</b> aws cloudformation list-stacks</code><code><b>$</b> cdk diff</code><code><b>$</b> curl -I https://harbor.example.com/v2/</code><code><b>$</b> kubectl get volumes.longhorn.io -n longhorn-system</code><code><b>$</b> gh run list</code><code><b>$</b> glab pipeline list</code><code><b>$</b> curl -I https://jenkins.example.com/login</code><code><b>$</b> curl -I https://bitbucket.org</code><code><b>$</b> argocd app list</code><code><b>$</b> curl https://sonarqube.example.com/api/system/status</code><code><b>$</b> curl http://localhost:3000/api/health</code><code><b>$</b> promtool check config prometheus.yml</code><code><b>$</b> curl http://localhost:9200/_cluster/health</code><code><b>$</b> kubectl get pods -n logging</code><code><b>$</b> sentry-cli info</code><code><b>$</b> journalctl -p warning -n 50</code><code><b>$</b> kafka-topics.sh --bootstrap-server localhost:9092 --list</code><code><b>$</b> pg_isready</code><code><b>$</b> psql -c &quot;SELECT version();&quot;</code><code><b>$</b> mongosh --eval &quot;db.runCommand({ ping: 1 })&quot;</code><code><b>$</b> mysqladmin ping</code><code><b>$</b> redis-cli ping</code><code><b>$</b> keydb-cli ping</code><code><b>$</b> kubectl get ingress -A</code><code><b>$</b> Get-Service W3SVC</code><code><b>$</b> dotnet --info</code><code><b>$</b> Get-WinEvent -LogName System -MaxEvents 10</code><code><b>$</b> Get-Process</code><code><b>$</b> bash -n deploy.sh</code><code><b>$</b> python3 --version</code><code><b>$</b> go version</code></span><span><code><b>$</b> aws sts get-caller-identity</code><code><b>$</b> kubectl get pods -A</code><code><b>$</b> kubectl logs -f deployment/api</code><code><b>$</b> az account show</code><code><b>$</b> kubectl describe node</code><code><b>$</b> helm list -A</code><code><b>$</b> gcloud compute instances list</code><code><b>$</b> docker ps</code><code><b>$</b> docker compose ps</code><code><b>$</b> rabbitmqctl list_queues name messages consumers</code><code><b>$</b> terraform plan</code><code><b>$</b> ansible all -m ping</code><code><b>$</b> ollama ls</code><code><b>$</b> git status</code><code><b>$</b> systemctl status nginx</code><code><b>$</b> aws eks list-clusters</code><code><b>$</b> journalctl -u nginx -f</code><code><b>$</b> tail -f /var/log/syslog</code><code><b>$</b> az aks list</code><code><b>$</b> ss -tuln</code><code><b>$</b> df -h</code><code><b>$</b> gcloud container clusters list</code><code><b>$</b> free -h</code><code><b>$</b> top</code><code><b>$</b> rabbitmqctl status</code><code><b>$</b> ps aux</code><code><b>$</b> ip route</code><code><b>$</b> ollama ps</code><code><b>$</b> dig oneviewportfolio.com</code><code><b>$</b> curl -I https://oneviewportfolio.com</code><code><b>$</b> grep -i error app.log</code><code><b>$</b> find /var/log -name &quot;*.log&quot;</code><code><b>$</b> uptime</code><code><b>$</b> nginx -t</code><code><b>$</b> docker node ls</code><code><b>$</b> systemctl status rke2-server</code><code><b>$</b> aws cloudformation list-stacks</code><code><b>$</b> cdk diff</code><code><b>$</b> curl -I https://harbor.example.com/v2/</code><code><b>$</b> kubectl get volumes.longhorn.io -n longhorn-system</code><code><b>$</b> gh run list</code><code><b>$</b> glab pipeline list</code><code><b>$</b> curl -I https://jenkins.example.com/login</code><code><b>$</b> curl -I https://bitbucket.org</code><code><b>$</b> argocd app list</code><code><b>$</b> curl https://sonarqube.example.com/api/system/status</code><code><b>$</b> curl http://localhost:3000/api/health</code><code><b>$</b> promtool check config prometheus.yml</code><code><b>$</b> curl http://localhost:9200/_cluster/health</code><code><b>$</b> kubectl get pods -n logging</code><code><b>$</b> sentry-cli info</code><code><b>$</b> journalctl -p warning -n 50</code><code><b>$</b> kafka-topics.sh --bootstrap-server localhost:9092 --list</code><code><b>$</b> pg_isready</code><code><b>$</b> psql -c &quot;SELECT version();&quot;</code><code><b>$</b> mongosh --eval &quot;db.runCommand({ ping: 1 })&quot;</code><code><b>$</b> mysqladmin ping</code><code><b>$</b> redis-cli ping</code><code><b>$</b> keydb-cli ping</code><code><b>$</b> kubectl get ingress -A</code><code><b>$</b> Get-Service W3SVC</code><code><b>$</b> dotnet --info</code><code><b>$</b> Get-WinEvent -LogName System -MaxEvents 10</code><code><b>$</b> Get-Process</code><code><b>$</b> bash -n deploy.sh</code><code><b>$</b> python3 --version</code><code><b>$</b> go version</code></span></div>
     </div>
@@ -108,7 +133,7 @@
     <section data-backdrop="PROJECTS" class="section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="eyebrow">SELECTED PRODUCTION WORK</p>
-        <h2 id="work-title">Top production projects I have worked on</h2>
+        <h2 id="work-title">Built to ship.<br><span>Made to last.</span></h2>
         <p>These projects were completed as part of my employment. The links point to publicly available platforms, and every description is limited to my DevOps contribution; source code, credentials, internal diagrams, and confidential details are excluded.</p>
       </div>
 

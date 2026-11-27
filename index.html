@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="devops-theme.css?v=20261125-simple-loader">
   <link rel="stylesheet" href="clarity-theme.css?v=20261124-card-fix">
-  <script src="script.js?v=20261102-ticker" defer></script>
+  <script src="script.js?v=20261127-scene-owner" defer></script>
   <script src="stack-explorer.js?v=20261125-sakuga-tabs" defer></script>
   <script src="contact-form.js?v=20261125-sakuga-input" defer></script>
   <script src="section-effects.js?v=20261008" defer></script>
@@ -45,8 +45,16 @@
   <script src="ai-diagram.js?v=20261024-foundry" defer></script>
   <script src="page-mascot.js?v=20261103-section-contact" defer></script>
   <link rel="stylesheet" href="cinematic.css?v=20261124-wide-short-services">
+  <link rel="stylesheet" href="studio-theme.css?v=20261126">
   <script src="portfolio-atmosphere.js?v=20261125-simple-loader" defer></script>
-  <script src="cinematic.js?v=20261102o" defer></script>
+  <script src="cinematic.js?v=20261127-scene-owner" defer></script>
+  <link rel="stylesheet" href="scene-scroll.css?v=20261126-section-motion">
+  <link rel="stylesheet" href="responsive-layout.css?v=20261126-nav-spacing6">
+  <script src="scene-scroll.js?v=20261127-smooth-pass" defer></script>
+  <script src="headline-words.js?v=20261126-alternate2" defer></script>
+  <script src="project-details.js?v=20261126-scrollfix" defer></script>
+  <link rel="stylesheet" href="motion-experience.css?v=20261127-mobile-image-flow">
+  <script src="motion-experience.js?v=20261127-smooth-pass" defer></script>
 </head>
 <body class="clarity-theme cinematic">
   <div id="portfolio-loader" role="status" aria-label="Loading Ahsan Nawaz’s portfolio">
@@ -68,7 +76,12 @@
       <span class="brand-mark"><img src="assets/portfolio-logo.svg?v=20261009-navy-teal-v2" width="42" height="42" alt="" decoding="async"></span>
       <span>Ahsan Nawaz<span class="brand-role">CLOUD &amp; DEVOPS ENGINEER</span></span>
     </a>
-    <nav class="theme-nav" aria-label="Main navigation"><a href="#work">Production Work</a><a href="#capabilities">Services</a><a href="#engineering">Tech Stack</a><sakuga-button variant="secondary" class="sakuga-link nav-contact" data-href="#contact">Let’s talk ↗</sakuga-button></nav>
+    <nav class="theme-nav" aria-label="Main navigation"><sakuga-button variant="secondary" class="sakuga-link nav-contact" data-href="#contact">Let’s talk ↗</sakuga-button></nav>
+  </header>
+
+  <header class="mobile-site-header" aria-label="Mobile site header">
+    <div class="mobile-header-row"><a class="mobile-identity" href="#top"><img src="assets/portfolio-logo.svg" width="28" height="28" alt=""><span>Ahsan Nawaz</span></a><a class="mobile-contact" href="#contact">Let’s talk</a></div>
+    <nav class="mobile-nav-links" aria-label="Mobile navigation"></nav>
   </header>
 
   <main id="top">
@@ -78,11 +91,12 @@
       <div class="cinema-word" aria-hidden="true">PORTFOLIO</div>
       <div class="story-panels">
         <div class="hero-copy story-panel" id="story-panel-0" data-phase="0">
-          <p class="eyebrow hero-intro">Hello, I’m</p>
-          <h1 id="hero-title">Ahsan<br> Nawaz<span class="name-dot">.</span></h1>
-          <p class="cinema-role">Cloud &amp; DevOps<br> Engineer.</p>
-          <p class="hero-text">I build cloud infrastructure, automate releases, and keep production running. 4+ years across banking and multi-cloud platforms.</p>
-          <div class="hero-actions"><sakuga-button variant="secondary" class="sakuga-link hero-explore" data-href="#work">Explore my work ↓</sakuga-button></div>
+          <p class="eyebrow hero-intro">AHSAN NAWAZ · MULTI-CLOUD &amp; DEVOPS ENGINEER</p>
+          <h1 id="hero-title" aria-label="Build with purpose. Deploy with confidence."><span class="hero-heading-line"><span class="hero-prefix"><b class="hero-word" style="--word:0">Build</b> <b class="hero-word" style="--word:1">with</b></span> <b class="hero-word rotating-word" data-rotate="build" style="--word:2">purpose.</b></span><span class="hero-heading-line"><span class="hero-prefix"><b class="hero-word" style="--word:3">Deploy</b> <b class="hero-word" style="--word:4">with</b></span> <em class="hero-word rotating-word" data-rotate="deploy" style="--word:5">confidence.</em></span></h1>
+          <p class="cinema-role">From your first deployment to production at scale.</p>
+          <p class="hero-text"><span class="hero-intro-desktop">I engineer resilient multi-cloud infrastructure and automated delivery pipelines, backed by 4+ years of production DevOps experience across digital banking and technology platforms.</span><span class="hero-intro-mobile">Resilient multi-cloud infrastructure. Automated delivery. 4+ years of production DevOps experience.</span></p>
+          <div class="hero-actions"><sakuga-button variant="secondary" class="sakuga-link hero-explore" data-href="#work">Explore my work</sakuga-button></div>
+          <dl class="hero-mobile-proof" aria-label="Production experience"><div><dt>4+</dt><dd>Years in production</dd></div><div><dt>150+</dt><dd>Kubernetes nodes</dd></div><div><dt>Multi-cloud</dt><dd>Infrastructure</dd></div></dl>
           <p class="cinema-location">↗ KARACHI, PAKISTAN · REMOTE WORLDWIDE</p>
         </div>
         <figure class="cinema-portrait">
@@ -100,6 +114,17 @@
     </section>
     </div>
 
+    <div class="studio-showcase" aria-label="Explore selected projects">
+      <a href="#bank-digital" class="studio-shot"><img src="assets/bank-al-habib-digital-horizontal.webp" width="1280" height="640" alt="AL Habib Digital project" decoding="async"><span>Banking infrastructure <b>AL Habib Digital</b></span></a>
+      <a href="#digimate" class="studio-shot"><img src="assets/digimate-horizontal.webp" width="1280" height="640" alt="DigiMate AI platform project" decoding="async"><span>Cloud &amp; AI platforms <b>AL Habib DigiMate</b></span></a>
+      <a href="#tekrevol" class="studio-shot"><img src="assets/tekrevol-horizontal.webp" width="1280" height="640" alt="TekRevol infrastructure project" decoding="async"><span>Production operations <b>TekRevol</b></span></a>
+    </div>
+
+    <aside class="studio-identity" aria-label="About Ahsan Nawaz">
+      <div class="studio-person"><img src="assets/ahsan-rim-480.webp" width="480" height="480" alt="Ahsan Nawaz" loading="lazy"><div><p>YOUR ENGINEER, FROM BUILD TO PRODUCTION</p><h2>Ahsan Nawaz.</h2><span>Based in Pakistan. Working worldwide.</span></div></div>
+      <div class="studio-proof"><div><strong>4+</strong><span>Years in production</span></div><div><strong>150+</strong><span>Kubernetes nodes</span></div><div class="multi-cloud-proof"><strong>Multi-cloud</strong><span>Infrastructure &amp; automation</span></div><a href="assets/Ahsan-Nawaz-DevOps-Resume.pdf?v=20261024" target="_blank" rel="noopener noreferrer">View résumé</a></div>
+    </aside>
+
     <div class="cinema-services" data-backdrop="LET’S TALK">      <aside class="hero-service-card" aria-label="How I help your team">
         <span class="service-card-label">FROM CODE TO PRODUCTION</span>
         <h2><span class="service-title-first">Your product.</span><span class="service-title-second">From idea to live.</span></h2>
@@ -116,7 +141,7 @@
     <section data-backdrop="PROJECTS" class="section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="eyebrow">SELECTED DEVOPS WORK</p>
-        <h2 id="work-title">Production systems I design and operate.</h2>
+        <h2 id="work-title">Built to ship.<br><span>Made to last.</span></h2>
         <p>Selected work across banking, AI services, and technology platforms. These summaries describe my own contribution while keeping internal architecture and confidential details private.</p>
       </div>
 

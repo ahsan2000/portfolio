@@ -139,6 +139,8 @@
   let frame = 0;
   function update() {
     frame = 0;
+    // The pinned scene renderer owns camera motion; avoid a second layout pass.
+    if(root.classList.contains('scene-scroll'))return;
     const distance = Math.max(root.scrollHeight - innerHeight, 1);
     root.style.setProperty('--scroll-progress', String(Math.max(0, Math.min(1, scrollY / distance))));
     const y = enabled && !compact.matches ? Math.min(Math.max(-hero.getBoundingClientRect().top, 0), 900) : 0;
